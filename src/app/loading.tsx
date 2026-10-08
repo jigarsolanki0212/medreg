@@ -9,7 +9,8 @@ export default function Loading() {
       alignItems: 'center',
       justifyContent: 'center',
       padding: '40px 20px',
-      backgroundColor: 'var(--white)'
+      backgroundColor: 'var(--white)',
+      animation: 'fadeIn 0.2s 0.22s backwards'
     }}>
       <div style={{
         position: 'relative',

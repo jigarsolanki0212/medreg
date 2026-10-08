@@ -11,8 +11,7 @@ import {
   Users,
   Compass,
   Phone,
-  Mail,
-  Sparkles
+  Mail
 } from 'lucide-react';
 import StatsCounter from '@/components/StatsCounter';
 import CertificationsRow from '@/components/CertificationsRow';
@@ -43,13 +42,14 @@ export default function HomePage() {
       <section className="hero-section">
         <div className="container">
           <div className="hero-content">
-            <div className="hero-badge">
-              <Sparkles size={14} color="#79B8FF" />
-              <span>15+ Years of Regulatory Excellence &bull; Since 2011</span>
+            <div className="hero-credential-badge">
+              <span className="hero-credential-tag">CDSCO REGISTERED LIAISON</span>
+              <span className="hero-credential-sep" />
+              <span className="hero-credential-text">15+ Years Medical Device &amp; IVD Regulatory Excellence</span>
             </div>
 
             <h1 className="hero-title">
-              Your Partner in Medical Device <span className="hero-title-highlight">Regulatory Success</span>
+              Your Trusted Partner in Medical Device &amp; IVD <span className="hero-title-highlight">Regulatory Success</span>
             </h1>
 
             <p className="hero-subtitle">
@@ -95,7 +95,7 @@ export default function HomePage() {
       {/* 2. Authentic About Section */}
       <section style={{ padding: '90px 0', backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.15fr', gap: '60px', alignItems: 'center' }}>
+          <div className="about-split-grid">
             {/* Left: Authentic Team Photo in Cross Shape */}
             <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
               <div style={{ position: 'relative', maxWidth: '480px', width: '100%' }}>
@@ -117,18 +117,18 @@ export default function HomePage() {
                     color: 'var(--white)',
                     padding: '18px 24px',
                     borderRadius: 'var(--radius-lg)',
-                    boxShadow: 'var(--shadow-xl)',
+                    boxShadow: '0 20px 40px -10px rgba(11, 37, 69, 0.35), inset 0 1px 1px rgba(255, 255, 255, 0.3)',
                     textAlign: 'center',
-                    border: '2px solid rgba(255, 255, 255, 0.15)'
+                    border: '1px solid rgba(246, 192, 66, 0.4)'
                   }}
                 >
-                  <div style={{ fontSize: '32px', fontWeight: 800, color: '#79B8FF', lineHeight: 1 }}>
+                  <div style={{ fontSize: '34px', fontWeight: 800, color: '#F6C042', lineHeight: 1 }}>
                     15+
                   </div>
-                  <div style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  <div style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--white)' }}>
                     Years of Experience
                   </div>
-                  <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.7)', marginTop: '2px' }}>
+                  <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.75)', marginTop: '2px' }}>
                     Since 2011
                   </div>
                 </div>
