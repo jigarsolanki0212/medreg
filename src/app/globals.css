@@ -1290,13 +1290,98 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--white);
 }
 
-/* Responsive Breakpoints */
+/* Hardware Accelerated Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 20px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes medregSpin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes medregSpinReverse {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes medregPulse {
+  0%, 100% { opacity: 0.95; }
+  50% { opacity: 0.45; }
+}
+
+@keyframes shimmerSweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton-bar {
+  background: linear-gradient(90deg, #F1F5F9 25%, #E2E8F0 50%, #F1F5F9 75%);
+  background-size: 200% 100%;
+  animation: shimmerSweep 1.6s ease-in-out infinite;
+}
+
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #FFFFFF;
+  border-radius: 50%;
+  animation: medregSpin 0.7s linear infinite;
+  display: inline-block;
+}
+
+/* Micro-interactions & Smooth Transitions */
+.card, .service-card, .market-card, .client-logo-box, .cert-card, .testimonial-card {
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+
+.card:hover, .service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -8px rgba(15, 39, 71, 0.12);
+  border-color: rgba(27, 70, 127, 0.3);
+}
+
+.btn:active {
+  transform: scale(0.97);
+}
+
+/* Comprehensive Responsive Breakpoints (iPhone SE to Surface Duo, Android, Tablets, Laptops & Ultra-wide) */
+
+/* 1. Laptops & Small Desktops (max-width: 1200px) */
+@media (max-width: 1200px) {
+  .hero-container {
+    gap: 40px;
+  }
+  .services-catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 2. Tablets & Landscape Foldables (max-width: 1024px) */
 @media (max-width: 1024px) {
   .nav-menu {
     display: none;
   }
   .mobile-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
   }
   .stats-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1331,6 +1416,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* 3. Tablets Portrait & Phablets / Foldables Unfolded (max-width: 768px) */
 @media (max-width: 768px) {
   .top-bar {
     display: none;
@@ -1339,7 +1425,8 @@ h1, h2, h3, h4, h5, h6 {
     height: 70px;
   }
   .stats-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
   }
   .cert-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1365,6 +1452,61 @@ h1, h2, h3, h4, h5, h6 {
     padding: 24px;
   }
   .hero-section {
-    padding: 70px 0 80px;
+    padding: 60px 0 70px;
+  }
+  .hero-title {
+    font-size: clamp(2rem, 7vw, 2.75rem);
+  }
+}
+
+/* 4. Foldables Spanned & Large Phones (max-width: 540px - e.g. Surface Duo single screen) */
+@media (max-width: 540px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  .stats-item {
+    padding: 20px 16px;
+  }
+  .cert-grid {
+    grid-template-columns: 1fr;
+  }
+  .client-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .header-cta-group .btn-sm {
+    display: none;
+  }
+}
+
+/* 5. Compact Smartphones (max-width: 380px - iPhone SE, small Galaxy) */
+@media (max-width: 380px) {
+  .container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  .hero-title {
+    font-size: 1.85rem;
+  }
+  .section-title {
+    font-size: 1.6rem;
+  }
+  .client-grid {
+    grid-template-columns: 1fr;
+  }
+  .form-card {
+    padding: 18px 12px;
+  }
+  .form-input, .form-select, .form-textarea {
+    font-size: 14px;
+    padding: 10px 12px;
   }
 }

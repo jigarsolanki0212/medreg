@@ -156,18 +156,22 @@ export default function Header() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div
+          id="mobile-drawer-backdrop"
           style={{
             position: 'fixed',
             inset: 0,
-            backgroundColor: 'rgba(11, 30, 56, 0.7)',
-            backdropFilter: 'blur(4px)',
+            backgroundColor: 'rgba(11, 30, 56, 0.75)',
+            backdropFilter: 'blur(6px)',
+            WebkitBackdropFilter: 'blur(6px)',
             zIndex: 9999,
             display: 'flex',
-            justifyContent: 'flex-end'
+            justifyContent: 'flex-end',
+            animation: 'fadeIn 0.2s ease'
           }}
           onClick={() => setMobileMenuOpen(false)}
         >
           <div
+            id="mobile-drawer"
             style={{
               width: '85%',
               maxWidth: '360px',
@@ -177,7 +181,9 @@ export default function Header() {
               display: 'flex',
               flexDirection: 'column',
               gap: '20px',
-              overflowY: 'auto'
+              overflowY: 'auto',
+              boxShadow: '-10px 0 25px rgba(0, 0, 0, 0.15)',
+              animation: 'slideInRight 0.28s cubic-bezier(0.16, 1, 0.3, 1)'
             }}
             onClick={(e) => e.stopPropagation()}
           >
