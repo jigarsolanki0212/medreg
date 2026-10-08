@@ -1,22 +1,30 @@
 import React from 'react';
-import Link from 'next/link';
 import type { Metadata } from 'next';
 import { FileCode2, Bot, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { COMPANY_INFO, ALL_SERVICES } from '@/data/medregData';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import { pageMetadata, webPageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'llms.txt | Machine-Readable Regulatory Knowledge Base',
-  description: 'Structured, machine-readable regulatory intelligence regarding MedReg Consultancy LLP, CDSCO, CE MDR, US FDA 510(k), and ISO 13485 consulting services.',
-  alternates: {
-    canonical: 'https://medreg.in/llms-txt/'
-  }
-};
+const PAGE_PATH = '/llms-txt/';
+const PAGE_DESCRIPTION =
+  'Machine-readable facts about MedReg Consultancy LLP and its CDSCO, EU MDR/IVDR, US FDA, MDSAP and ISO 13485 services for AI assistants and search.';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'llms.txt – Machine-Readable Company Information',
+  description: PAGE_DESCRIPTION,
+  path: PAGE_PATH,
+});
 
 export default function LlmsTxtPage() {
   return (
-    <div style={{ padding: '80px 0', backgroundColor: 'var(--slate-50)' }}>
+    <div style={{ padding: '60px 0 80px', backgroundColor: 'var(--slate-50)' }}>
+      <JsonLd data={webPageJsonLd({ path: PAGE_PATH, name: 'MedReg llms.txt', description: PAGE_DESCRIPTION, type: 'WebPage' })} />
       <div className="container container-narrow">
-        <div className="card" style={{ padding: '48px' }}>
+        <div className="breadcrumbs-light">
+          <Breadcrumbs items={[{ name: 'llms.txt', path: PAGE_PATH }]} />
+        </div>
+        <div className="card no-tilt llms-card">
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '18px' }}>
             <div style={{ width: '48px', height: '48px', borderRadius: 'var(--radius-md)', backgroundColor: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)' }}>
               <Bot size={26} />
@@ -31,10 +39,10 @@ export default function LlmsTxtPage() {
             <div style={{ fontSize: '14.5px', color: 'var(--slate-700)' }}>
               Raw markdown endpoint accessible at: <code style={{ backgroundColor: 'var(--white)', padding: '2px 8px', borderRadius: '4px', fontWeight: 600 }}>/llms.txt</code>
             </div>
-            <Link href="/llms.txt" className="btn btn-primary btn-sm">
+            <a href="/llms.txt" className="btn btn-primary btn-sm">
               <span>View Raw llms.txt</span>
               <ArrowRight size={14} />
-            </Link>
+            </a>
           </div>
 
           <div style={{ fontSize: '15px', color: 'var(--slate-700)', lineHeight: 1.7, display: 'flex', flexDirection: 'column', gap: '20px' }}>

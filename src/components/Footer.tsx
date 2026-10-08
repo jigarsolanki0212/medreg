@@ -13,6 +13,7 @@ export default function Footer() {
           <div>
             <Link href="/" aria-label="MedReg Homepage">
               <Image
+                sizes="230px"
                 src="/assets/logo-footer.png"
                 alt="MedReg - Let's Decode The Regulations"
                 width={230}
@@ -24,16 +25,16 @@ export default function Footer() {
               MedReg is your trusted global partner in navigating medical device and IVD regulations. We provide end-to-end consultancy for certifications, licenses, and technical documentation—simplifying compliance, accelerating approvals, and empowering your healthcare innovations worldwide.
             </p>
             <div className="footer-social-links">
-              <a href={COMPANY_INFO.socials.linkedin} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="LinkedIn">
+              <a href={COMPANY_INFO.socials.linkedin} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="MedReg on LinkedIn">
                 <Linkedin size={18} />
               </a>
-              <a href={COMPANY_INFO.socials.twitter} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="Twitter">
+              <a href={COMPANY_INFO.socials.twitter} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="MedReg on X (Twitter)">
                 <Twitter size={18} />
               </a>
-              <a href={COMPANY_INFO.socials.facebook} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="Facebook">
+              <a href={COMPANY_INFO.socials.facebook} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="MedReg on Facebook">
                 <Facebook size={18} />
               </a>
-              <a href={COMPANY_INFO.socials.instagram} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="Instagram">
+              <a href={COMPANY_INFO.socials.instagram} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="MedReg on Instagram">
                 <Instagram size={18} />
               </a>
             </div>
@@ -44,22 +45,22 @@ export default function Footer() {
             <h3 className="footer-col-title">Regulatory Services</h3>
             <ul className="footer-links-list">
               <li className="footer-link-item">
-                <Link href="/india">India (CDSCO MDR 2017)</Link>
+                <Link href="/india/">India (CDSCO MDR 2017)</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/europe">Europe (CE MDR & IVDR)</Link>
+                <Link href="/europe/">Europe (CE MDR & IVDR)</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/usa">USA (FDA 510k & QMSR)</Link>
+                <Link href="/usa/">USA (FDA 510k & QMSR)</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/other-services">Global Markets & MDSAP</Link>
+                <Link href="/other-services/">Global Markets & MDSAP</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/other-services#iso-13485">ISO 13485:2016 QMS</Link>
+                <Link href="/other-services/#qms-iso13485">ISO 13485:2016 QMS</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/india#clinical-trials">Clinical Evaluations & BEP</Link>
+                <Link href="/india/#clinical-trials">Clinical Evaluations & BEP</Link>
               </li>
             </ul>
           </div>
@@ -69,22 +70,22 @@ export default function Footer() {
             <h3 className="footer-col-title">Quick Links</h3>
             <ul className="footer-links-list">
               <li className="footer-link-item">
-                <Link href="/about-us">About MedReg</Link>
+                <Link href="/about-us/">About MedReg</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/team">Meet Our Experts</Link>
+                <Link href="/team/">Meet Our Experts</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/blogs">Regulatory Knowledge Hub</Link>
+                <Link href="/blogs/">Regulatory Knowledge Hub</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/landing-page">WHX Dubai 2026</Link>
+                <Link href="/landing-page/">WHX Dubai 2026</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/contact-us">Book Consultation</Link>
+                <Link href="/contact-us/">Book Consultation</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/llms-txt">AI & Search Documentation</Link>
+                <Link href="/llms-txt/">AI & Search Documentation</Link>
               </li>
             </ul>
           </div>
@@ -95,9 +96,9 @@ export default function Footer() {
             <div className="footer-contact-items">
               <div className="footer-contact-item">
                 <MapPin size={20} className="footer-contact-icon" />
-                <span>
+                <address style={{ fontStyle: 'normal' }}>
                   {COMPANY_INFO.address.full}
-                </span>
+                </address>
               </div>
               <div className="footer-contact-item">
                 <Phone size={18} className="footer-contact-icon" />
@@ -131,9 +132,9 @@ export default function Footer() {
             Copyright © {new Date().getFullYear()} MEDREG CONSULTANCY LLP. All rights reserved.
           </div>
           <div className="footer-legal-links">
-            <Link href="/about-us">Privacy Policy</Link>
-            <Link href="/contact-us">Terms of Engagement</Link>
-            <Link href="/llms.txt" style={{ color: '#79B8FF' }}>llms.txt</Link>
+            <Link href="/privacy-policy/">Privacy Policy</Link>
+            <Link href="/contact-us/">Terms of Engagement</Link>
+            <a href="/llms.txt" style={{ color: '#79B8FF' }}>llms.txt</a>
           </div>
         </div>
       </div>

@@ -14,14 +14,19 @@ import {
 } from 'lucide-react';
 import StatsCounter from '@/components/StatsCounter';
 import { COMPANY_INFO } from '@/data/medregData';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import { pageMetadata, webPageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Meet Our Team | MedReg Consultancy LLP Regulatory Experts',
-  description: 'Meet the multidisciplinary regulatory affairs team, biomedical engineers, and certified ISO 13485 lead auditors behind MedReg Consultancy LLP in Ahmedabad, India.',
-  alternates: {
-    canonical: 'https://medreg.in/team/'
-  }
-};
+const PAGE_PATH = '/team/';
+const PAGE_DESCRIPTION =
+  'Meet MedReg’s regulatory affairs directors, biomedical dossier engineers, ISO 13485 and MDSAP lead auditors, and clinical evaluators based in Ahmedabad, India.';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Regulatory Affairs Team & ISO 13485 Lead Auditors',
+  description: PAGE_DESCRIPTION,
+  path: PAGE_PATH,
+});
 
 export default function TeamPage() {
   const teamSpecialties = [
@@ -53,10 +58,12 @@ export default function TeamPage() {
 
   return (
     <>
+      <JsonLd data={webPageJsonLd({ path: PAGE_PATH, name: 'MedReg Regulatory Team', description: PAGE_DESCRIPTION, type: 'WebPage' })} />
       {/* 1. Page Header Banner */}
       <section className="page-banner">
         <div className="container">
           <div className="page-banner-content">
+            <Breadcrumbs items={[{ name: 'Our Team', path: PAGE_PATH }]} />
             <div className="hero-badge">
               <Sparkles size={14} color="#79B8FF" />
               <span>Grow your business with us!</span>
@@ -83,9 +90,9 @@ export default function TeamPage() {
       </section>
 
       {/* 2. Team Overview & Photo */}
-      <section style={{ padding: '90px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
+          <div className="split-grid">
             <div>
               <span className="section-label">Multidisciplinary Expertise</span>
               <h2 className="section-title">
@@ -97,7 +104,7 @@ export default function TeamPage() {
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.7, marginBottom: '28px' }}>
                 Unlike generic consultancies, every member of our team is specialized in medical devices and IVDs. From surgical disposables and orthopaedic implants to high-risk Class C and D devices, our specialists work closely with your engineers to translate complex regulatory mandates into clear action items.
               </p>
-              <Link href="/contact-us" className="btn btn-primary">
+              <Link href="/contact-us/" className="btn btn-primary">
                 <span>Consult With Our Experts</span>
                 <ArrowRight size={16} />
               </Link>
@@ -110,6 +117,7 @@ export default function TeamPage() {
                   alt="MedReg Full Consulting Team"
                   width={520}
                   height={520}
+                  sizes="(max-width: 992px) 90vw, 480px"
                   style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                 />
               </div>
@@ -119,9 +127,9 @@ export default function TeamPage() {
       </section>
 
       {/* 3. Team Divisions Grid */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--slate-50)', borderTop: '1px solid var(--border)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--slate-50)', borderTop: '1px solid var(--border)' }}>
         <div className="container">
-          <div className="center-content" style={{ marginBottom: '48px' }}>
+          <div className="center-content section-head" style={{ marginBottom: '48px' }}>
             <span className="section-label">Consulting Practice Areas</span>
             <h2 className="section-title text-center">Our Specialized Advisory Divisions</h2>
             <p className="section-subtitle text-center">
@@ -129,7 +137,7 @@ export default function TeamPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '30px' }}>
+          <div className="grid-2">
             {teamSpecialties.map((spec, idx) => {
               const IconComp = spec.icon;
               return (

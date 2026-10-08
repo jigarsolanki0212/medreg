@@ -20,22 +20,29 @@ import {
   OFFICE_GALLERY,
   WHY_CHOOSE_MEDREG
 } from '@/data/medregData';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import { pageMetadata, webPageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'About MedReg Consultancy LLP | Medical Device Regulatory Experts',
-  description: 'Founded in 2011, MedReg Consultancy LLP is a premier medical device regulatory consulting firm based in Ahmedabad, India, empowering global MedTech manufacturers to secure CDSCO, CE MDR, and US FDA approvals.',
-  alternates: {
-    canonical: 'https://medreg.in/about-us/'
-  }
-};
+const PAGE_PATH = '/about-us/';
+const PAGE_DESCRIPTION =
+  'Founded in 2011 in Ahmedabad, MedReg helps device and IVD makers win CDSCO, CE (MDR/IVDR), US FDA, MDSAP and ISO 13485 approvals. 2,000+ projects.';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'About Us – Device Regulatory Experts Since 2011',
+  description: PAGE_DESCRIPTION,
+  path: PAGE_PATH,
+});
 
 export default function AboutUsPage() {
   return (
     <>
+      <JsonLd data={webPageJsonLd({ path: PAGE_PATH, name: 'About MedReg Consultancy LLP', description: PAGE_DESCRIPTION, type: 'AboutPage' })} />
       {/* 1. Page Header Banner */}
       <section className="page-banner">
         <div className="container">
           <div className="page-banner-content">
+            <Breadcrumbs items={[{ name: 'About Us', path: PAGE_PATH }]} />
             <div className="hero-badge">
               <Sparkles size={14} color="#79B8FF" />
               <span>Grow your business with us!</span>
@@ -62,9 +69,9 @@ export default function AboutUsPage() {
       </section>
 
       {/* 2. Story Section with Team Cross Shape */}
-      <section style={{ padding: '90px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.15fr 0.85fr', gap: '60px', alignItems: 'center' }}>
+          <div className="split-grid split-grid--wide-left">
             <div>
               <span className="section-label">Our Journey & Foundation</span>
               <h2 className="section-title">
@@ -81,11 +88,11 @@ export default function AboutUsPage() {
               </p>
 
               <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                <Link href="/contact-us" className="btn btn-primary">
+                <Link href="/contact-us/" className="btn btn-primary">
                   <span>Contact Our Consultants</span>
                   <ArrowRight size={16} />
                 </Link>
-                <Link href="/team" className="btn btn-secondary">
+                <Link href="/team/" className="btn btn-secondary">
                   <span>Meet Our Experts</span>
                 </Link>
               </div>
@@ -98,6 +105,7 @@ export default function AboutUsPage() {
                   alt="MedReg Regulatory Consulting Team"
                   width={500}
                   height={500}
+                  sizes="(max-width: 992px) 90vw, 440px"
                   style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                 />
                 <div
@@ -128,9 +136,9 @@ export default function AboutUsPage() {
       </section>
 
       {/* 3. Vision, Mission & Values Grid */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--slate-50)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--slate-50)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
         <div className="container">
-          <div className="center-content" style={{ marginBottom: '48px' }}>
+          <div className="center-content section-head" style={{ marginBottom: '48px' }}>
             <span className="section-label">Guiding Principles</span>
             <h2 className="section-title text-center">Our Vision, Mission & Values</h2>
             <p className="section-subtitle text-center">
@@ -138,7 +146,7 @@ export default function AboutUsPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '32px' }}>
+          <div className="grid-3">
             {/* Vision */}
             <div className="card" style={{ display: 'flex', flexDirection: 'column' }}>
               <div style={{ width: '52px', height: '52px', borderRadius: '50%', backgroundColor: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', marginBottom: '20px' }}>
@@ -188,9 +196,9 @@ export default function AboutUsPage() {
       <CertificationsRow />
 
       {/* 6. Authentic Corporate Gallery (Titanium Business Park, Ahmedabad) */}
-      <section style={{ padding: '90px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div className="center-content" style={{ marginBottom: '44px' }}>
+          <div className="center-content section-head" style={{ marginBottom: '44px' }}>
             <span className="section-label">State-of-the-Art Infrastructure</span>
             <h2 className="section-title text-center">Gallery — Our Corporate Headquarters</h2>
             <p className="section-subtitle text-center">
@@ -198,21 +206,22 @@ export default function AboutUsPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '24px' }}>
+          <div className="grid-3">
             {OFFICE_GALLERY.map((item, idx) => (
-              <div key={idx} className="card" style={{ padding: '0', overflow: 'hidden' }}>
+              <div key={idx} className="card gallery-card" style={{ padding: '0', overflow: 'hidden' }}>
                 <div style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
                   <Image
                     src={item.image}
                     alt={item.title}
                     fill
-                    style={{ objectFit: 'cover', transition: 'transform 0.4s ease' }}
+                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 380px"
+                    style={{ objectFit: 'cover' }}
                   />
                 </div>
                 <div style={{ padding: '20px' }}>
-                  <h4 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
+                  <h3 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
                     {item.title}
-                  </h4>
+                  </h3>
                   <p style={{ fontSize: '13.5px', color: 'var(--slate-500)' }}>
                     {item.caption}
                   </p>

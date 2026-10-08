@@ -21,28 +21,48 @@ import {
   USA_FAQS,
   COMPANY_INFO
 } from '@/data/medregData';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import { pageMetadata, serviceCatalogJsonLd, faqJsonLd, webPageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'USA FDA 510(k), QMSR & Regulatory Consulting | MedReg',
-  description: 'Expert US FDA regulatory consulting for medical devices: 510(k) premarket notifications, FDA Establishment Registration & Listing, QMSR 21 CFR Part 820, GUDID, and US Agent representation.',
-  alternates: {
-    canonical: 'https://medreg.in/usa/'
-  }
-};
+const PAGE_PATH = '/usa/';
+const PAGE_DESCRIPTION =
+  'US FDA consulting for medical devices: 510(k) via eSTAR, Q-Subs, registration & listing, GUDID, QMSR (21 CFR 820), US Agent and 483 responses.';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'US FDA 510(k) Consultant & FDA Registration Services',
+  description: PAGE_DESCRIPTION,
+  path: PAGE_PATH,
+  keywords: ['FDA 510(k) consultant', 'FDA establishment registration', 'US Agent for FDA', 'QMSR 21 CFR 820', 'GUDID submission', 'FDA 483 response'],
+});
 
 export default function UsaServicesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: PAGE_PATH, name: 'US FDA Medical Device Regulatory Services', description: PAGE_DESCRIPTION }),
+          serviceCatalogJsonLd({
+            name: 'US FDA Medical Device Regulatory Services',
+            description: PAGE_DESCRIPTION,
+            path: PAGE_PATH,
+            areaServed: 'United States',
+            services: USA_SERVICES,
+          }),
+          faqJsonLd(USA_FAQS, PAGE_PATH),
+        ]}
+      />
       {/* 1. Page Header Banner */}
       <section className="page-banner">
         <div className="container">
           <div className="page-banner-content">
+            <Breadcrumbs items={[{ name: 'USA (US FDA)', path: PAGE_PATH }]} />
             <div className="hero-badge">
               <Sparkles size={14} color="#79B8FF" />
               <span>Grow your business with us!</span>
             </div>
             <h1 className="page-banner-title">
-              <Image src="/assets/usa.png" alt="USA" width={48} height={48} className="page-banner-flag" />
+              <Image src="/assets/usa.png" alt="" width={48} height={48} className="page-banner-flag" />
               <span>USA Medical Device Regulatory Services</span>
             </h1>
             <p className="page-banner-subtitle">
@@ -64,9 +84,9 @@ export default function UsaServicesPage() {
       </section>
 
       {/* 2. Intro Section */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '50px', alignItems: 'center' }}>
+          <div className="split-grid">
             <div>
               <span className="section-label">United States Market Entry</span>
               <h2 style={{ fontSize: '32px', color: 'var(--slate-900)', lineHeight: 1.3 }}>
@@ -80,7 +100,7 @@ export default function UsaServicesPage() {
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '20px' }}>
                 MedReg Consultancy helps medical device manufacturers navigate the US regulatory landscape with ease. From ISO 13485:2016 and CE certification to USFDA listings, 510(k), PMA, and UL approvals, we deliver tailored end-to-end solutions with deep regulatory insight.
               </p>
-              <Link href="/contact-us" className="btn btn-primary btn-sm">
+              <Link href="/contact-us/" className="btn btn-primary btn-sm">
                 <span>Request US FDA 510(k) Assessment</span>
                 <ArrowRight size={15} />
               </Link>

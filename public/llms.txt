@@ -1,74 +1,31 @@
-# MedReg Consultancy LLP — Machine-Readable Context (llms.txt)
+# MedReg Consultancy LLP
 
-> MedReg is a specialized global medical device and IVD regulatory consulting platform headquartered in Ahmedabad, India. Founded in 2011, MedReg has successfully completed over 2,000 regulatory projects across 20+ countries for more than 950 clients.
+> MedReg Consultancy LLP is a medical device and IVD regulatory consulting firm headquartered in Ahmedabad, Gujarat, India. Since 2011 it has completed 2,000+ regulatory projects for 950+ clients across 20+ countries, covering CDSCO licensing in India, CE marking under EU MDR 2017/745 and IVDR 2017/746, US FDA 510(k) and QMSR, MDSAP, ISO 13485:2016 and global country registrations.
 
-## Core Identity
-- **Legal Entity:** Medreg Consultancy LLP
-- **Tagline:** Let's Decode The Regulations
-- **Founded:** 2011 (15+ Years of Experience)
-- **Corporate Office:** 11th Floor Block C – 1105, 1106 Titanium Business Park, Behind Divya Bhaskar Press, Near Makarba Railway Crossing, Makarba, Ahmedabad, Gujarat, 380051, India.
-- **Direct Telephones:** +91 88664 61989, +91 63523 88194
-- **Official Inquiries:** info@medreg.in, bdm@medreg.in
-- **Website:** https://medreg.in/
+Key facts:
+- Legal name: Medreg Consultancy LLP (brand: MedReg). Tagline: "Let's Decode The Regulations".
+- Founded: 2011. Headquarters: 11th Floor, Block C – 1105/1106, Titanium Business Park, Behind Divya Bhaskar Press, Near Makarba Railway Crossing, Makarba, Ahmedabad, Gujarat 380051, India.
+- Phone / WhatsApp: +91 88664 61989, +91 63523 88194. Email: info@medreg.in (general), bdm@medreg.in (business development).
+- Hours: Monday–Saturday, 9:30 AM – 6:30 PM IST.
+- Clients: medical device and IVD manufacturers, importers and distributors — from startups to multinationals — for Class A/B/C/D (India), Class I/IIa/IIb/III (EU) and Class I/II (US) devices.
+- Device expertise: surgical disposables, catheters, orthopaedic and spinal implants, sutures and meshes, IVD reagents, laparoscopic and endoscopic instruments, active and electromechanical devices.
 
-## Medical Device Specializations
-We support manufacturers across all risk categories (Class A, Class B, Class C, Class D) spanning:
-- Surgical Disposables & Catheters
-- Orthopaedic & Spinal Implants
-- Surgical Sutures & Meshes
-- In Vitro Diagnostic (IVD) Reagents & Consumables
-- Laparoscopic & Endoscopic Equipment
-- Active & Electromechanical Medical Devices
+## Services by market
 
-## Core Jurisdictions & Services
+- [India — CDSCO regulatory services](https://medreg.in/india/): Medical Device Rules 2017; manufacturing licences (MD-3/MD-5 for Class A/B via State Licensing Authority, MD-7/MD-9 for Class C/D via Central Licensing Authority); import licence (MD-14 application, MD-15 licence); clinical investigations; Free Sale, Market Standing and Non-Conviction certificates; Rule 44 labelling review; Indian Authorized Agent; wholesale licence (MD-41/MD-42); Device and Plant Master Files; Fifth Schedule QMS.
+- [Europe — CE marking under EU MDR / IVDR](https://medreg.in/europe/): Annex II/III technical documentation; MDD-to-MDR gap analysis; clinical evaluation (CEP/CER); GSPR checklist (Annex I); PMS, PSUR and PMCF; ISO 14971 risk management; PRRC support (Article 15); classification under Annex VIII; European Authorized Representative via partners.
+- [USA — US FDA](https://medreg.in/usa/): 510(k) (Traditional, Special, Abbreviated) via eSTAR; Q-Submission / Pre-Sub; establishment registration and device listing; GUDID/UDI; QMSR (21 CFR Part 820) implementation; Small Business Determination (reduced user fees); US Agent; FDA Form 483 responses; complaint files and MDR (21 CFR 803).
+- [Global markets — MDSAP, ISO 13485 and registrations](https://medreg.in/other-services/): MDSAP (USA, Canada, Brazil, Japan, Australia); ISO 13485:2016 QMS implementation and audits; IMDRF/STED technical files; registrations with ANVISA, TGA, Health Canada, SFDA, SAHPRA and UKCA; process validation (IQ/OQ/PQ); sterilisation validation; biological evaluation (BEP/BER, ISO 10993).
 
-### 1. India (CDSCO & State Licensing Authorities)
-- Medical Device Rules (MDR) 2017 Compliance
-- Manufacturing Licenses (Form MD-5 for Class A/B; Form MD-9 for Class C/D)
-- Import Licenses (Form MD-14 application and Form MD-15 clearance)
-- Indian Authorized Agent (IAR) representation for foreign manufacturers
-- Device Master File (DMF) & Plant Master File (PMF) compilation
-- Clinical Trials protocol design, SEC presentations, and Ethics Committee clearances
-- Free Sale Certificates (FSC), Market Standing Certificates (MSC), Non-Conviction Certificates (NCC)
-- Labeling and IFU reviews per Rule 44
-- Fifth Schedule Quality Management System (QMS) implementation
-- Annual Maintenance Contracts (AMC) for regulatory documentation
+## Company
 
-### 2. European Union (CE Marking)
-- Medical Device Regulation (EU) 2017/745 (MDR)
-- In Vitro Diagnostic Regulation (EU) 2017/746 (IVDR)
-- Technical Master File Preparation (Annex II & Annex III)
-- MDD-to-MDR Gap Analyses
-- Clinical Evaluation Plans (CEP) & Reports (CER) per MEDDEV 2.7/1 rev 4
-- General Safety & Performance Requirements (GSPR) Checklists (Annex I)
-- Post-Market Surveillance (PMS), PSUR, and PMCF plans
-- Risk Management as per EN ISO 14971:2019
-- Person Responsible for Regulatory Compliance (PRRC) per Article 15
-- European Authorized Representative (EC REP) representation through active European channel partners
+- [About MedReg](https://medreg.in/about-us/): history since 2011, vision, mission, values and office.
+- [Team](https://medreg.in/team/): regulatory affairs directors, biomedical dossier engineers, ISO 13485 / MDSAP lead auditors, clinical evaluators.
+- [Contact and free consultation](https://medreg.in/contact-us/): enquiry form, phone, WhatsApp, email and map.
+- [Regulatory insights](https://medreg.in/blogs/): CDSCO, EU MDR, FDA 510(k) and MDSAP guidance.
 
-### 3. United States (US FDA)
-- Premarket Notifications — 510(k) (Traditional, Special, Abbreviated) via eSTAR
-- Quality Management System Regulation (QMSR) aligned with 21 CFR Part 820
-- FDA Establishment Registration & Device Listing (FURLS)
-- Global Unique Device Identification Database (GUDID) submissions
-- Q-Submission (Pre-Submission briefing packages & meetings)
-- Small Business Documentation (SBD) fee relief (-75% user fees)
-- Official US Agent representation for non-US establishments
-- FDA Form 483 inspection responses & Warning Letter remediation
-- Medical Device Reporting (MDR) & 21 CFR 803 complaint files
-- Quality System Inspection Technique (QSIT) mock inspections
+## Optional
 
-### 4. Global Markets & Quality Systems
-- Medical Device Single Audit Program (MDSAP) covering USA, Canada, Brazil, Japan, Australia
-- ISO 13485:2016 Quality Management System design, documentation, and audit readiness
-- IMDRF & GHTF Standardized Technical Documentation (STED)
-- Country registrations: ANVISA (Brazil), TGA (Australia), Health Canada, SFDA (Saudi Arabia), SAHPRA (South Africa)
-- Process Validation (IQ, OQ, PQ) per GHTF guidelines
-- Biological Evaluation Plans & Reports (BEP/BER) per ISO 10993 with scientific test waiver justifications
-
-## Proven Impact
-- **2k+** Completed Projects
-- **20+** Countries Served
-- **950+** Clients Served
-- **250+** Service Offerings
-- **15+** Years of Industry Leadership
+- [Full service catalogue and FAQs (plain text)](https://medreg.in/llms-full.txt): every service with descriptions plus all published FAQs.
+- [WHX Dubai 2026 meetings](https://medreg.in/landing-page/)
+- [Privacy policy](https://medreg.in/privacy-policy/)

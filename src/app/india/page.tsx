@@ -22,28 +22,48 @@ import {
   INDIA_FAQS,
   COMPANY_INFO
 } from '@/data/medregData';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import { pageMetadata, serviceCatalogJsonLd, faqJsonLd, webPageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'India CDSCO Medical Device Regulatory Services & Licensing',
-  description: 'Complete CDSCO regulatory consulting for medical device manufacturing licenses (MD-5, MD-9), import licenses (MD-15), clinical trials, QMS, and Indian Authorized Agent services.',
-  alternates: {
-    canonical: 'https://medreg.in/india/'
-  }
-};
+const PAGE_PATH = '/india/';
+const PAGE_DESCRIPTION =
+  'CDSCO consultants for medical device manufacturing licences (MD-5, MD-9), import licences (MD-15), Indian Authorized Agent and MDR 2017 compliance.';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'CDSCO Medical Device Registration Consultant India',
+  description: PAGE_DESCRIPTION,
+  path: PAGE_PATH,
+  keywords: ['CDSCO medical device registration', 'medical device manufacturing license India', 'MD-15 import license', 'Indian Authorized Agent', 'Medical Device Rules 2017 consultant', 'SUGAM portal'],
+});
 
 export default function IndiaServicesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: PAGE_PATH, name: 'CDSCO Medical Device Regulatory Services in India', description: PAGE_DESCRIPTION }),
+          serviceCatalogJsonLd({
+            name: 'CDSCO Medical Device Regulatory Services in India',
+            description: PAGE_DESCRIPTION,
+            path: PAGE_PATH,
+            areaServed: 'India',
+            services: INDIA_SERVICES,
+          }),
+          faqJsonLd(INDIA_FAQS, PAGE_PATH),
+        ]}
+      />
       {/* 1. Page Header Banner */}
       <section className="page-banner">
         <div className="container">
           <div className="page-banner-content">
+            <Breadcrumbs items={[{ name: 'India (CDSCO)', path: PAGE_PATH }]} />
             <div className="hero-badge">
               <Sparkles size={14} color="#79B8FF" />
               <span>Grow your business with us!</span>
             </div>
             <h1 className="page-banner-title">
-              <Image src="/assets/india.png" alt="India" width={48} height={48} className="page-banner-flag" />
+              <Image src="/assets/india.png" alt="" width={48} height={48} className="page-banner-flag" />
               <span>India Medical Device Regulatory Services</span>
             </h1>
             <p className="page-banner-subtitle">
@@ -65,9 +85,9 @@ export default function IndiaServicesPage() {
       </section>
 
       {/* 2. Intro Section */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '50px', alignItems: 'center' }}>
+          <div className="split-grid">
             <div>
               <span className="section-label">National Compliance</span>
               <h2 style={{ fontSize: '32px', color: 'var(--slate-900)', lineHeight: 1.3 }}>
@@ -81,7 +101,7 @@ export default function IndiaServicesPage() {
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '20px' }}>
                 MedReg Consultancy helps medical device and IVD manufacturers navigate India’s complex regulatory landscape with ease. Under the Central Drugs Standard Control Organisation (CDSCO) and State Licensing Authorities, we deliver complete end-to-end solutions: from site master file compilation and technical dossier preparation to clinical evaluations and post-market surveillance.
               </p>
-              <Link href="/contact-us" className="btn btn-primary btn-sm">
+              <Link href="/contact-us/" className="btn btn-primary btn-sm">
                 <span>Request Indian Regulatory Consultation</span>
                 <ArrowRight size={15} />
               </Link>

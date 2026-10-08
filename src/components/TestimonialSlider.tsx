@@ -1,19 +1,39 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { TESTIMONIALS } from '@/data/medregData';
+
+const AUTOPLAY_MS = 7000;
 
 export default function TestimonialSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
-
+  const [paused, setPaused] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
   const current = TESTIMONIALS[activeIndex];
+  const go = (dir: number) => setActiveIndex((i) => (i + dir + TESTIMONIALS.length) % TESTIMONIALS.length);
+
+  // Gentle autoplay: only while on screen, not hovered/focused, and not for reduced-motion users.
+  useEffect(() => {
+    if (paused || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const el = sectionRef.current;
+    let visible = false;
+    const io = new IntersectionObserver(([e]) => (visible = e.isIntersecting), { threshold: 0.3 });
+    if (el) io.observe(el);
+    const id = window.setInterval(() => {
+      if (visible && document.visibilityState === 'visible') go(1);
+    }, AUTOPLAY_MS);
+    return () => {
+      window.clearInterval(id);
+      io.disconnect();
+    };
+  }, [paused]);
 
   return (
-    <section className="testimonials-section">
+    <section className="testimonials-section section-pad" ref={sectionRef}>
       <div className="container">
         <div className="testimonial-split">
-          {/* Left Column: Testimonial Quote */}
           <div>
             <span className="section-label">Client Endorsements</span>
             <h2 className="section-title">Real Feedback from Real Clients</h2>
@@ -21,56 +41,63 @@ export default function TestimonialSlider() {
               Hear directly from MedTech manufacturers who trust MedReg to steer their multi-jurisdiction regulatory approvals.
             </p>
 
-            <div className="testi-card">
-              <Image
-                src="/assets/quote.png"
-                alt="Quote"
-                width={40}
-                height={32}
-                className="quote-icon"
-              />
-              <p className="quote-text">
-                &ldquo;{current.quote}&rdquo;
-              </p>
-              <div className="author-info">
-                <div className="author-avatar">
-                  {current.author.charAt(0)}
-                </div>
-                <div>
-                  <div className="author-name">{current.author}</div>
-                  <div className="author-role">{current.role} &bull; {current.company}</div>
-                </div>
-              </div>
+            <div
+              className="testi-card"
+              onMouseEnter={() => setPaused(true)}
+              onMouseLeave={() => setPaused(false)}
+              onFocus={() => setPaused(true)}
+              onBlur={() => setPaused(false)}
+              aria-roledescription="carousel"
+              aria-label="Client testimonials"
+            >
+              <Image src="/assets/quote.png" alt="" width={40} height={32} className="quote-icon" />
+              <figure key={activeIndex} className="testi-slide" aria-live="polite">
+                <blockquote className="quote-text">&ldquo;{current.quote}&rdquo;</blockquote>
+                <figcaption className="author-info">
+                  <div className="author-avatar" aria-hidden="true">
+                    {current.author.charAt(0)}
+                  </div>
+                  <div>
+                    <div className="author-name">{current.author}</div>
+                    <div className="author-role">
+                      {current.role} &bull; {current.company}
+                    </div>
+                  </div>
+                </figcaption>
+              </figure>
             </div>
 
-            {/* Pagination Dots */}
-            <div style={{ display: 'flex', gap: '10px', marginTop: '24px' }}>
-              {TESTIMONIALS.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveIndex(idx)}
-                  aria-label={`View testimonial ${idx + 1}`}
-                  style={{
-                    width: activeIndex === idx ? '32px' : '10px',
-                    height: '10px',
-                    borderRadius: '5px',
-                    backgroundColor: activeIndex === idx ? 'var(--primary)' : 'var(--slate-400)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}
-                />
-              ))}
+            <div className="testi-controls">
+              <div style={{ display: 'flex', gap: '4px' }}>
+                {TESTIMONIALS.map((_, idx) => (
+                  <button
+                    type="button"
+                    key={idx}
+                    onClick={() => setActiveIndex(idx)}
+                    aria-label={`View testimonial ${idx + 1}`}
+                    aria-current={activeIndex === idx}
+                    className={`testi-dot ${activeIndex === idx ? 'active' : ''}`}
+                  />
+                ))}
+              </div>
+              <div style={{ display: 'flex', gap: '8px' }}>
+                <button type="button" className="testi-arrow" onClick={() => go(-1)} aria-label="Previous testimonial">
+                  <ChevronLeft size={18} />
+                </button>
+                <button type="button" className="testi-arrow" onClick={() => go(1)} aria-label="Next testimonial">
+                  <ChevronRight size={18} />
+                </button>
+              </div>
             </div>
           </div>
 
-          {/* Right Column: Visual Photo Card */}
           <div className="testi-right-photo">
             <Image
               src="/assets/real-clients.png"
-              alt="MedReg Regulatory Consultation with Global Clients"
+              alt="MedReg regulatory consultation with global clients"
               width={540}
               height={580}
+              sizes="(max-width: 1024px) 90vw, 480px"
               style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
             />
           </div>

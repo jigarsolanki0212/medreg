@@ -2,8 +2,8 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { TrendingUp } from 'lucide-react';
-import Card3D from '@/components/Card3D';
 
 interface AnimatedCounterProps {
   target: number;
@@ -14,29 +14,33 @@ interface AnimatedCounterProps {
 }
 
 function AnimatedCounter({ target, suffix = '+', isVisible, duration = 2000, color }: AnimatedCounterProps) {
-  const [count, setCount] = useState(0);
+  // Server HTML carries the real figure so crawlers and no-JS visitors never see "0+".
+  const [count, setCount] = useState(target);
+  const armed = useRef(false);
+
+  // After hydration, rewind to 0 (while the card is still hidden by scroll-reveal) so it can count up.
+  useEffect(() => {
+    const root = document.documentElement;
+    if (root.classList.contains('reveal-ready') && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      armed.current = true;
+      setCount(0);
+    }
+  }, []);
 
   useEffect(() => {
-    if (!isVisible) return;
-    
+    if (!isVisible || !armed.current) return;
+
     let startTimestamp: number | null = null;
     let frameId: number;
 
     const step = (timestamp: number) => {
       if (!startTimestamp) startTimestamp = timestamp;
-      const elapsed = timestamp - startTimestamp;
-      const progress = Math.min(elapsed / duration, 1);
-      
-      // Smooth easeOutExpo for ultra crisp settling
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      // easeOutExpo for a crisp settle
       const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      const current = Math.floor(ease * target);
-      setCount(current);
-
-      if (progress < 1) {
-        frameId = requestAnimationFrame(step);
-      } else {
-        setCount(target);
-      }
+      setCount(Math.floor(ease * target));
+      if (progress < 1) frameId = requestAnimationFrame(step);
+      else setCount(target);
     };
 
     frameId = requestAnimationFrame(step);
@@ -55,7 +59,7 @@ function AnimatedCounter({ target, suffix = '+', isVisible, duration = 2000, col
         lineHeight: 1
       }}
     >
-      {count.toLocaleString()}{suffix}
+      {count.toLocaleString('en-IN')}{suffix}
     </span>
   );
 }
@@ -65,32 +69,22 @@ export default function StatsCounter() {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    // 1. Fallback safety timer: ensures counters always activate even without scroll
-    const fallbackTimer = setTimeout(() => {
+    const el = sectionRef.current;
+    if (!el || typeof IntersectionObserver === 'undefined') {
       setIsVisible(true);
-    }, 2800);
-
-    // 2. IntersectionObserver with 100px root margin for anticipatory activation
-    if (typeof IntersectionObserver !== 'undefined' && sectionRef.current) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries[0]?.isIntersecting) {
-            setIsVisible(true);
-            observer.disconnect();
-            clearTimeout(fallbackTimer);
-          }
-        },
-        { threshold: 0.01, rootMargin: '100px 0px 100px 0px' }
-      );
-      observer.observe(sectionRef.current);
-      return () => {
-        observer.disconnect();
-        clearTimeout(fallbackTimer);
-      };
-    } else {
-      setIsVisible(true);
-      return () => clearTimeout(fallbackTimer);
+      return;
     }
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries[0]?.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   // Targets counting strictly from 0 to actual numbers: 2,000+, 20+, 950+, 250+
@@ -134,7 +128,7 @@ export default function StatsCounter() {
       <div className="container">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '44px' }}>
           <div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
               <span className="section-label">Proven Track Record</span>
               <span className="stats-credential-pill">
                 <TrendingUp size={13} />
@@ -147,25 +141,15 @@ export default function StatsCounter() {
             </p>
           </div>
           <div>
-            <a href="/contact-us" className="btn btn-primary btn-sm" style={{ boxShadow: '0 4px 14px rgba(27, 70, 127, 0.25)' }}>
+            <Link href="/contact-us/" className="btn btn-primary btn-sm" style={{ boxShadow: '0 4px 14px rgba(27, 70, 127, 0.25)' }}>
               <span>Start Your Project</span>
-            </a>
+            </Link>
           </div>
         </div>
 
         <div className="stats-grid">
           {statsConfig.map((stat, idx) => (
-            <Card3D
-              key={idx}
-              className="stat-card modern-stat-card"
-              maxTilt={7}
-              depth={12}
-              style={{
-                transitionDelay: `${idx * 70}ms`,
-                position: 'relative',
-                overflow: 'hidden'
-              }}
-            >
+            <div key={idx} className="stat-card modern-stat-card">
               {/* Subtle top accent gradient */}
               <div
                 style={{
@@ -189,7 +173,7 @@ export default function StatsCounter() {
                 <div className="stat-icon-wrapper">
                   <Image
                     src={stat.icon}
-                    alt={stat.label}
+                    alt=""
                     width={36}
                     height={36}
                     className="stat-icon"
@@ -221,7 +205,7 @@ export default function StatsCounter() {
                   }}
                 />
               </div>
-            </Card3D>
+            </div>
           ))}
         </div>
       </div>

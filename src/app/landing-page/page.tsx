@@ -16,14 +16,19 @@ import {
 import LeadForm from '@/components/LeadForm';
 import CertificationsRow from '@/components/CertificationsRow';
 import { COMPANY_INFO } from '@/data/medregData';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import { pageMetadata, webPageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'WHX Dubai 2026 | Meet MedReg Regulatory Team at Your Booth',
-  description: 'Meet MedReg Consultancy LLP at WHX (World Health Expo) Dubai 2026. Schedule a confidential regulatory session for CE MDR, US FDA 510(k), MDSAP, ISO 13485, and global country registrations.',
-  alternates: {
-    canonical: 'https://medreg.in/landing-page/'
-  }
-};
+const PAGE_PATH = '/landing-page/';
+const PAGE_DESCRIPTION =
+  'Meet MedReg at WHX Dubai 2026. Book a private 30-minute session on CE MDR, US FDA 510(k), MDSAP, ISO 13485 and global device registrations.';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Meet Us at WHX Dubai 2026 – Book a Booth Meeting',
+  description: PAGE_DESCRIPTION,
+  path: PAGE_PATH,
+});
 
 export default function WhxDubaiLandingPage() {
   const expoOfferings = [
@@ -61,10 +66,12 @@ export default function WhxDubaiLandingPage() {
 
   return (
     <>
+      <JsonLd data={webPageJsonLd({ path: PAGE_PATH, name: 'MedReg at WHX Dubai 2026', description: PAGE_DESCRIPTION, type: 'WebPage' })} />
       {/* 1. Page Header Banner */}
       <section className="page-banner" style={{ background: 'linear-gradient(135deg, #0A2540 0%, #153E75 100%)' }}>
         <div className="container">
           <div className="page-banner-content">
+            <Breadcrumbs items={[{ name: 'WHX Dubai 2026', path: PAGE_PATH }]} />
             <div className="hero-badge">
               <Sparkles size={14} color="#79B8FF" />
               <span>World Health Expo &bull; Dubai 2026</span>
@@ -91,9 +98,9 @@ export default function WhxDubaiLandingPage() {
       </section>
 
       {/* 2. Main Expo Feature Section */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '50px', alignItems: 'center' }}>
+          <div className="split-grid split-grid--wide-right">
             {/* Left: Dubai Expo Visual Flyer */}
             <div style={{ position: 'relative', borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: 'var(--shadow-xl)' }}>
               <Image
@@ -102,6 +109,7 @@ export default function WhxDubaiLandingPage() {
                 width={500}
                 height={625}
                 priority
+                sizes="(max-width: 992px) 92vw, 520px"
                 style={{ width: '100%', height: 'auto', display: 'block' }}
               />
             </div>
@@ -123,9 +131,9 @@ export default function WhxDubaiLandingPage() {
       </section>
 
       {/* 3. Expo Offerings Grid */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--slate-50)', borderTop: '1px solid var(--border)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--slate-50)', borderTop: '1px solid var(--border)' }}>
         <div className="container">
-          <div className="center-content" style={{ marginBottom: '44px' }}>
+          <div className="center-content section-head" style={{ marginBottom: '44px' }}>
             <span className="section-label">Core Capabilities Showcase</span>
             <h2 className="section-title text-center">Services We Are Presenting At WHX</h2>
             <p className="section-subtitle text-center">
@@ -133,7 +141,7 @@ export default function WhxDubaiLandingPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '28px' }}>
+          <div className="grid-3">
             {expoOfferings.map((item, idx) => (
               <div key={idx} className="card">
                 <span className="badge badge-gold" style={{ alignSelf: 'flex-start', marginBottom: '14px' }}>

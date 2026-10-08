@@ -2,26 +2,45 @@
 node_modules/
 /.pnp
 .pnp.js
+.pnpm-store/
 
-# Testing and environment
+# Environment & secrets (only the documented template is committed)
 .env*
+!.env.example
+*.pem
+*.key
+
+# Vercel
 .vercel
 
-# Next.js build output
+# Next.js / build output
 .next/
 out/
 build/
 dist/
+*.tsbuildinfo
 
-# Raw extraction scrapings & test captures
+# Testing / coverage
+coverage/
+playwright-report/
+test-results/
+
+# Raw extraction scrapings & local test captures
 extracted_raw/
+*.py
+screenshots/
+new_screenshots/
 
-# Debug logs
+# Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 *.log
 
-# OS files
+# OS / editor files
 .DS_Store
 Thumbs.db
+.idea/
+.vscode/
+*.swp

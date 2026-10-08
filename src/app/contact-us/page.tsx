@@ -14,22 +14,29 @@ import {
 } from 'lucide-react';
 import LeadForm from '@/components/LeadForm';
 import { COMPANY_INFO } from '@/data/medregData';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import { pageMetadata, webPageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Contact Us | MedReg Consultancy LLP Ahmedabad',
-  description: 'Connect with medical device regulatory consultants at MedReg Consultancy LLP, Titanium Business Park, Ahmedabad. Call +91 88664 61989 or email info@medreg.in for expert CDSCO, CE MDR, and FDA 510(k) guidance.',
-  alternates: {
-    canonical: 'https://medreg.in/contact-us/'
-  }
-};
+const PAGE_PATH = '/contact-us/';
+const PAGE_DESCRIPTION =
+  'Talk to MedReg’s medical device regulatory consultants in Ahmedabad. Call +91 88664 61989, WhatsApp or email info@medreg.in for a free consultation.';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Contact Us – Medical Device Consultants, Ahmedabad',
+  description: PAGE_DESCRIPTION,
+  path: PAGE_PATH,
+});
 
 export default function ContactUsPage() {
   return (
     <>
+      <JsonLd data={webPageJsonLd({ path: PAGE_PATH, name: 'Contact MedReg Consultancy LLP', description: PAGE_DESCRIPTION, type: 'ContactPage' })} />
       {/* 1. Page Header Banner */}
       <section className="page-banner">
         <div className="container">
           <div className="page-banner-content">
+            <Breadcrumbs items={[{ name: 'Contact Us', path: PAGE_PATH }]} />
             <div className="hero-badge">
               <Sparkles size={14} color="#79B8FF" />
               <span>Grow your business with us!</span>
@@ -45,9 +52,9 @@ export default function ContactUsPage() {
       </section>
 
       {/* 2. Contact Details & Form Grid */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.1fr', gap: '60px', alignItems: 'flex-start' }}>
+          <div className="split-grid split-grid--wide-right split-grid--top">
             {/* Left: Direct Contact Information */}
             <div>
               <span className="section-label">Get In Touch</span>
@@ -61,14 +68,14 @@ export default function ContactUsPage() {
               {/* Contact Cards */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', marginBottom: '36px' }}>
                 {/* Address Card */}
-                <div style={{ display: 'flex', gap: '16px', padding: '24px', backgroundColor: 'var(--slate-50)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)' }}>
+                <div className="contact-card">
                   <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', flexShrink: 0 }}>
                     <MapPin size={24} />
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
+                    <h3 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
                       Corporate Headquarters
-                    </h4>
+                    </h3>
                     <p style={{ fontSize: '14.5px', color: 'var(--slate-600)', lineHeight: 1.6 }}>
                       {COMPANY_INFO.address.line1}<br />
                       {COMPANY_INFO.address.line2}<br />
@@ -78,14 +85,14 @@ export default function ContactUsPage() {
                 </div>
 
                 {/* Phone Card */}
-                <div style={{ display: 'flex', gap: '16px', padding: '24px', backgroundColor: 'var(--slate-50)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)' }}>
+                <div className="contact-card">
                   <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', flexShrink: 0 }}>
                     <Phone size={24} />
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
+                    <h3 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
                       Telephone & WhatsApp Direct Lines
-                    </h4>
+                    </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                       <a href={`tel:${COMPANY_INFO.phones[0].value}`} style={{ fontSize: '15px', fontWeight: 700, color: 'var(--primary)' }}>
                         {COMPANY_INFO.phones[0].display}
@@ -98,14 +105,14 @@ export default function ContactUsPage() {
                 </div>
 
                 {/* Email Card */}
-                <div style={{ display: 'flex', gap: '16px', padding: '24px', backgroundColor: 'var(--slate-50)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)' }}>
+                <div className="contact-card">
                   <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', flexShrink: 0 }}>
                     <Mail size={24} />
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
+                    <h3 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
                       Official Electronic Mail
-                    </h4>
+                    </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                       <a href={`mailto:${COMPANY_INFO.emails[0].value}`} style={{ fontSize: '15px', fontWeight: 600, color: 'var(--primary)' }}>
                         {COMPANY_INFO.emails[0].display} (General Queries)
@@ -118,14 +125,14 @@ export default function ContactUsPage() {
                 </div>
 
                 {/* Working Hours Card */}
-                <div style={{ display: 'flex', gap: '16px', padding: '24px', backgroundColor: 'var(--slate-50)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--border)' }}>
+                <div className="contact-card">
                   <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', flexShrink: 0 }}>
                     <Clock size={24} />
                   </div>
                   <div>
-                    <h4 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
+                    <h3 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
                       Consulting Hours
-                    </h4>
+                    </h3>
                     <p style={{ fontSize: '14.5px', color: 'var(--slate-600)' }}>
                       {COMPANY_INFO.workingHours}
                     </p>
@@ -170,6 +177,8 @@ export default function ContactUsPage() {
               height="400"
               style={{ border: 0, display: 'block', minHeight: '380px', backgroundColor: 'var(--slate-100)' }}
               loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              allowFullScreen
             />
           </div>
         </div>

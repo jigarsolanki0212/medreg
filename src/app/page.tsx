@@ -24,6 +24,11 @@ import {
   HOMEPAGE_FAQS,
   WHY_CHOOSE_MEDREG
 } from '@/data/medregData';
+import JsonLd from '@/components/JsonLd';
+import { faqJsonLd, webPageJsonLd } from '@/lib/seo';
+
+const HOME_DESCRIPTION =
+  'MedReg Consultancy (Ahmedabad, since 2011) secures CDSCO, CE (EU MDR/IVDR), US FDA 510(k), MDSAP & ISO 13485 approvals for medical device & IVD makers.';
 
 export default function HomePage() {
   const principles = [
@@ -38,9 +43,31 @@ export default function HomePage() {
 
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: '/', name: 'Medical Device Regulatory Consultant in India | MedReg', description: HOME_DESCRIPTION }),
+          faqJsonLd(HOMEPAGE_FAQS, '/'),
+        ]}
+      />
       {/* 1. Hero Section */}
-      <section className="hero-section">
-        <div className="container">
+      <section className="hero-section" data-parallax>
+        <Image
+          src="/assets/why-medreg.jpg"
+          alt=""
+          fill
+          priority
+          fetchPriority="high"
+          sizes="100vw"
+          quality={70}
+          className="hero-bg-img"
+        />
+        <div className="hero-orbs" aria-hidden="true">
+          <span className="hero-orb hero-orb--1" />
+          <span className="hero-orb hero-orb--2" />
+          <span className="hero-orb hero-orb--3" />
+          <span className="hero-grid" />
+        </div>
+        <div className="container hero-layout">
           <div className="hero-content">
             <div className="hero-credential-badge">
               <span className="hero-credential-tag">CDSCO REGISTERED LIAISON</span>
@@ -57,14 +84,14 @@ export default function HomePage() {
             </p>
 
             <div className="hero-ctas">
-              <Link href="/contact-us" className="btn btn-gold">
+              <Link href="/contact-us/" className="btn btn-gold btn-shine">
                 <span>Book Free Consultation</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/india" className="btn btn-outline-white">
+              <Link href="/india/" className="btn btn-outline-white">
                 <span>Explore Services</span>
               </Link>
-              <a href={`tel:${COMPANY_INFO.phones[0].value}`} className="btn btn-white btn-sm" style={{ marginLeft: '8px' }}>
+              <a href={`tel:${COMPANY_INFO.phones[0].value}`} className="btn btn-white btn-sm hero-call-btn">
                 <Phone size={14} />
                 <span>+91 88664 61989</span>
               </a>
@@ -89,22 +116,63 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+
+          {/* Decorative 3D approval stack (desktop only) */}
+          <div className="hero-visual" aria-hidden="true">
+            <div className="hero-stack">
+              <div className="hero-glass hero-glass--main">
+                <div className="hero-glass-head">
+                  <span className="hero-glass-dot" />
+                  <span>Regulatory Dossier</span>
+                </div>
+                <div className="hero-glass-title">Market Approval Roadmap</div>
+                {[
+                  { label: 'CDSCO MD-15 Import Licence', pct: 100 },
+                  { label: 'EU MDR Technical File', pct: 86 },
+                  { label: 'US FDA 510(k) eSTAR', pct: 72 },
+                ].map((row, i) => (
+                  <div key={row.label} className="hero-progress-row">
+                    <div className="hero-progress-label">
+                      <span>{row.label}</span>
+                      <span>{row.pct}%</span>
+                    </div>
+                    <div className="hero-progress-track">
+                      <span className="hero-progress-fill" style={{ ['--w' as string]: `${row.pct}%`, ['--d' as string]: `${0.6 + i * 0.25}s` }} />
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="hero-glass hero-glass--chip hero-glass--chip-a">
+                <ShieldCheck size={18} />
+                <span>ISO 13485:2016</span>
+              </div>
+              <div className="hero-glass hero-glass--chip hero-glass--chip-b">
+                <Award size={18} />
+                <span>CE Certified</span>
+              </div>
+              <div className="hero-glass hero-glass--chip hero-glass--chip-c">
+                <Globe2 size={18} />
+                <span>20+ Countries</span>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* 2. Authentic About Section */}
-      <section style={{ padding: '90px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
           <div className="about-split-grid">
             {/* Left: Authentic Team Photo in Cross Shape */}
             <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
-              <div style={{ position: 'relative', maxWidth: '480px', width: '100%' }}>
+              <div className="about-media" style={{ position: 'relative', maxWidth: '480px', width: '100%' }}>
                 <Image
                   src="/assets/home_about.png"
-                  alt="MedReg Regulatory Consulting Team"
+                  alt="MedReg regulatory consulting team in Ahmedabad"
                   width={520}
                   height={520}
-                  priority
+                  sizes="(max-width: 992px) 90vw, 480px"
+                  className="about-photo"
                   style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                 />
                 {/* Floating Experience Badge */}
@@ -158,12 +226,12 @@ export default function HomePage() {
                 ))}
               </div>
 
-              <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
-                <Link href="/about-us" className="btn btn-primary">
+              <div style={{ display: 'flex', gap: '16px', alignItems: 'center', flexWrap: 'wrap' }}>
+                <Link href="/about-us/" className="btn btn-primary">
                   <span>More About Us</span>
                   <ArrowRight size={16} />
                 </Link>
-                <Link href="/team" className="btn btn-secondary">
+                <Link href="/team/" className="btn btn-secondary">
                   <span>Meet Our Experts</span>
                 </Link>
               </div>
@@ -191,7 +259,7 @@ export default function HomePage() {
 
           <div>
             {/* India Card */}
-            <Link href="/india" className="market-card">
+            <Link href="/india/" className="market-card">
               <div className="market-card-left">
                 <Image src="/assets/india.png" alt="India Flag" width={52} height={52} className="market-card-flag" />
                 <span className="market-card-title">India (CDSCO)</span>
@@ -206,7 +274,7 @@ export default function HomePage() {
             </Link>
 
             {/* Europe Card */}
-            <Link href="/europe" className="market-card">
+            <Link href="/europe/" className="market-card">
               <div className="market-card-left">
                 <Image src="/assets/europe.png" alt="European Union Flag" width={52} height={52} className="market-card-flag" />
                 <span className="market-card-title">Europe (CE MDR/IVDR)</span>
@@ -221,7 +289,7 @@ export default function HomePage() {
             </Link>
 
             {/* USA Card */}
-            <Link href="/usa" className="market-card">
+            <Link href="/usa/" className="market-card">
               <div className="market-card-left">
                 <Image src="/assets/usa.png" alt="USA Flag" width={52} height={52} className="market-card-flag" />
                 <span className="market-card-title">USA (US FDA)</span>
@@ -236,7 +304,7 @@ export default function HomePage() {
             </Link>
 
             {/* Global / Other Card */}
-            <Link href="/other-services" className="market-card">
+            <Link href="/other-services/" className="market-card">
               <div className="market-card-left">
                 <Image src="/assets/other.png" alt="Global Markets" width={52} height={52} className="market-card-flag" />
                 <span className="market-card-title">Global Markets</span>
@@ -281,7 +349,7 @@ export default function HomePage() {
                   {idx === 2 && <Globe2 size={22} />}
                   {idx === 3 && <ShieldCheck size={22} />}
                 </div>
-                <h4 className="why-feature-title">{item.title}</h4>
+                <h3 className="why-feature-title">{item.title}</h3>
                 <p className="why-feature-desc">{item.description}</p>
               </div>
             ))}
@@ -352,10 +420,10 @@ export default function HomePage() {
       <section style={{ padding: '60px 0', backgroundColor: 'var(--slate-50)' }}>
         <div className="container">
           <div
+            className="cta-banner"
             style={{
               background: 'linear-gradient(135deg, var(--navy-800) 0%, var(--primary) 100%)',
               borderRadius: 'var(--radius-xl)',
-              padding: '48px 40px',
               color: 'var(--white)',
               display: 'flex',
               justifyContent: 'space-between',
@@ -366,15 +434,15 @@ export default function HomePage() {
             }}
           >
             <div>
-              <h3 style={{ fontSize: '26px', fontWeight: 800, color: 'var(--white)', marginBottom: '8px' }}>
+              <h2 style={{ fontSize: 'clamp(22px, 3vw, 26px)', fontWeight: 800, color: 'var(--white)', marginBottom: '8px' }}>
                 Compliance Made Simple — Start With A Free Consultation
-              </h3>
+              </h2>
               <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.85)', maxWidth: '640px' }}>
                 Speak directly with senior consultants who decode complex regulatory requirements and define a clear, actionable pathway for your medical devices.
               </p>
             </div>
             <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-              <Link href="/contact-us" className="btn btn-gold">
+              <Link href="/contact-us/" className="btn btn-gold">
                 <span>Get In Touch Today!</span>
                 <ArrowRight size={16} />
               </Link>

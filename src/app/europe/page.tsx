@@ -21,28 +21,48 @@ import {
   EUROPE_FAQS,
   COMPANY_INFO
 } from '@/data/medregData';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import { pageMetadata, serviceCatalogJsonLd, faqJsonLd, webPageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Europe CE Mark MDR 2017/745 & IVDR Regulatory Consulting',
-  description: 'Expert CE Marking consultancy under EU MDR 2017/745 and IVDR 2017/746. Technical documentation (Annex II/III), Clinical Evaluation (CER), GSPR checklists, and European Authorized Representative (EC REP).',
-  alternates: {
-    canonical: 'https://medreg.in/europe/'
-  }
-};
+const PAGE_PATH = '/europe/';
+const PAGE_DESCRIPTION =
+  'CE marking under EU MDR 2017/745 and IVDR: technical files (Annex II/III), clinical evaluation (CER), GSPR, PMS/PSUR, PRRC and EU representation.';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'CE Marking Consultant for EU MDR 2017/745 & IVDR',
+  description: PAGE_DESCRIPTION,
+  path: PAGE_PATH,
+  keywords: ['CE marking consultant', 'EU MDR 2017/745 consultant', 'IVDR consultant', 'technical file Annex II', 'clinical evaluation report CER', 'EU authorized representative'],
+});
 
 export default function EuropeServicesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: PAGE_PATH, name: 'CE Marking & EU MDR / IVDR Regulatory Services', description: PAGE_DESCRIPTION }),
+          serviceCatalogJsonLd({
+            name: 'CE Marking & EU MDR / IVDR Regulatory Services',
+            description: PAGE_DESCRIPTION,
+            path: PAGE_PATH,
+            areaServed: 'European Union',
+            services: EUROPE_SERVICES,
+          }),
+          faqJsonLd(EUROPE_FAQS, PAGE_PATH),
+        ]}
+      />
       {/* 1. Page Header Banner */}
       <section className="page-banner">
         <div className="container">
           <div className="page-banner-content">
+            <Breadcrumbs items={[{ name: 'Europe (CE MDR/IVDR)', path: PAGE_PATH }]} />
             <div className="hero-badge">
               <Sparkles size={14} color="#79B8FF" />
               <span>Grow your business with us!</span>
             </div>
             <h1 className="page-banner-title">
-              <Image src="/assets/europe.png" alt="Europe" width={48} height={48} className="page-banner-flag" />
+              <Image src="/assets/europe.png" alt="" width={48} height={48} className="page-banner-flag" />
               <span>Europe Medical Device Regulatory Services</span>
             </h1>
             <p className="page-banner-subtitle">
@@ -64,9 +84,9 @@ export default function EuropeServicesPage() {
       </section>
 
       {/* 2. Intro Section */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '50px', alignItems: 'center' }}>
+          <div className="split-grid">
             <div>
               <span className="section-label">European Union Market Access</span>
               <h2 style={{ fontSize: '32px', color: 'var(--slate-900)', lineHeight: 1.3 }}>
@@ -80,7 +100,7 @@ export default function EuropeServicesPage() {
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '20px' }}>
                 MedReg Consultancy helps medical device manufacturers navigate Europe’s stringent regulatory transition with total confidence. From CE certification, ISO 13485:2016, and UK MDR to technical documentation, clinical evaluations, and post-market surveillance, we deliver end-to-end solutions across all device classes.
               </p>
-              <Link href="/contact-us" className="btn btn-primary btn-sm">
+              <Link href="/contact-us/" className="btn btn-primary btn-sm">
                 <span>Request European CE Assessment</span>
                 <ArrowRight size={15} />
               </Link>

@@ -12,14 +12,19 @@ import {
   ShieldCheck
 } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/medregData';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import { pageMetadata, webPageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Regulatory Insights & MedTech Knowledge Hub | MedReg',
-  description: 'In-depth regulatory whitepapers, CDSCO gazette analysis, EU MDR updates, and US FDA 510(k) compliance guides from MedReg Consultancy LLP.',
-  alternates: {
-    canonical: 'https://medreg.in/blogs/'
-  }
-};
+const PAGE_PATH = '/blogs/';
+const PAGE_DESCRIPTION =
+  'Practical guidance on CDSCO Medical Device Rules 2017, EU MDR transition and PSUR, US FDA 510(k) eSTAR and MDSAP from MedReg’s regulatory consultants.';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'Medical Device Regulatory Insights & Guides',
+  description: PAGE_DESCRIPTION,
+  path: PAGE_PATH,
+});
 
 export default function BlogsPage() {
   const articles = [
@@ -59,10 +64,12 @@ export default function BlogsPage() {
 
   return (
     <>
+      <JsonLd data={webPageJsonLd({ path: PAGE_PATH, name: 'MedReg Regulatory Insights', description: PAGE_DESCRIPTION, type: 'CollectionPage' })} />
       {/* 1. Page Header Banner */}
       <section className="page-banner">
         <div className="container">
           <div className="page-banner-content">
+            <Breadcrumbs items={[{ name: 'Regulatory Insights', path: PAGE_PATH }]} />
             <div className="hero-badge">
               <Sparkles size={14} color="#79B8FF" />
               <span>Grow your business with us!</span>
@@ -78,9 +85,9 @@ export default function BlogsPage() {
       </section>
 
       {/* 2. Blog Posts Grid */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div className="center-content" style={{ marginBottom: '48px' }}>
+          <div className="center-content section-head" style={{ marginBottom: '48px' }}>
             <span className="section-label">Authoritative Analysis</span>
             <h2 className="section-title text-center">Latest Regulatory Insights</h2>
             <p className="section-subtitle text-center">
@@ -88,7 +95,7 @@ export default function BlogsPage() {
             </p>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '32px' }}>
+          <div className="grid-2">
             {articles.map((art, idx) => (
               <article key={idx} className="card" style={{ display: 'flex', flexDirection: 'column' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '14px' }}>
@@ -119,7 +126,7 @@ export default function BlogsPage() {
                 </div>
 
                 <div style={{ paddingTop: '14px', borderTop: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Link href="/contact-us" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 600, color: 'var(--primary)' }}>
+                  <Link href="/contact-us/" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 600, color: 'var(--primary)' }}>
                     <span>Discuss This Topic With Us</span>
                     <ArrowRight size={14} />
                   </Link>
@@ -140,7 +147,7 @@ export default function BlogsPage() {
             <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.8)', maxWidth: '600px', margin: '0 auto 24px' }}>
               Our senior regulatory directors in Ahmedabad provide tailored assessments for medical device companies preparing for submission or facing regulatory audits.
             </p>
-            <Link href="/contact-us" className="btn btn-gold">
+            <Link href="/contact-us/" className="btn btn-gold">
               <span>Book A 30-Minute Consultation</span>
               <ArrowRight size={16} />
             </Link>

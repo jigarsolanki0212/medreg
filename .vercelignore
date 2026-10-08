@@ -3,3 +3,14 @@ extracted_raw
 node_modules
 *.log
 .DS_Store
+/capture_all.py
+/e2e_comprehensive_test.py
+/full_site_check.py
+/images_list.txt
+/logos
+/new_screenshots
+/pages
+/pages_summary.json
+/parsed_content.json
+/screenshots
+/verify_local_animations.py

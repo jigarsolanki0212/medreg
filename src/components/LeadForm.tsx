@@ -71,7 +71,7 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Honeypot check: if bot filled in the hidden field, silently reject
@@ -87,7 +87,6 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
       return;
     }
 
-    // Execute validation
     if (!validateForm()) {
       return;
     }
@@ -95,12 +94,27 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
     setLoading(true);
     setErrors({});
 
-    // Process submission safely
-    setTimeout(() => {
-      setLoading(false);
+    try {
+      const res = await fetch('/api/contact/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...formData, page: typeof window !== 'undefined' ? window.location.pathname : '' }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok || !data.ok) {
+        setErrors({ general: data.error || 'We could not send your request. Please call or email us directly.' });
+        return;
+      }
       setSubmitted(true);
       setLastSubmittedTime(Date.now());
-    }, 700);
+      // Conversion event for GA4 (only fires when analytics is configured)
+      const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+      w.gtag?.('event', 'generate_lead', { form_location: window.location.pathname, service: formData.serviceInterest });
+    } catch {
+      setErrors({ general: 'Network error. Please check your connection, or call/email us directly.' });
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -121,7 +135,7 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
           <ShieldCheck size={14} />
           <span>Confidential & Audit-Proof</span>
         </div>
-        <h3 style={{ fontSize: '23px', fontWeight: 800, color: 'var(--slate-900)', marginBottom: '6px' }}>
+        <h3 style={{ fontSize: 'clamp(20px, 4vw, 23px)', fontWeight: 800, color: 'var(--slate-900)', marginBottom: '6px' }}>
           {title}
         </h3>
         <p style={{ fontSize: '13.5px', color: 'var(--slate-600)', lineHeight: 1.5 }}>
@@ -130,7 +144,7 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
       </div>
 
       {submitted ? (
-        <div style={{ textAlign: 'center', padding: '36px 12px', animation: 'fadeInUp 0.4s ease' }} id="form-success-banner">
+        <div role="status" style={{ textAlign: 'center', padding: '36px 12px', animation: 'fadeInUp 0.4s ease' }} id="form-success-banner">
           <div style={{
             width: '64px',
             height: '64px',
@@ -173,9 +187,9 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
       ) : (
         <form onSubmit={handleSubmit} noValidate>
           {errors.general && (
-            <div style={{
+            <div role="alert" style={{
               display: 'flex',
-              alignItems: 'center',
+              alignItems: 'flex-start',
               gap: '8px',
               padding: '10px 14px',
               backgroundColor: '#FEF2F2',
@@ -185,8 +199,13 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
               marginBottom: '16px',
               border: '1px solid #FECACA'
             }}>
-              <AlertCircle size={16} />
-              <span>{errors.general}</span>
+              <AlertCircle size={16} style={{ flexShrink: 0 }} />
+              <span>
+                {errors.general}{' '}
+                <a href="tel:+918866461989" style={{ fontWeight: 700, textDecoration: 'underline' }}>+91 88664 61989</a>
+                {' · '}
+                <a href="mailto:info@medreg.in" style={{ fontWeight: 700, textDecoration: 'underline' }}>info@medreg.in</a>
+              </span>
             </div>
           )}
 
@@ -210,6 +229,8 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
             <input
               type="text"
               id="fullName"
+              name="name"
+              autoComplete="name"
               placeholder="e.g. Dr. Rajesh Sharma"
               className="form-input"
               style={errors.fullName ? { borderColor: '#DC2626', backgroundColor: '#FEF2F2' } : {}}
@@ -234,6 +255,9 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
             <input
               type="email"
               id="email"
+              name="email"
+              autoComplete="email"
+              inputMode="email"
               placeholder="regulatory@yourcompany.com"
               className="form-input"
               style={errors.email ? { borderColor: '#DC2626', backgroundColor: '#FEF2F2' } : {}}
@@ -258,6 +282,9 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
             <input
               type="tel"
               id="mobile"
+              name="tel"
+              autoComplete="tel"
+              inputMode="tel"
               placeholder="+91 98765 43210"
               className="form-input"
               style={errors.mobile ? { borderColor: '#DC2626', backgroundColor: '#FEF2F2' } : {}}

@@ -21,28 +21,48 @@ import {
   GLOBAL_FAQS,
   COMPANY_INFO
 } from '@/data/medregData';
+import Breadcrumbs from '@/components/Breadcrumbs';
+import JsonLd from '@/components/JsonLd';
+import { pageMetadata, serviceCatalogJsonLd, faqJsonLd, webPageJsonLd } from '@/lib/seo';
 
-export const metadata: Metadata = {
-  title: 'Global Medical Device Regulatory Services | MDSAP, ISO 13485, IMDRF',
-  description: 'Global medical device regulatory consulting: MDSAP single audit program, ISO 13485:2016 QMS, IMDRF/GHTF technical files, process validation, and country registrations across LATAM, APAC, and Middle East.',
-  alternates: {
-    canonical: 'https://medreg.in/other-services/'
-  }
-};
+const PAGE_PATH = '/other-services/';
+const PAGE_DESCRIPTION =
+  'MDSAP and ISO 13485:2016 consulting plus device registrations with ANVISA, TGA, Health Canada and SFDA, IMDRF technical files and validations.';
+
+export const metadata: Metadata = pageMetadata({
+  title: 'MDSAP & ISO 13485 Consultant | Global Registrations',
+  description: PAGE_DESCRIPTION,
+  path: PAGE_PATH,
+  keywords: ['MDSAP consultant', 'ISO 13485 certification consultant', 'ANVISA registration', 'TGA registration', 'Health Canada medical device licence', 'SFDA registration'],
+});
 
 export default function OtherServicesPage() {
   return (
     <>
+      <JsonLd
+        data={[
+          webPageJsonLd({ path: PAGE_PATH, name: 'Global Medical Device Regulatory Services (MDSAP, ISO 13485)', description: PAGE_DESCRIPTION }),
+          serviceCatalogJsonLd({
+            name: 'Global Medical Device Regulatory Services (MDSAP, ISO 13485)',
+            description: PAGE_DESCRIPTION,
+            path: PAGE_PATH,
+            areaServed: ['Canada', 'Australia', 'Brazil', 'Japan', 'United Kingdom', 'Saudi Arabia', 'South Africa', 'United Arab Emirates'],
+            services: GLOBAL_SERVICES,
+          }),
+          faqJsonLd(GLOBAL_FAQS, PAGE_PATH),
+        ]}
+      />
       {/* 1. Page Header Banner */}
       <section className="page-banner">
         <div className="container">
           <div className="page-banner-content">
+            <Breadcrumbs items={[{ name: 'Global Markets', path: PAGE_PATH }]} />
             <div className="hero-badge">
               <Sparkles size={14} color="#79B8FF" />
               <span>Grow your business with us!</span>
             </div>
             <h1 className="page-banner-title">
-              <Image src="/assets/other.png" alt="Global" width={48} height={48} className="page-banner-flag" />
+              <Image src="/assets/other.png" alt="" width={48} height={48} className="page-banner-flag" />
               <span>Global Medical Device Regulatory Services</span>
             </h1>
             <p className="page-banner-subtitle">
@@ -64,9 +84,9 @@ export default function OtherServicesPage() {
       </section>
 
       {/* 2. Intro Section */}
-      <section style={{ padding: '80px 0', backgroundColor: 'var(--white)' }}>
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '50px', alignItems: 'center' }}>
+          <div className="split-grid">
             <div>
               <span className="section-label">Worldwide Expansion</span>
               <h2 style={{ fontSize: '32px', color: 'var(--slate-900)', lineHeight: 1.3 }}>
@@ -80,7 +100,7 @@ export default function OtherServicesPage() {
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '20px' }}>
                 MedReg Consultancy empowers medical device manufacturers to expand globally with confidence. From ISO 13485:2016, CE, UK MDR, USFDA, and CDSCO to registrations, submissions, and post-market support, we deliver comprehensive regulatory solutions tailored to international markets including the Middle East, Southeast Asia, Brazil, Australia, and Canada.
               </p>
-              <Link href="/contact-us" className="btn btn-primary btn-sm">
+              <Link href="/contact-us/" className="btn btn-primary btn-sm">
                 <span>Request Global Regulatory Strategy</span>
                 <ArrowRight size={15} />
               </Link>

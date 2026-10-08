@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useId, useState } from 'react';
+import Link from 'next/link';
 import { ChevronDown, HelpCircle, MessageSquare } from 'lucide-react';
 import { FaqItem } from '@/data/medregData';
 
@@ -16,6 +17,7 @@ export default function FaqAccordion({
   subtitle = "Navigating medical device regulations doesn't have to be overwhelming. At MedReg Consultancy, we've answered the most common client questions to quickly guide you through our services and how we can support your compliance journey."
 }: FaqAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const uid = useId();
 
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
@@ -42,16 +44,16 @@ export default function FaqAccordion({
             }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', marginBottom: '10px' }}>
                 <MessageSquare size={18} />
-                <h4 style={{ fontSize: '16.5px', fontWeight: 700, margin: 0, color: 'var(--slate-900)' }}>
+                <h3 style={{ fontSize: '16.5px', fontWeight: 700, margin: 0, color: 'var(--slate-900)' }}>
                   Have a customized regulatory question?
-                </h4>
+                </h3>
               </div>
               <p style={{ fontSize: '14px', color: 'var(--slate-600)', lineHeight: 1.6, marginBottom: '16px' }}>
                 Every device pathway is unique. Speak directly with our regulatory specialists in Ahmedabad.
               </p>
-              <a href="/contact-us" className="btn btn-primary btn-sm" style={{ width: '100%', justifyContent: 'center' }}>
+              <Link href="/contact-us/" className="btn btn-primary btn-sm" style={{ width: '100%', justifyContent: 'center' }}>
                 Ask Our Team Directly
-              </a>
+              </Link>
             </div>
           </div>
 
@@ -68,7 +70,6 @@ export default function FaqAccordion({
                     borderRadius: 'var(--radius-md)',
                     border: '1px solid var(--border)',
                     overflow: 'hidden',
-                    transition: 'border-color 0.25s ease, box-shadow 0.25s ease',
                     boxShadow: isOpen ? '0 8px 20px -4px rgba(15, 39, 71, 0.08)' : 'var(--shadow-sm)',
                     borderColor: isOpen ? 'var(--primary)' : 'var(--border)'
                   }}
@@ -78,6 +79,8 @@ export default function FaqAccordion({
                     className="accordion-header"
                     onClick={() => toggle(idx)}
                     aria-expanded={isOpen}
+                    aria-controls={`${uid}-panel-${idx}`}
+                    id={`${uid}-btn-${idx}`}
                     style={{
                       width: '100%',
                       display: 'flex',
@@ -94,8 +97,8 @@ export default function FaqAccordion({
                       transition: 'color 0.2s ease'
                     }}
                   >
-                    <span style={{ paddingRight: '16px', lineHeight: 1.4 }}>{faq.question}</span>
-                    <div style={{
+                    <h3 style={{ paddingRight: '16px', lineHeight: 1.4, fontSize: 'inherit', fontWeight: 'inherit', color: 'inherit', letterSpacing: 'normal' }}>{faq.question}</h3>
+                    <div aria-hidden="true" style={{
                       width: '32px',
                       height: '32px',
                       borderRadius: '50%',
@@ -119,6 +122,9 @@ export default function FaqAccordion({
 
                   {/* Silky smooth CSS grid-transition */}
                   <div
+                    id={`${uid}-panel-${idx}`}
+                    role="region"
+                    aria-labelledby={`${uid}-btn-${idx}`}
                     style={{
                       display: 'grid',
                       gridTemplateRows: isOpen ? '1fr' : '0fr',

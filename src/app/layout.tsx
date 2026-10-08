@@ -1,55 +1,74 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 import './globals.css';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { COMPANY_INFO } from '@/data/medregData';
+import JsonLd from '@/components/JsonLd';
+import MotionController from '@/components/MotionController';
+import FloatingContact from '@/components/FloatingContact';
+import { DEFAULT_OG_IMAGE, ORGANIZATION_JSONLD, SITE_NAME, SITE_URL } from '@/lib/seo';
+
+// Self-hosted at build time: no render-blocking request to Google Fonts, no layout shift.
+const jakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  display: 'swap',
+  variable: '--font-jakarta',
+});
+
+const DEFAULT_TITLE = 'Medical Device Regulatory Consultant in India | MedReg';
+const DEFAULT_DESCRIPTION =
+  'MedReg Consultancy (Ahmedabad, since 2011) secures CDSCO, CE (EU MDR/IVDR), US FDA 510(k), MDSAP & ISO 13485 approvals for medical device & IVD makers.';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://medreg.in'),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Medreg Consultancy LLP | Medical Device Regulatory Services',
-    template: '%s | MedReg Consultancy LLP'
+    default: DEFAULT_TITLE,
+    template: '%s | MedReg',
   },
-  description: 'Professional consultancy for medical device certifications and licenses in India (CDSCO), Europe (CE MDR/IVDR), USA (FDA 510k), MDSAP, and globally.',
+  description: DEFAULT_DESCRIPTION,
+  applicationName: SITE_NAME,
   keywords: [
-    'Medical Device Regulatory Services',
-    'CDSCO Medical Device License',
-    'CE Mark MDR 2017/745',
-    'US FDA 510k Consultant',
-    'ISO 13485 Certification',
-    'MDSAP Audit Consulting',
-    'Medical Device Consultant India',
-    'MedReg Consultancy LLP Ahmedabad'
+    'medical device regulatory consultant India',
+    'CDSCO medical device registration',
+    'CDSCO import license MD-15',
+    'medical device manufacturing license MD-5 MD-9',
+    'CE marking consultant EU MDR 2017/745',
+    'IVDR 2017/746 consultant',
+    'US FDA 510(k) consultant India',
+    'ISO 13485 certification consultant',
+    'MDSAP consultant',
+    'medical device consultant Ahmedabad',
   ],
-  authors: [{ name: 'MedReg Consultancy LLP' }],
-  creator: 'MedReg Consultancy LLP',
-  publisher: 'MedReg Consultancy LLP',
-  icons: {
-    icon: '/assets/cropped-favicon.png',
-    shortcut: '/assets/cropped-favicon.png',
-    apple: '/assets/cropped-favicon.png',
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  category: 'Medical Device Regulatory Consulting',
+  alternates: {
+    canonical: `${SITE_URL}/`,
   },
+  icons: {
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon.png', type: 'image/png', sizes: '512x512' },
+    ],
+    apple: [{ url: '/assets/cropped-favicon.png', sizes: '512x512' }],
+  },
+  manifest: '/manifest.webmanifest',
   openGraph: {
     type: 'website',
-    locale: 'en_US',
-    url: 'https://medreg.in',
-    siteName: 'MedReg Consultancy LLP',
-    title: 'Medreg Consultancy LLP | Medical Device Regulatory Services',
-    description: 'Expert medical device regulatory approvals across CDSCO India, CE MDR Europe, US FDA, and global markets. 2,000+ completed projects since 2011.',
-    images: [
-      {
-        url: '/assets/logo.png',
-        width: 384,
-        height: 120,
-        alt: 'MedReg - Let\'s Decode The Regulations'
-      }
-    ]
+    locale: 'en_IN',
+    url: `${SITE_URL}/`,
+    siteName: SITE_NAME,
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Medreg Consultancy LLP | Medical Device Regulatory Services',
-    description: 'Professional medical device and IVD regulatory consulting across India, Europe, USA, and global markets.',
-    images: ['/assets/logo.png'],
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [DEFAULT_OG_IMAGE.url],
   },
   formatDetection: {
     email: false,
@@ -67,79 +86,59 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  // Set these in Vercel → Settings → Environment Variables after verifying ownership.
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    other: process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION
+      ? { 'msvalidate.01': process.env.NEXT_PUBLIC_BING_SITE_VERIFICATION }
+      : undefined,
+  },
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
   themeColor: '#0B1E38',
+  colorScheme: 'light',
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  const jsonLd = {
-    '@context': 'https://schema.org',
-    '@graph': [
-      {
-        '@type': 'ProfessionalService',
-        '@id': 'https://medreg.in/#organization',
-        name: 'Medreg Consultancy LLP',
-        url: 'https://medreg.in',
-        logo: 'https://medreg.in/assets/logo.png',
-        image: 'https://medreg.in/assets/home_about.png',
-        description: 'Global medical device and IVD regulatory consulting firm providing end-to-end licensure, technical file compilation, CE marking, FDA 510(k), and quality management system compliance.',
-        telephone: '+91 88664 61989',
-        email: 'info@medreg.in',
-        foundingDate: '2011',
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: '11th Floor Block C – 1105, 1106 Titanium Business Park, Behind Divya Bhaskar Press, Near Makarba Railway Crossing',
-          addressLocality: 'Makarba, Ahmedabad',
-          addressRegion: 'Gujarat',
-          postalCode: '380051',
-          addressCountry: 'IN'
-        },
-        geo: {
-          '@type': 'GeoCoordinates',
-          latitude: '23.0039',
-          longitude: '72.4975'
-        },
-        sameAs: [
-          'https://www.linkedin.com/company/medreg-consultancy-llp/',
-          'https://twitter.com/medreg_in',
-          'https://www.facebook.com/medregconsultancy'
-        ]
-      },
-      {
-        '@type': 'WebSite',
-        '@id': 'https://medreg.in/#website',
-        url: 'https://medreg.in',
-        name: 'Medreg Consultancy LLP',
-        publisher: {
-          '@id': 'https://medreg.in/#organization'
-        }
-      }
-    ]
-  };
+// Runs before first paint: enables scroll-reveal styles only when JS + IntersectionObserver
+// are available and the visitor has not asked for reduced motion. Falls back to fully
+// visible content if the app fails to hydrate.
+const revealBootScript = `(function(){try{var d=document.documentElement;if('IntersectionObserver' in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){d.classList.add('reveal-ready');setTimeout(function(){if(!window.__medregReveal)d.classList.remove('reveal-ready')},2500)}}catch(e){}})();`;
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-IN" className={jakarta.variable} suppressHydrationWarning>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: revealBootScript }} />
+        <JsonLd data={ORGANIZATION_JSONLD} />
+        {GA_ID && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+            <script
+              dangerouslySetInnerHTML={{
+                __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','${GA_ID}');`,
+              }}
+            />
+          </>
+        )}
       </head>
       <body>
+        <a href="#main-content" className="skip-link">
+          Skip to main content
+        </a>
+        <div className="scroll-progress" aria-hidden="true" />
         <Header />
-        <main style={{ flex: '1 0 auto' }}>
+        <main id="main-content" style={{ flex: '1 0 auto' }}>
           {children}
         </main>
         <Footer />
+        <FloatingContact />
+        <MotionController />
       </body>
     </html>
   );

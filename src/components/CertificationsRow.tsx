@@ -22,6 +22,7 @@ export default function CertificationsRow({ title = "Certification Success, With
                 alt={cert.name}
                 width={120}
                 height={70}
+                sizes="130px"
                 style={{ objectFit: 'contain' }}
               />
               <span className="cert-title">{cert.name}</span>
