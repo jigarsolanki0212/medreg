@@ -32,8 +32,8 @@ function faqs(heading: string, items: FaqItem[]) {
 export function GET() {
   const body = [
     `# ${COMPANY_INFO.name} — full service catalogue`,
-    `> Medical device and IVD regulatory consultancy in ${COMPANY_INFO.address.city}, India, operating since ${COMPANY_INFO.establishedYear}. 2,000+ completed projects, 950+ clients, 20+ countries.`,
-    `Contact: ${COMPANY_INFO.phones.map((p) => p.display).join(', ')} · ${COMPANY_INFO.emails.map((e) => e.display).join(', ')} · ${COMPANY_INFO.workingHours}\nAddress: ${COMPANY_INFO.address.full}\nWebsite: ${absoluteUrl('/')}`,
+    `> Medical device and IVD regulatory consultancy in ${COMPANY_INFO.address.city}, India, operating since ${COMPANY_INFO.establishedYear}. 2k+ completed projects, 950+ clients, 20+ countries served.`,
+    `Contact: ${COMPANY_INFO.phones.map((p) => p.display).join(', ')} · ${COMPANY_INFO.emails.map((e) => e.display).join(', ')}\nAddress: ${COMPANY_INFO.address.full}\nWebsite: ${absoluteUrl('/')}`,
     services('India — CDSCO (Medical Device Rules 2017)', '/india/', INDIA_SERVICES),
     services('Europe — CE marking (EU MDR 2017/745, IVDR 2017/746)', '/europe/', EUROPE_SERVICES),
     services('United States — US FDA', '/usa/', USA_SERVICES),

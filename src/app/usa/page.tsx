@@ -16,6 +16,7 @@ import StatsCounter from '@/components/StatsCounter';
 import CertificationsRow from '@/components/CertificationsRow';
 import LeadForm from '@/components/LeadForm';
 import FaqAccordion from '@/components/FaqAccordion';
+import WhyChooseSection from '@/components/WhyChooseSection';
 import {
   USA_SERVICES,
   USA_FAQS,
@@ -63,11 +64,8 @@ export default function UsaServicesPage() {
             </div>
             <h1 className="page-banner-title">
               <Image src="/assets/usa.png" alt="" width={48} height={48} className="page-banner-flag" />
-              <span>USA Medical Device Regulatory Services</span>
+              <span>USA</span>
             </h1>
-            <p className="page-banner-subtitle">
-              Comprehensive US FDA 510(k) clearance, QMSR quality system implementation, and official US Agent representation.
-            </p>
 
             <div style={{ display: 'flex', gap: '20px', marginTop: '20px', flexWrap: 'wrap', fontSize: '14px', color: 'rgba(255,255,255,0.85)' }}>
               <a href={`mailto:${COMPANY_INFO.emails[0].value}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
@@ -88,9 +86,8 @@ export default function UsaServicesPage() {
         <div className="container">
           <div className="split-grid">
             <div>
-              <span className="section-label">United States Market Entry</span>
               <h2 style={{ fontSize: '32px', color: 'var(--slate-900)', lineHeight: 1.3 }}>
-                Bridging Compliance And Commercial Success For <span style={{ color: 'var(--primary)' }}>USA MedTech</span>
+                Bridging Compliance and Commercial Success for <span style={{ color: 'var(--primary)' }}>USA MedTech</span>
               </h2>
             </div>
             <div>
@@ -98,10 +95,10 @@ export default function UsaServicesPage() {
                 Your Partner in USA MedTech Regulatory Success
               </h3>
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '20px' }}>
-                MedReg Consultancy helps medical device manufacturers navigate the US regulatory landscape with ease. From ISO 13485:2016 and CE certification to USFDA listings, 510(k), PMA, and UL approvals, we deliver tailored end-to-end solutions with deep regulatory insight.
+                MedReg Consultancy helps medical device manufacturers navigate the US regulatory landscape with ease. From ISO 13485:2016 and CE certification to USFDA listings, 510(k), PMA, and UL approvals, we deliver tailored end-to-end solutions. With expertise in submissions, QMS, compliance, and post-market support, we simplify every stage, ensuring your products remain compliant and competitive in the US MedTech market.
               </p>
               <Link href="/contact-us/" className="btn btn-primary btn-sm">
-                <span>Request US FDA 510(k) Assessment</span>
+                <span>Contact Us</span>
                 <ArrowRight size={15} />
               </Link>
             </div>
@@ -114,14 +111,10 @@ export default function UsaServicesPage() {
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px' }}>
             <div>
-              <span className="section-label">Complete Service Inventory</span>
               <h2 className="section-title">Services We Offer in The USA</h2>
               <p className="section-subtitle">
                 As a trusted partner in medical device regulations, MedReg Consultancy offers comprehensive services across the US market.
               </p>
-            </div>
-            <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--primary)' }}>
-              13 US FDA Compliance Services
             </div>
           </div>
 
@@ -132,26 +125,14 @@ export default function UsaServicesPage() {
                   <div className="service-box-icon">
                     <FileText size={24} />
                   </div>
-                  {service.badge && (
-                    <span className="badge badge-primary">
-                      {service.badge}
-                    </span>
-                  )}
                 </div>
 
                 <h3 className="service-box-title">{service.title}</h3>
                 <p className="service-box-desc">{service.fullDesc}</p>
-
-                {service.keyPoints && (
-                  <ul className="service-box-bullets">
-                    {service.keyPoints.map((pt, idx) => (
-                      <li key={idx} className="service-box-bullet-item">
-                        <CheckCircle size={14} className="service-box-bullet-icon" />
-                        <span>{pt}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                <Link href="/contact-us/" className="service-box-link">
+                  <span>Get a Quote</span>
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             ))}
           </div>
@@ -159,7 +140,9 @@ export default function UsaServicesPage() {
       </section>
 
       {/* 4. Certifications Row */}
-      <CertificationsRow title="Certification Success, Without the Stress" />
+      <WhyChooseSection />
+
+      <CertificationsRow />
 
       {/* 5. Statistics */}
       <StatsCounter />
@@ -170,28 +153,20 @@ export default function UsaServicesPage() {
           <div className="cta-grid">
             <div>
               <span className="section-label" style={{ backgroundColor: 'rgba(255,255,255,0.15)', color: '#79B8FF', borderColor: 'rgba(255,255,255,0.25)' }}>
-                Official US Agent & 510(k) Submissions
+                Free Consultation
               </span>
               <h2 style={{ fontSize: '36px', color: 'var(--white)', marginBottom: '18px', fontWeight: 800 }}>
-                Accelerate Your US FDA Clearance
+                Compliance Made Simple – Start with a Free Consultation
               </h2>
-              <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.65, marginBottom: '24px' }}>
-                Gain clearance faster through electronic eSTAR packaging, rigorous substantial equivalence determinations, and official in-country representation.
+              <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.65 }}>
+                {COMPANY_INFO.phones.map((p) => p.display).join(', ')}
+                <br />
+                {COMPANY_INFO.emails[0].display}
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <Building2 size={20} color="#79B8FF" />
-                  <span>Designated US Agent for international medical device establishments</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <ShieldCheck size={20} color="#79B8FF" />
-                  <span>Small Business fee certification assistance (saves up to 75% on FDA fees)</span>
-                </div>
-              </div>
             </div>
 
             <div>
-              <LeadForm title="Accelerate Your Journey!" />
+              <LeadForm title="Accelerate your journey!" />
             </div>
           </div>
         </div>
@@ -200,8 +175,7 @@ export default function UsaServicesPage() {
       {/* 7. USA FAQs */}
       <FaqAccordion
         faqs={USA_FAQS}
-        title="Get The Answers You Need To Move Forward in The USA"
-        subtitle="Frequently asked questions about US FDA 510(k) premarket notifications, FDA registration and listing, Small Business fee waivers, and inspection readiness."
+        title="Get the Answers You Need to Move Forward"
       />
     </>
   );

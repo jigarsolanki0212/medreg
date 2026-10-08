@@ -15,6 +15,7 @@ import {
 } from 'lucide-react';
 import StatsCounter from '@/components/StatsCounter';
 import CertificationsRow from '@/components/CertificationsRow';
+import WhyChooseSection from '@/components/WhyChooseSection';
 import {
   COMPANY_INFO,
   OFFICE_GALLERY,
@@ -48,11 +49,8 @@ export default function AboutUsPage() {
               <span>Grow your business with us!</span>
             </div>
             <h1 className="page-banner-title">
-              About MedReg Consultancy LLP
+              About us
             </h1>
-            <p className="page-banner-subtitle">
-              Empowering healthcare innovators and medical device manufacturers with end-to-end regulatory solutions since 2011.
-            </p>
 
             <div style={{ display: 'flex', gap: '20px', marginTop: '20px', flexWrap: 'wrap', fontSize: '14px', color: 'rgba(255,255,255,0.85)' }}>
               <a href={`mailto:${COMPANY_INFO.emails[0].value}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
@@ -73,15 +71,11 @@ export default function AboutUsPage() {
         <div className="container">
           <div className="split-grid split-grid--wide-left">
             <div>
-              <span className="section-label">Our Journey & Foundation</span>
               <h2 className="section-title">
-                15+ Years of Dedicated Medical Device Regulatory Excellence
+                About MedReg Consultancy
               </h2>
               <p style={{ fontSize: '16px', color: 'var(--slate-600)', lineHeight: 1.7, marginBottom: '18px' }}>
-                MedReg Consultancy was founded with one aim in mind &ndash; to empower medical device manufacturers by providing uncompromising regulatory solutions. Since 2011, MedReg has served numerous clients across India, Europe, the USA, and the UK.
-              </p>
-              <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.7, marginBottom: '18px' }}>
-                We have helped medical device industries in obtaining various certifications and licenses, such as <strong>CE Certification (MDR/IVDR)</strong>, <strong>UK MDR</strong>, <strong>ISO 13485:2016 Certification</strong>, <strong>ICMED</strong>, <strong>MDSAP</strong>, <strong>USFDA Listing</strong>, <strong>Country Registration</strong>, <strong>UL Certification</strong>, <strong>USFDA 510(k)</strong>, and <strong>CDSCO licenses MD-05, MD-06, MD-09, MD-10, MD-15</strong>, Free Sale Certificates, and PMA.
+                MedReg Consultancy was founded with one aim in mind – to empower medical device manufacturers by providing regulatory solutions. Since 2011, Medreg has served numerous clients across India, Europe, the USA, and the UK. We have helped medical device industries in obtaining various certifications and licenses, such as CE Certification, UK MDR, ISO 13485:2016 Certification, ICMED, MDSAP, USFDA Listing, Country Registration, UL Certification, USFDA 510K, CDSCO licenses MD-05, MD-06, MD-09, MD-10, MD-15, Free Sale Certificates, PMA, and various country registrations.
               </p>
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.7, marginBottom: '28px' }}>
                 No matter the size of your business, our team of experts with deep industry knowledge will provide you with the knowledge, guidance, and support for getting the proper regulatory certifications so you can sell your products in your desired geographic location as fast as possible. We define a regulatory pathway that suits your business and deliver cost-effective strategies for your specific products.
@@ -89,7 +83,7 @@ export default function AboutUsPage() {
 
               <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
                 <Link href="/contact-us/" className="btn btn-primary">
-                  <span>Contact Our Consultants</span>
+                  <span>Contact Us</span>
                   <ArrowRight size={16} />
                 </Link>
                 <Link href="/team/" className="btn btn-secondary">
@@ -123,10 +117,10 @@ export default function AboutUsPage() {
                   }}
                 >
                   <div style={{ fontSize: '30px', fontWeight: 800, color: '#79B8FF', lineHeight: 1 }}>
-                    15+
+                    10+
                   </div>
                   <div style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase' }}>
-                    Years of Experience
+                    Year Of Experience
                   </div>
                 </div>
               </div>
@@ -139,11 +133,7 @@ export default function AboutUsPage() {
       <section className="section-pad" style={{ backgroundColor: 'var(--slate-50)', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)' }}>
         <div className="container">
           <div className="center-content section-head" style={{ marginBottom: '48px' }}>
-            <span className="section-label">Guiding Principles</span>
-            <h2 className="section-title text-center">Our Vision, Mission & Values</h2>
-            <p className="section-subtitle text-center">
-              The strategic pillars that direct our multidisciplinary regulatory engineering and consulting approach.
-            </p>
+            <h2 className="section-title text-center">Our Vision, Mission & Value</h2>
           </div>
 
           <div className="grid-3">
@@ -179,10 +169,10 @@ export default function AboutUsPage() {
                 <Sparkles size={26} />
               </div>
               <h3 style={{ fontSize: '22px', fontWeight: 800, color: 'var(--slate-900)', marginBottom: '14px' }}>
-                Our Values
+                Our Value
               </h3>
               <p style={{ fontSize: '15px', color: 'var(--slate-600)', lineHeight: 1.65 }}>
-                We are quick learners and constantly adapt to new regulatory rules and developments in the medical industry around the world. With years of experience, our multidisciplinary team brings broad visualisation to every project by understanding the technical requirements and the strategic impact of regulatory decisions, offering a well-rounded approach combining engineering, clinical, and regulatory expertise.
+                We are quick learners and constantly adapt to new regulatory rules and developments in the medical industry around the world. With years of experience, our multidisciplinary team brings broad visualisation to every project by understanding the technical requirements and the strategic impact of regulatory decisions and offering a well-rounded approach that combines engineering, clinical, and regulatory expertise. We are committed to adhering to global compliance standards and ethical practices.
               </p>
             </div>
           </div>
@@ -192,6 +182,8 @@ export default function AboutUsPage() {
       {/* 4. Statistics */}
       <StatsCounter />
 
+      <WhyChooseSection />
+
       {/* 5. Regulatory Certification Badges */}
       <CertificationsRow />
 
@@ -199,11 +191,7 @@ export default function AboutUsPage() {
       <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
           <div className="center-content section-head" style={{ marginBottom: '44px' }}>
-            <span className="section-label">State-of-the-Art Infrastructure</span>
-            <h2 className="section-title text-center">Gallery — Our Corporate Headquarters</h2>
-            <p className="section-subtitle text-center">
-              Inside MedReg’s regulatory documentation suites and executive conference facilities at Titanium Business Park, Ahmedabad.
-            </p>
+            <h2 className="section-title text-center">Gallery</h2>
           </div>
 
           <div className="grid-3">

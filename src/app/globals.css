@@ -2610,3 +2610,32 @@ html.drawer-open .floating-whatsapp { display: none; }
   .top-bar, .site-header, .floating-whatsapp, .scroll-progress, .site-footer, .hero-visual, .hero-orbs { display: none !important; }
   html.reveal-ready * { opacity: 1 !important; transform: none !important; }
 }
+
+/* "Get a Quote" link on service cards (matches the original site's per-service CTA) */
+.service-box-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--primary);
+}
+.service-box-link:hover { color: var(--accent); }
+
+/* Service name chips under each market card (as listed on the original homepage) */
+.market-card-services {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 14px;
+}
+.market-card-services li {
+  font-size: 12.5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}

@@ -1,31 +1,29 @@
 # MedReg Consultancy LLP
 
-> MedReg Consultancy LLP is a medical device and IVD regulatory consulting firm headquartered in Ahmedabad, Gujarat, India. Since 2011 it has completed 2,000+ regulatory projects for 950+ clients across 20+ countries, covering CDSCO licensing in India, CE marking under EU MDR 2017/745 and IVDR 2017/746, US FDA 510(k) and QMSR, MDSAP, ISO 13485:2016 and global country registrations.
+> MedReg Consultancy helps medical device and IVD manufacturers achieve smooth approvals and compliance in global markets. Since 2011, it has supported companies across India, Europe, the USA, and the UK, covering products from surgical disposables and orthopaedic implants to sutures, diagnostic consumables, and laparoscopic devices.
 
 Key facts:
 - Legal name: Medreg Consultancy LLP (brand: MedReg). Tagline: "Let's Decode The Regulations".
-- Founded: 2011. Headquarters: 11th Floor, Block C – 1105/1106, Titanium Business Park, Behind Divya Bhaskar Press, Near Makarba Railway Crossing, Makarba, Ahmedabad, Gujarat 380051, India.
-- Phone / WhatsApp: +91 88664 61989, +91 63523 88194. Email: info@medreg.in (general), bdm@medreg.in (business development).
-- Hours: Monday–Saturday, 9:30 AM – 6:30 PM IST.
-- Clients: medical device and IVD manufacturers, importers and distributors — from startups to multinationals — for Class A/B/C/D (India), Class I/IIa/IIb/III (EU) and Class I/II (US) devices.
-- Device expertise: surgical disposables, catheters, orthopaedic and spinal implants, sutures and meshes, IVD reagents, laparoscopic and endoscopic instruments, active and electromechanical devices.
+- Founded: 2011. Address: 11th Floor Block C – 1105, 1106 Titanium Business Park, Behind Divya Bhaskar Press, Near Makarba Railway Crossing, Makarba, Ahmedabad, Gujarat, 380051, India.
+- Phone: +91 88664 61989, +91 63523 88194. Email: info@medreg.in
+- Track record: 2k+ completed projects, 20+ countries served, 950+ clients served, 250+ service offerings.
+- MedReg provides regulatory consulting for CDSCO India, FDA 510(k), and CE Marking, and specialises in Class A, B, C, and D medical devices.
+- Certifications and licences supported: CE Certification, UK MDR, ISO 13485:2016, ICMED, MDSAP, USFDA Listing, USFDA 510K, PMA, UL Certification, CDSCO licenses MD-05, MD-06, MD-09, MD-10, MD-15, Free Sale Certificates, and country registrations.
 
 ## Services by market
 
-- [India — CDSCO regulatory services](https://medreg.in/india/): Medical Device Rules 2017; manufacturing licences (MD-3/MD-5 for Class A/B via State Licensing Authority, MD-7/MD-9 for Class C/D via Central Licensing Authority); import licence (MD-14 application, MD-15 licence); clinical investigations; Free Sale, Market Standing and Non-Conviction certificates; Rule 44 labelling review; Indian Authorized Agent; wholesale licence (MD-41/MD-42); Device and Plant Master Files; Fifth Schedule QMS.
-- [Europe — CE marking under EU MDR / IVDR](https://medreg.in/europe/): Annex II/III technical documentation; MDD-to-MDR gap analysis; clinical evaluation (CEP/CER); GSPR checklist (Annex I); PMS, PSUR and PMCF; ISO 14971 risk management; PRRC support (Article 15); classification under Annex VIII; European Authorized Representative via partners.
-- [USA — US FDA](https://medreg.in/usa/): 510(k) (Traditional, Special, Abbreviated) via eSTAR; Q-Submission / Pre-Sub; establishment registration and device listing; GUDID/UDI; QMSR (21 CFR Part 820) implementation; Small Business Determination (reduced user fees); US Agent; FDA Form 483 responses; complaint files and MDR (21 CFR 803).
-- [Global markets — MDSAP, ISO 13485 and registrations](https://medreg.in/other-services/): MDSAP (USA, Canada, Brazil, Japan, Australia); ISO 13485:2016 QMS implementation and audits; IMDRF/STED technical files; registrations with ANVISA, TGA, Health Canada, SFDA, SAHPRA and UKCA; process validation (IQ/OQ/PQ); sterilisation validation; biological evaluation (BEP/BER, ISO 10993).
+- [India](https://medreg.in/india/): Manufacturing License, Import License, Clinical Trials, Free Sale Certificate, Product Endorsement, Retention of License, Market Standing Certificate, Non-conviction Certificate, Labeling Review, Product Development, Authorized Agent, Wholesale License, Sterilization Process Validation, QMS Documentation, AMC for documentation, Device Master File Preparation, Voluntary Registration, Neutral Code, Internal Audit.
+- [Europe](https://medreg.in/europe/): CE Mark, Technical Master File Preparation, Gap Analysis, Clinical Evaluation, General Safety and Performance Requirements, Post Market Surveillance Report, Risk Analysis as per EN ISO 14971, Person Responsible for Regulatory Compliance, Medical Device Classification, Sterilization Validation, Cleaning & Disinfection Validation, AMC for documentation, Authorized Agent Service through active channel partner.
+- [USA](https://medreg.in/usa/): Establishment and Listing, GUDID Submission, QMS Implementation – QMSR, Premarket Submission – 510(k), Q-Submission, Small Business Documentation, Interactive Discussion with FDA after Submission, Responding to Additional Information, US Agent Service, 483 Response and Submission, Complaint File Submission, E-Copy Guidance, GMP Compliance for USFDA Inspection.
+- [Other markets](https://medreg.in/other-services/): Technical File / Dossier Preparation as per IMDRF and GHTF guideline, QMS Documentation, Internal Audit, Supplier Development, Inspection, Evaluation, Process Validation — for the Middle East, Southeast Asian countries, Brazil, Australia (TGA) and Canada.
 
 ## Company
 
-- [About MedReg](https://medreg.in/about-us/): history since 2011, vision, mission, values and office.
-- [Team](https://medreg.in/team/): regulatory affairs directors, biomedical dossier engineers, ISO 13485 / MDSAP lead auditors, clinical evaluators.
-- [Contact and free consultation](https://medreg.in/contact-us/): enquiry form, phone, WhatsApp, email and map.
-- [Regulatory insights](https://medreg.in/blogs/): CDSCO, EU MDR, FDA 510(k) and MDSAP guidance.
+- [About MedReg](https://medreg.in/about-us/): history since 2011, vision, mission and values.
+- [Contact](https://medreg.in/contact-us/): enquiry form, phone, email and map.
 
 ## Optional
 
-- [Full service catalogue and FAQs (plain text)](https://medreg.in/llms-full.txt): every service with descriptions plus all published FAQs.
-- [WHX Dubai 2026 meetings](https://medreg.in/landing-page/)
+- [Full service descriptions and FAQs (plain text)](https://medreg.in/llms-full.txt)
+- [WHX Dubai 2026](https://medreg.in/landing-page/)
 - [Privacy policy](https://medreg.in/privacy-policy/)

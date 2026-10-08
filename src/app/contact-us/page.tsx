@@ -42,11 +42,8 @@ export default function ContactUsPage() {
               <span>Grow your business with us!</span>
             </div>
             <h1 className="page-banner-title">
-              Contact MedReg Consultancy LLP
+              Contact Us
             </h1>
-            <p className="page-banner-subtitle">
-              Connect directly with our senior regulatory specialists to initiate or accelerate your medical device compliance journey.
-            </p>
           </div>
         </div>
       </section>
@@ -57,12 +54,11 @@ export default function ContactUsPage() {
           <div className="split-grid split-grid--wide-right split-grid--top">
             {/* Left: Direct Contact Information */}
             <div>
-              <span className="section-label">Get In Touch</span>
               <h2 className="section-title">
-                Start Your Certification Journey Today
+                Get In Touch
               </h2>
               <p style={{ fontSize: '16px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '36px' }}>
-                Whether you need assistance with an upcoming CDSCO audit, an EU MDR technical documentation overhaul, an FDA 510(k) premarket notification, or global ISO 13485 implementation, our Ahmedabad-based team is ready to assist.
+                Contact our experts and start your certification journey
               </p>
 
               {/* Contact Cards */}
@@ -74,7 +70,7 @@ export default function ContactUsPage() {
                   </div>
                   <div>
                     <h3 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
-                      Corporate Headquarters
+                      Address
                     </h3>
                     <p style={{ fontSize: '14.5px', color: 'var(--slate-600)', lineHeight: 1.6 }}>
                       {COMPANY_INFO.address.line1}<br />
@@ -91,7 +87,7 @@ export default function ContactUsPage() {
                   </div>
                   <div>
                     <h3 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
-                      Telephone & WhatsApp Direct Lines
+                      Phone
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                       <a href={`tel:${COMPANY_INFO.phones[0].value}`} style={{ fontSize: '15px', fontWeight: 700, color: 'var(--primary)' }}>
@@ -111,31 +107,13 @@ export default function ContactUsPage() {
                   </div>
                   <div>
                     <h3 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
-                      Official Electronic Mail
+                      Email
                     </h3>
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
                       <a href={`mailto:${COMPANY_INFO.emails[0].value}`} style={{ fontSize: '15px', fontWeight: 600, color: 'var(--primary)' }}>
-                        {COMPANY_INFO.emails[0].display} (General Queries)
-                      </a>
-                      <a href={`mailto:${COMPANY_INFO.emails[1].value}`} style={{ fontSize: '15px', fontWeight: 600, color: 'var(--primary)' }}>
-                        {COMPANY_INFO.emails[1].display} (Business Development)
+                        {COMPANY_INFO.emails[0].display}
                       </a>
                     </div>
-                  </div>
-                </div>
-
-                {/* Working Hours Card */}
-                <div className="contact-card">
-                  <div style={{ width: '48px', height: '48px', borderRadius: '50%', backgroundColor: 'var(--primary-light)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: 'var(--primary)', flexShrink: 0 }}>
-                    <Clock size={24} />
-                  </div>
-                  <div>
-                    <h3 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
-                      Consulting Hours
-                    </h3>
-                    <p style={{ fontSize: '14.5px', color: 'var(--slate-600)' }}>
-                      {COMPANY_INFO.workingHours}
-                    </p>
                   </div>
                 </div>
               </div>
@@ -143,7 +121,7 @@ export default function ContactUsPage() {
 
             {/* Right: Lead Generation Card */}
             <div>
-              <LeadForm title="Book Your Confidential Assessment" />
+              <LeadForm title="Get In Touch Today!" />
             </div>
           </div>
         </div>

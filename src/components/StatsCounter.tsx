@@ -3,7 +3,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { TrendingUp } from 'lucide-react';
 
 interface AnimatedCounterProps {
   target: number;
@@ -92,8 +91,7 @@ export default function StatsCounter() {
     {
       target: 2000,
       suffix: '+',
-      label: 'Complete Projects',
-      sublabel: 'Zero-Deficiency Submissions',
+      label: 'Complete Project',
       icon: '/assets/complete-project.png',
       color: '#1B467F'
     },
@@ -101,7 +99,6 @@ export default function StatsCounter() {
       target: 20,
       suffix: '+',
       label: 'Countries Served',
-      sublabel: 'Global Regulatory Jurisdictions',
       icon: '/assets/countries-served.png',
       color: '#088395'
     },
@@ -109,7 +106,6 @@ export default function StatsCounter() {
       target: 950,
       suffix: '+',
       label: 'Clients Served',
-      sublabel: 'Manufacturers & Importers',
       icon: '/assets/clients-served.png',
       color: '#C69214'
     },
@@ -117,7 +113,6 @@ export default function StatsCounter() {
       target: 250,
       suffix: '+',
       label: 'Service Offerings',
-      sublabel: 'End-to-End Compliance Pathways',
       icon: '/assets/service-offerings.png',
       color: '#10B981'
     },
@@ -130,19 +125,16 @@ export default function StatsCounter() {
           <div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px', flexWrap: 'wrap' }}>
               <span className="section-label">Proven Track Record</span>
-              <span className="stats-credential-pill">
-                <TrendingUp size={13} />
-                <span>Audited Cumulative Milestones (2011 &ndash; 2026)</span>
-              </span>
+
             </div>
-            <h2 className="section-title">Number Speaks Everything</h2>
+            <h2 className="section-title">Number speaks everything</h2>
             <p className="section-subtitle">
-              Our numbers tell a story of growth, trust, and proven success. Every result reflects our regulatory expertise, commitment, and measurable client impact.
+              Our numbers tell a story of growth, trust, and proven success. Every result reflects our expertise, commitment, and measurable impact.
             </p>
           </div>
           <div>
             <Link href="/contact-us/" className="btn btn-primary btn-sm" style={{ boxShadow: '0 4px 14px rgba(27, 70, 127, 0.25)' }}>
-              <span>Start Your Project</span>
+              <span>Contact Us</span>
             </Link>
           </div>
         </div>
@@ -182,7 +174,6 @@ export default function StatsCounter() {
               </div>
 
               <div className="stat-label">{stat.label}</div>
-              <div className="stat-sublabel">{stat.sublabel}</div>
 
               {/* Dynamic bottom progress indicator that fills as counter counts up */}
               <div

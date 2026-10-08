@@ -13,8 +13,8 @@ interface FaqAccordionProps {
 
 export default function FaqAccordion({
   faqs,
-  title = "Get The Answers You Need To Move Forward",
-  subtitle = "Navigating medical device regulations doesn't have to be overwhelming. At MedReg Consultancy, we've answered the most common client questions to quickly guide you through our services and how we can support your compliance journey."
+  title = "Get the Answers You Need to Move Forward",
+  subtitle = "Navigating medical device regulations doesn’t have to be overwhelming. At MedReg Consultancy, we’ve answered the most common client questions to quickly guide you through our services and how we can support your compliance journey. From emerging startups to established global players, our FAQs are your first stop. Need personalised help? We’re just a message away!"
 }: FaqAccordionProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
   const uid = useId();
@@ -45,14 +45,14 @@ export default function FaqAccordion({
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--primary)', marginBottom: '10px' }}>
                 <MessageSquare size={18} />
                 <h3 style={{ fontSize: '16.5px', fontWeight: 700, margin: 0, color: 'var(--slate-900)' }}>
-                  Have a customized regulatory question?
+                  Need personalised help?
                 </h3>
               </div>
               <p style={{ fontSize: '14px', color: 'var(--slate-600)', lineHeight: 1.6, marginBottom: '16px' }}>
-                Every device pathway is unique. Speak directly with our regulatory specialists in Ahmedabad.
+                We’re just a message away!
               </p>
               <Link href="/contact-us/" className="btn btn-primary btn-sm" style={{ width: '100%', justifyContent: 'center' }}>
-                Ask Our Team Directly
+                Contact Us
               </Link>
             </div>
           </div>

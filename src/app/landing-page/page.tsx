@@ -32,36 +32,12 @@ export const metadata: Metadata = pageMetadata({
 
 export default function WhxDubaiLandingPage() {
   const expoOfferings = [
-    {
-      title: "CE Certification (EU MDR / IVDR)",
-      desc: "Full CE certification support covering MDR 2017/745, IVDR 2017/746, Annex II/III technical documentation, and PSUR compliance.",
-      badge: "European Union"
-    },
-    {
-      title: "USFDA 510(k) & US Agent",
-      desc: "510(k) file compilation & eSTAR submission, official US Agent representation, FDA Establishment Registration & listing.",
-      badge: "United States"
-    },
-    {
-      title: "Complete MDSAP Support",
-      desc: "End-to-end MDSAP program support—from gap analysis and documentation to mock audits and non-conformance (NC) closure across 5 jurisdictions.",
-      badge: "Unified Audit"
-    },
-    {
-      title: "ISO 13485:2016 Implementation",
-      desc: "Complete quality management system development, internal audit training, and Stage 1 / Stage 2 registrar audit certification support.",
-      badge: "Global Standard"
-    },
-    {
-      title: "BEP & BER Biological Safety Package",
-      desc: "Strategic biological evaluation reports with scientific test waiver justifications to drastically cut testing expenses and speed market approval.",
-      badge: "Cost Saver"
-    },
-    {
-      title: "Global Country Registrations",
-      desc: "Targeted product approvals across ANVISA (Brazil), TGA (Australia), Health Canada, SAHPRA (South Africa), and SFDA (Saudi Arabia / Middle East).",
-      badge: "Emerging Markets"
-    }
+    { title: "CE Certification", desc: "CE certification support covering MDR, IVDR, technical documentation, PSUR preparation, compliance.", badge: "Europe" },
+    { title: "USFDA 510k", desc: "CF preparation & submission, US Agent service, Establishment registration & complete compliance support.", badge: "USA" },
+    { title: "MDSAP", desc: "Complete MDSAP support—from docs to audits and NC closure.", badge: "Global" },
+    { title: "ISO 13485", desc: "ISO 13485 implementation for a compliant medical device QMS.", badge: "Global" },
+    { title: "BEP & BER", desc: "BEP & BER biological safety package with test waiver reports to cut testing costs, speed approvals, and shorten submission timelines.", badge: "Global" },
+    { title: "Country registration", desc: "Global registrations: ANVISA, TGA, Health Canada, SAHPRA, SFDA", badge: "Global" }
   ];
 
   return (
@@ -80,14 +56,10 @@ export default function WhxDubaiLandingPage() {
               Meet The Team At WHX Dubai 2026
             </h1>
             <p className="page-banner-subtitle">
-              &ldquo;Your Compliance, Our Expertise&rdquo; &ndash; Let’s meet at your booth during WHX to discuss your global medical device licensing roadmap.
+              &ldquo;Your Compliance, Our Expertise&rdquo;
             </p>
 
             <div style={{ display: 'flex', gap: '24px', marginTop: '24px', flexWrap: 'wrap', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#79B8FF', fontWeight: 600 }}>
-                <MapPin size={18} />
-                <span>Dubai World Trade Centre, UAE</span>
-              </div>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: '#FFF' }}>
                 <Calendar size={18} />
                 <span>WHX Dubai 2026</span>
@@ -116,15 +88,17 @@ export default function WhxDubaiLandingPage() {
 
             {/* Right: Booking Form */}
             <div>
-              <span className="section-label section-label-gold">Booth Meeting Reservation</span>
               <h2 className="section-title">
-                Book A Private Regulatory Meeting At Your Booth
+                About Us
               </h2>
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '28px' }}>
-                Our senior consultants will be on the ground meeting medical device manufacturers at WHX Dubai. Schedule a focused 30-minute consultation directly at your booth to evaluate CE MDR transition strategies, CDSCO import pathways, or US FDA 510(k) submissions.
+                MedReg Consultancy was founded with one aim in mind – to empower medical device manufacturers by providing regulatory solutions. Since 2011, Medreg has served numerous clients across India, Europe, the USA, and the UK. We have helped medical device industries in obtaining various certifications and licenses, such as CE Certification, UK MDR, ISO 13485:2016 Certification, ICMED, MDSAP, USFDA Listing, Country Registration, UL Certification, USFDA 510K, CDSCO licenses MD-05, MD-06, MD-09, MD-10, MD-15, Free Sale Certificates, PMA, and various country registrations.
+              </p>
+              <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '28px' }}>
+                No matter the size of your business, our team of experts with deep industry knowledge will provide you with the knowledge, guidance, and support for getting the proper regulatory certifications so you can sell your products in your desired geographic location as fast as possible. We define a regulatory pathway that suits your business and deliver cost-effective strategies for your specific products.
               </p>
 
-              <LeadForm title="Reserve Your Booth Meeting" />
+              <LeadForm title="Let&apos;s Decode The Regulation" />
             </div>
           </div>
         </div>
@@ -134,10 +108,9 @@ export default function WhxDubaiLandingPage() {
       <section className="section-pad" style={{ backgroundColor: 'var(--slate-50)', borderTop: '1px solid var(--border)' }}>
         <div className="container">
           <div className="center-content section-head" style={{ marginBottom: '44px' }}>
-            <span className="section-label">Core Capabilities Showcase</span>
-            <h2 className="section-title text-center">Services We Are Presenting At WHX</h2>
+            <h2 className="section-title text-center">Our Services</h2>
             <p className="section-subtitle text-center">
-              Specialized turnkey regulatory packages designed for enterprise manufacturers exhibiting at WHX Dubai.
+              &ldquo;Your Compliance, Our Expertise&rdquo;
             </p>
           </div>
 

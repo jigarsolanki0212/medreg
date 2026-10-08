@@ -4,7 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { Phone, Mail, Clock, ChevronDown, Menu, X, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Phone, Mail, ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/medregData';
 
 const SERVICE_LINKS = [
@@ -95,13 +95,8 @@ export default function Header() {
             </a>
           </div>
           <div className="top-bar-items">
-            <span className="top-bar-item">
-              <Clock size={14} aria-hidden="true" />
-              <span>{COMPANY_INFO.workingHours}</span>
-            </span>
             <span className="top-bar-item" style={{ color: '#79B8FF' }}>
-              <ShieldCheck size={14} aria-hidden="true" />
-              <span>ISO 13485 & Regulatory Experts</span>
+              <span>{COMPANY_INFO.tagline}</span>
             </span>
           </div>
         </div>

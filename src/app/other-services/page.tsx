@@ -16,6 +16,7 @@ import StatsCounter from '@/components/StatsCounter';
 import CertificationsRow from '@/components/CertificationsRow';
 import LeadForm from '@/components/LeadForm';
 import FaqAccordion from '@/components/FaqAccordion';
+import WhyChooseSection from '@/components/WhyChooseSection';
 import {
   GLOBAL_SERVICES,
   GLOBAL_FAQS,
@@ -63,11 +64,8 @@ export default function OtherServicesPage() {
             </div>
             <h1 className="page-banner-title">
               <Image src="/assets/other.png" alt="" width={48} height={48} className="page-banner-flag" />
-              <span>Global Medical Device Regulatory Services</span>
+              <span>Other Services</span>
             </h1>
-            <p className="page-banner-subtitle">
-              Multi-market strategy, MDSAP audit readiness, ISO 13485:2016 QMS, and country registrations across emerging healthcare economies.
-            </p>
 
             <div style={{ display: 'flex', gap: '20px', marginTop: '20px', flexWrap: 'wrap', fontSize: '14px', color: 'rgba(255,255,255,0.85)' }}>
               <a href={`mailto:${COMPANY_INFO.emails[0].value}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
@@ -88,9 +86,8 @@ export default function OtherServicesPage() {
         <div className="container">
           <div className="split-grid">
             <div>
-              <span className="section-label">Worldwide Expansion</span>
               <h2 style={{ fontSize: '32px', color: 'var(--slate-900)', lineHeight: 1.3 }}>
-                Supporting Medical Innovators Worldwide With Multi-Market <span style={{ color: 'var(--primary)' }}>Regulatory Strategy</span>
+                Supporting Medical Innovators Worldwide With Multi-Market Regulatory <span style={{ color: 'var(--primary)' }}>Strategy And Execution</span>
               </h2>
             </div>
             <div>
@@ -98,10 +95,10 @@ export default function OtherServicesPage() {
                 Empowering Medical Technology Manufacturers Worldwide
               </h3>
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '20px' }}>
-                MedReg Consultancy empowers medical device manufacturers to expand globally with confidence. From ISO 13485:2016, CE, UK MDR, USFDA, and CDSCO to registrations, submissions, and post-market support, we deliver comprehensive regulatory solutions tailored to international markets including the Middle East, Southeast Asia, Brazil, Australia, and Canada.
+                MedReg Consultancy empowers medical device manufacturers to expand globally with confidence. From ISO 13485:2016, CE, UK MDR, USFDA, CDSCO, and UL certifications to registrations, submissions, and post-market support, we deliver comprehensive regulatory solutions tailored to international markets. Backed by global partnerships, our expertise ensures compliance, growth, and competitiveness across the MedTech landscape.
               </p>
               <Link href="/contact-us/" className="btn btn-primary btn-sm">
-                <span>Request Global Regulatory Strategy</span>
+                <span>Contact Us</span>
                 <ArrowRight size={15} />
               </Link>
             </div>
@@ -114,14 +111,10 @@ export default function OtherServicesPage() {
         <div className="container">
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px' }}>
             <div>
-              <span className="section-label">Complete Service Inventory</span>
-              <h2 className="section-title">Services We Provide Globally</h2>
+              <h2 className="section-title">Services We Provide</h2>
               <p className="section-subtitle">
-                We offer services that help you launch your medical technology in the Middle East, Southeast Asian Countries, Brazil, Australia (TGA), Canada, and worldwide.
+                We offer services that help you launch your medical technology in the Middle East, Southeast Asian Countries, Brazil, TGA, and Canada.
               </p>
-            </div>
-            <div style={{ fontSize: '14px', fontWeight: 700, color: 'var(--primary)' }}>
-              Multi-Market Compliance
             </div>
           </div>
 
@@ -132,26 +125,14 @@ export default function OtherServicesPage() {
                   <div className="service-box-icon">
                     <FileText size={24} />
                   </div>
-                  {service.badge && (
-                    <span className="badge badge-primary">
-                      {service.badge}
-                    </span>
-                  )}
                 </div>
 
                 <h3 className="service-box-title">{service.title}</h3>
                 <p className="service-box-desc">{service.fullDesc}</p>
-
-                {service.keyPoints && (
-                  <ul className="service-box-bullets">
-                    {service.keyPoints.map((pt, idx) => (
-                      <li key={idx} className="service-box-bullet-item">
-                        <CheckCircle size={14} className="service-box-bullet-icon" />
-                        <span>{pt}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
+                <Link href="/contact-us/" className="service-box-link">
+                  <span>Get a Quote</span>
+                  <ArrowRight size={14} />
+                </Link>
               </div>
             ))}
           </div>
@@ -159,7 +140,9 @@ export default function OtherServicesPage() {
       </section>
 
       {/* 4. Certifications Row */}
-      <CertificationsRow title="Certification Success, Without the Stress" />
+      <WhyChooseSection />
+
+      <CertificationsRow />
 
       {/* 5. Statistics */}
       <StatsCounter />
@@ -170,28 +153,20 @@ export default function OtherServicesPage() {
           <div className="cta-grid">
             <div>
               <span className="section-label" style={{ backgroundColor: 'rgba(255,255,255,0.15)', color: '#79B8FF', borderColor: 'rgba(255,255,255,0.25)' }}>
-                Multi-Country Expansion
+                Free Consultation
               </span>
               <h2 style={{ fontSize: '36px', color: 'var(--white)', marginBottom: '18px', fontWeight: 800 }}>
-                Expand Beyond Borders with Unified Dossiers
+                Compliance Made Simple – Start with a Free Consultation
               </h2>
-              <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.65, marginBottom: '24px' }}>
-                Avoid duplicate testing, redundant translations, and separate filing expenses. We build harmonized IMDRF STED dossiers and MDSAP quality systems that satisfy multiple regulatory authorities simultaneously.
+              <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.65 }}>
+                {COMPANY_INFO.phones.map((p) => p.display).join(', ')}
+                <br />
+                {COMPANY_INFO.emails[0].display}
               </p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <Globe2 size={20} color="#79B8FF" />
-                  <span>MDSAP compliance satisfying US FDA, Health Canada, TGA, ANVISA, and MHLW</span>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <ShieldCheck size={20} color="#79B8FF" />
-                  <span>ISO 13485:2016 implementation and mock audit readiness</span>
-                </div>
-              </div>
             </div>
 
             <div>
-              <LeadForm title="Accelerate Your Journey!" />
+              <LeadForm title="Accelerate your journey!" />
             </div>
           </div>
         </div>
@@ -200,8 +175,7 @@ export default function OtherServicesPage() {
       {/* 7. Global FAQs */}
       <FaqAccordion
         faqs={GLOBAL_FAQS}
-        title="Get The Answers You Need To Move Forward Globally"
-        subtitle="Frequently asked questions about international medical device registrations, MDSAP auditing scopes, and IMDRF technical dossier preparation."
+        title="Get the Answers You Need to Move Forward"
       />
     </>
   );

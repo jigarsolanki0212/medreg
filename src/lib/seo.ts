@@ -152,7 +152,7 @@ export const ORGANIZATION_JSONLD = {
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/logo.png`, width: 384, height: 120 },
       image: `${SITE_URL}/assets/home_about.png`,
       description:
-        'Medical device and IVD regulatory consulting firm in Ahmedabad, India, providing CDSCO licensing (MD-5, MD-9, MD-15), CE marking under EU MDR 2017/745 and IVDR 2017/746, US FDA 510(k), MDSAP, ISO 13485:2016 QMS and global country registrations since 2011.',
+        'MedReg Consultancy helps medical device and IVD manufacturers achieve smooth approvals and compliance in global markets. Since 2011, it has supported companies across India, Europe, the USA, and the UK.',
       foundingDate: String(COMPANY_INFO.establishedYear),
       telephone: COMPANY_INFO.phones[0].value,
       email: COMPANY_INFO.emails[0].value,
@@ -166,14 +166,6 @@ export const ORGANIZATION_JSONLD = {
       },
       geo: { '@type': 'GeoCoordinates', latitude: 22.9996, longitude: 72.4976 },
       hasMap: 'https://maps.google.com/?q=Titanium+Business+Park,+Makarba,+Ahmedabad,+Gujarat+380051',
-      openingHoursSpecification: [
-        {
-          '@type': 'OpeningHoursSpecification',
-          dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-          opens: '09:30',
-          closes: '18:30',
-        },
-      ],
       contactPoint: [
         {
           '@type': 'ContactPoint',
@@ -181,13 +173,6 @@ export const ORGANIZATION_JSONLD = {
           email: COMPANY_INFO.emails[0].value,
           contactType: 'customer service',
           areaServed: ['IN', 'EU', 'US', 'GB', 'AE', 'SA', 'CA', 'AU', 'BR', 'ZA'],
-          availableLanguage: ['English'],
-        },
-        {
-          '@type': 'ContactPoint',
-          telephone: COMPANY_INFO.phones[1].value,
-          email: COMPANY_INFO.emails[1].value,
-          contactType: 'sales',
           availableLanguage: ['English'],
         },
       ],
@@ -222,7 +207,6 @@ export const ORGANIZATION_JSONLD = {
         'US Agent service',
         'European Authorized Representative',
       ],
-      sameAs: Object.values(COMPANY_INFO.socials),
     },
     {
       '@type': 'WebSite',

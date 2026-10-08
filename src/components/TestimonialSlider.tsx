@@ -35,11 +35,9 @@ export default function TestimonialSlider() {
       <div className="container">
         <div className="testimonial-split">
           <div>
-            <span className="section-label">Client Endorsements</span>
+            <span className="section-label">Testimonials</span>
             <h2 className="section-title">Real Feedback from Real Clients</h2>
-            <p className="section-subtitle" style={{ marginBottom: '32px' }}>
-              Hear directly from MedTech manufacturers who trust MedReg to steer their multi-jurisdiction regulatory approvals.
-            </p>
+            <div style={{ marginBottom: '24px' }} />
 
             <div
               className="testi-card"
@@ -59,9 +57,6 @@ export default function TestimonialSlider() {
                   </div>
                   <div>
                     <div className="author-name">{current.author}</div>
-                    <div className="author-role">
-                      {current.role} &bull; {current.company}
-                    </div>
                   </div>
                 </figcaption>
               </figure>

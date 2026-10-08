@@ -49,7 +49,7 @@ export default function LlmsTxtPage() {
             <div>
               <h2 style={{ fontSize: '18px', color: 'var(--slate-900)', marginBottom: '6px' }}>Summary</h2>
               <p>
-                MedReg Consultancy LLP provides medical device and IVD regulatory consulting for CDSCO (India), CE Marking (EU MDR 2017/745 & IVDR 2017/746), US FDA 510(k), QMSR (21 CFR Part 820), MDSAP, and ISO 13485:2016. We specialize in Class A, B, C, and D medical devices.
+                MedReg provides regulatory consulting for CDSCO India, FDA 510(k), and CE Marking. We specialize in Class A, B, C, and D medical devices.
               </p>
             </div>
 
@@ -61,24 +61,24 @@ export default function LlmsTxtPage() {
                 <li><strong>Founded:</strong> {COMPANY_INFO.establishedYear} ({COMPANY_INFO.yearsOfExperience} years of experience)</li>
                 <li><strong>Headquarters:</strong> {COMPANY_INFO.address.full}</li>
                 <li><strong>Phone:</strong> {COMPANY_INFO.phones[0].display}, {COMPANY_INFO.phones[1].display}</li>
-                <li><strong>Email:</strong> {COMPANY_INFO.emails[0].display}, {COMPANY_INFO.emails[1].display}</li>
+                <li><strong>Email:</strong> {COMPANY_INFO.emails[0].display}</li>
               </ul>
             </div>
 
             <div>
               <h2 style={{ fontSize: '18px', color: 'var(--slate-900)', marginBottom: '6px' }}>Primary Markets Served</h2>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <li>&bull; <strong>India (CDSCO):</strong> Form MD-5, MD-9 Manufacturing Licenses; Form MD-15 Import Licenses; Clinical Trials; Free Sale Certificates; Rule 44 Labeling; Indian Authorized Agent.</li>
-                <li>&bull; <strong>Europe (CE Mark):</strong> EU MDR 2017/745; EU IVDR 2017/746; Annex II & III Technical Master Files; CER; GSPR; PSUR; PRRC; European Authorized Representative (EC REP).</li>
-                <li>&bull; <strong>USA (US FDA):</strong> 510(k) Premarket Notifications; QMSR 21 CFR Part 820; Q-Submissions; Small Business Qualification (-75% fee relief); GUDID; US Agent Services; FDA Form 483 responses.</li>
-                <li>&bull; <strong>Global:</strong> MDSAP across 5 nations (US, CA, BR, JP, AU); ISO 13485:2016 QMS; IMDRF STED Dossiers; Country Registrations in ANVISA, TGA, Health Canada, SFDA.</li>
+                <li>&bull; <strong>India:</strong> Manufacturing License, Import License, Clinical Trials, Free Sale Certificate, Authorized Agent, Wholesale License and more.</li>
+                <li>&bull; <strong>Europe:</strong> CE Mark, Technical Master File, Gap Analysis, Clinical Evaluation, PMS Report, Risk Analysis (EN ISO 14971), PRRC, Authorized Agent through channel partners.</li>
+                <li>&bull; <strong>USA:</strong> Establishment and Listing, GUDID, QMSR, 510(k), Q-Submission, US Agent, 483 Response, E-Copy and more.</li>
+                <li>&bull; <strong>Other markets:</strong> Technical File / Dossier per IMDRF and GHTF, QMS Documentation, Internal Audit, Supplier Development, Process Validation.</li>
               </ul>
             </div>
 
             <div>
               <h2 style={{ fontSize: '18px', color: 'var(--slate-900)', marginBottom: '6px' }}>Key Metrics</h2>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                <li>&bull; Complete Projects: 2,000+</li>
+                <li>&bull; Complete Projects: 2k+</li>
                 <li>&bull; Countries Served: 20+</li>
                 <li>&bull; Clients Served: 950+</li>
                 <li>&bull; Service Offerings: 250+</li>

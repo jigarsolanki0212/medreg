@@ -19,10 +19,14 @@ import ClientLogosGrid from '@/components/ClientLogosGrid';
 import LeadForm from '@/components/LeadForm';
 import FaqAccordion from '@/components/FaqAccordion';
 import TestimonialSlider from '@/components/TestimonialSlider';
+import WhyChooseSection from '@/components/WhyChooseSection';
 import {
   COMPANY_INFO,
   HOMEPAGE_FAQS,
-  WHY_CHOOSE_MEDREG
+  INDIA_SERVICES,
+  EUROPE_SERVICES,
+  USA_SERVICES,
+  GLOBAL_SERVICES
 } from '@/data/medregData';
 import JsonLd from '@/components/JsonLd';
 import { faqJsonLd, webPageJsonLd } from '@/lib/seo';
@@ -32,13 +36,13 @@ const HOME_DESCRIPTION =
 
 export default function HomePage() {
   const principles = [
-    "Listening to customer needs & operational constraints",
-    "Understanding the regulatory scope and device risk clearly",
-    "Defining the optimal, cost-effective regulatory pathway",
-    "Maintaining 100% transparency in all dossier documentation",
-    "Delivering cost-effective strategies for high-priority products",
-    "Ensuring proactive, timely reporting and milestone advice",
-    "Following a preventive compliance approach to avoid audit delays"
+    'Listening to customer needs',
+    'Understanding the scope clearly',
+    'Defining the right regulatory pathway',
+    'Maintaining transparency in documentation',
+    'Delivering cost-effective strategies',
+    'Ensuring timely reporting and advice',
+    'Following a preventive approach'
   ];
 
   return (
@@ -70,17 +74,15 @@ export default function HomePage() {
         <div className="container hero-layout">
           <div className="hero-content">
             <div className="hero-credential-badge">
-              <span className="hero-credential-tag">CDSCO REGISTERED LIAISON</span>
-              <span className="hero-credential-sep" />
-              <span className="hero-credential-text">15+ Years Medical Device &amp; IVD Regulatory Excellence</span>
+              <span className="hero-credential-text">Grow your business with us!</span>
             </div>
 
             <h1 className="hero-title">
-              Your Trusted Partner in Medical Device &amp; IVD <span className="hero-title-highlight">Regulatory Success</span>
+              Your Partner in Medical Device <span className="hero-title-highlight">Regulatory Success</span>
             </h1>
 
             <p className="hero-subtitle">
-              From strategy to submission, MedReg Consultancy ensures complete compliance, helping medical device and IVD manufacturers achieve faster approvals and smooth market entry across India, Europe, the USA, and globally.
+              From strategy to submission, MedReg Consultancy ensures complete compliance, helping you achieve faster approvals and smooth market entry.
             </p>
 
             <div className="hero-ctas">
@@ -98,22 +100,12 @@ export default function HomePage() {
             </div>
 
             <div className="hero-trust-bar">
-              <div className="hero-trust-item">
-                <CheckCircle size={17} color="#79B8FF" />
-                <span>CDSCO Approved Liaison</span>
-              </div>
-              <div className="hero-trust-item">
-                <CheckCircle size={17} color="#79B8FF" />
-                <span>EU MDR / IVDR Compliant</span>
-              </div>
-              <div className="hero-trust-item">
-                <CheckCircle size={17} color="#79B8FF" />
-                <span>US FDA 510(k) & QMSR</span>
-              </div>
-              <div className="hero-trust-item">
-                <CheckCircle size={17} color="#79B8FF" />
-                <span>ISO 13485:2016 Certified Auditors</span>
-              </div>
+              {['India', 'Europe', 'USA', 'Other Markets'].map((m) => (
+                <div key={m} className="hero-trust-item">
+                  <CheckCircle size={17} color="#79B8FF" />
+                  <span>{m}</span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -148,7 +140,7 @@ export default function HomePage() {
               </div>
               <div className="hero-glass hero-glass--chip hero-glass--chip-b">
                 <Award size={18} />
-                <span>CE Certified</span>
+                <span>CE Marking</span>
               </div>
               <div className="hero-glass hero-glass--chip hero-glass--chip-c">
                 <Globe2 size={18} />
@@ -191,13 +183,10 @@ export default function HomePage() {
                   }}
                 >
                   <div style={{ fontSize: '34px', fontWeight: 800, color: '#F6C042', lineHeight: 1 }}>
-                    15+
+                    10+
                   </div>
                   <div style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--white)' }}>
-                    Years of Experience
-                  </div>
-                  <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.75)', marginTop: '2px' }}>
-                    Since 2011
+                    Year Of Experience
                   </div>
                 </div>
               </div>
@@ -206,14 +195,11 @@ export default function HomePage() {
             {/* Right: Content & Core Pillars */}
             <div>
               <span className="section-label">About MedReg Consultancy</span>
-              <h2 className="section-title" style={{ fontSize: '34px', lineHeight: 1.25 }}>
-                Empowering Medical Device Manufacturers To Achieve Compliance And Market Access
+              <h2 className="section-title" style={{ fontSize: 'clamp(26px, 3.4vw, 34px)', lineHeight: 1.25 }}>
+                Empowering Medical Device Manufacturers to Achieve Compliance and Market Access
               </h2>
-              <p style={{ fontSize: '16px', color: 'var(--slate-600)', marginBottom: '16px', lineHeight: 1.65 }}>
+              <p style={{ fontSize: '16px', color: 'var(--slate-600)', marginBottom: '24px', lineHeight: 1.65 }}>
                 MedReg Consultancy helps medical device and IVD manufacturers achieve smooth approvals and compliance in global markets. Since 2011, we’ve supported companies across India, Europe, the USA, and the UK with expert guidance and practical strategies, covering products from surgical disposables and orthopaedic implants to sutures, diagnostic consumables, and laparoscopic devices.
-              </p>
-              <p style={{ fontSize: '15px', color: 'var(--slate-600)', marginBottom: '24px' }}>
-                Backed by a multidisciplinary team of biomedical engineers, lead auditors, and regulatory strategists, we offer seamless technical services to de-risk your projects:
               </p>
 
               {/* Checkmark Bullets */}
@@ -246,13 +232,13 @@ export default function HomePage() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px', marginBottom: '44px' }}>
             <div>
               <span className="section-label" style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#79B8FF', borderColor: 'rgba(255,255,255,0.2)' }}>
-                Target Jurisdictions
+                Our Services
               </span>
               <h2 className="section-title" style={{ color: 'var(--white)' }}>
                 Our Comprehensive Service Offerings
               </h2>
               <p className="section-subtitle" style={{ color: 'rgba(255, 255, 255, 0.8)' }}>
-                Backed by a team of regulatory experts, we offer seamless licensing and technical compliance across the world’s major healthcare markets.
+                Backed by a team of experts, we offer seamless regulatory and technical services to streamline your project.
               </p>
             </div>
           </div>
@@ -262,10 +248,15 @@ export default function HomePage() {
             <Link href="/india/" className="market-card">
               <div className="market-card-left">
                 <Image src="/assets/india.png" alt="India Flag" width={52} height={52} className="market-card-flag" />
-                <span className="market-card-title">India (CDSCO)</span>
+                <span className="market-card-title">India</span>
               </div>
               <div className="market-card-desc">
-                Simplifying regulatory compliance for India’s healthcare market with expert guidance and documentation support for Manufacturing (MD-5/MD-9), Import (MD-15), and SUGAM submissions.
+                Simplifying regulatory compliance for India’s healthcare market with expert guidance and documentation support.
+                <ul className="market-card-services">
+                  {INDIA_SERVICES.map((sv) => (
+                    <li key={sv.id}>{sv.title}</li>
+                  ))}
+                </ul>
               </div>
               <div className="market-card-action">
                 <span>View More</span>
@@ -277,10 +268,15 @@ export default function HomePage() {
             <Link href="/europe/" className="market-card">
               <div className="market-card-left">
                 <Image src="/assets/europe.png" alt="European Union Flag" width={52} height={52} className="market-card-flag" />
-                <span className="market-card-title">Europe (CE MDR/IVDR)</span>
+                <span className="market-card-title">Europe</span>
               </div>
               <div className="market-card-desc">
-                Your partner for seamless licensing, documentation, and certification in the European healthcare sector under EU MDR 2017/745, Annex II/III Technical Files, and EC REP services.
+                Your partner for seamless licensing, documentation, and certification in European healthcare sector.
+                <ul className="market-card-services">
+                  {EUROPE_SERVICES.map((sv) => (
+                    <li key={sv.id}>{sv.title}</li>
+                  ))}
+                </ul>
               </div>
               <div className="market-card-action">
                 <span>View More</span>
@@ -292,10 +288,15 @@ export default function HomePage() {
             <Link href="/usa/" className="market-card">
               <div className="market-card-left">
                 <Image src="/assets/usa.png" alt="USA Flag" width={52} height={52} className="market-card-flag" />
-                <span className="market-card-title">USA (US FDA)</span>
+                <span className="market-card-title">USA</span>
               </div>
               <div className="market-card-desc">
-                Expert support for US healthcare compliance, ensuring smooth regulatory approvals through 510(k) Premarket Notifications, QMSR (21 CFR Part 820), GUDID, and official US Agent representation.
+                Expert support for US healthcare compliance, ensuring smooth regulatory approvals.
+                <ul className="market-card-services">
+                  {USA_SERVICES.map((sv) => (
+                    <li key={sv.id}>{sv.title}</li>
+                  ))}
+                </ul>
               </div>
               <div className="market-card-action">
                 <span>View More</span>
@@ -307,10 +308,15 @@ export default function HomePage() {
             <Link href="/other-services/" className="market-card">
               <div className="market-card-left">
                 <Image src="/assets/other.png" alt="Global Markets" width={52} height={52} className="market-card-flag" />
-                <span className="market-card-title">Global Markets</span>
+                <span className="market-card-title">Other</span>
               </div>
               <div className="market-card-desc">
-                Global healthcare regulatory solutions tailored to your licensing and certification needs, including MDSAP across 5 nations, ISO 13485:2016 implementation, and registrations in Brazil, Australia, and Canada.
+                Global healthcare regulatory solutions tailored to your licensing and certification needs.
+                <ul className="market-card-services">
+                  {GLOBAL_SERVICES.map((sv) => (
+                    <li key={sv.id}>{sv.title}</li>
+                  ))}
+                </ul>
               </div>
               <div className="market-card-action">
                 <span>View More</span>
@@ -324,38 +330,8 @@ export default function HomePage() {
       {/* 4. Statistics */}
       <StatsCounter />
 
-      {/* 5. Why Choose MedReg Split Section */}
-      <section className="why-section">
-        <div className="why-image-col">
-          {/* Background image loaded via CSS */}
-        </div>
-        <div className="why-content-col">
-          <span className="section-label" style={{ backgroundColor: 'rgba(255,255,255,0.1)', color: '#79B8FF', borderColor: 'rgba(255,255,255,0.2)' }}>
-            Why Choose MedReg
-          </span>
-          <h2 style={{ fontSize: '32px', color: 'var(--white)', marginBottom: '14px' }}>
-            Strategic Insight. Technical Precision. Global Approvals.
-          </h2>
-          <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '15px', lineHeight: 1.6 }}>
-            Expert consultants, thorough regulatory insight, and a seamless path to compliance—that’s our promise for your medical devices.
-          </p>
-
-          <div className="why-features-grid">
-            {WHY_CHOOSE_MEDREG.map((item, idx) => (
-              <div key={idx} className="why-feature-item">
-                <div className="why-icon-bubble">
-                  {idx === 0 && <Compass size={22} />}
-                  {idx === 1 && <FileCheck2 size={22} />}
-                  {idx === 2 && <Globe2 size={22} />}
-                  {idx === 3 && <ShieldCheck size={22} />}
-                </div>
-                <h3 className="why-feature-title">{item.title}</h3>
-                <p className="why-feature-desc">{item.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* 5. Why Choose Medreg */}
+      <WhyChooseSection />
 
       {/* 6. Regulatory Certification Badges */}
       <CertificationsRow />
@@ -369,14 +345,12 @@ export default function HomePage() {
           <div className="cta-grid">
             <div>
               <span className="section-label" style={{ backgroundColor: 'rgba(255,255,255,0.15)', color: '#79B8FF', borderColor: 'rgba(255,255,255,0.25)' }}>
-                Direct Regulatory Advisory
+                Free Consultation
               </span>
               <h2 style={{ fontSize: 'clamp(32px, 4vw, 44px)', color: 'var(--white)', marginBottom: '18px', fontWeight: 800 }}>
-                Accelerate Your Regulatory Journey Today
+                Accelerate your journey!
               </h2>
-              <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.65, marginBottom: '32px' }}>
-                Avoid regulatory delays, rejected submissions, and costly audit findings. Our senior medical device consultants review your product classification, compile submission-ready technical dossiers, and interface directly with competent authorities and notified bodies.
-              </p>
+              <div style={{ marginBottom: '32px' }} />
 
               <div style={{ display: 'flex', flexDirection: 'column', gap: '18px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
@@ -384,7 +358,7 @@ export default function HomePage() {
                     <Phone size={20} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)' }}>Call Our Regulatory Desk</div>
+                    <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)' }}>Call Us</div>
                     <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--white)' }}>
                       +91 88664 61989 &bull; +91 63523 88194
                     </div>
@@ -396,9 +370,9 @@ export default function HomePage() {
                     <Mail size={20} />
                   </div>
                   <div>
-                    <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)' }}>Email Submissions & Dossiers</div>
+                    <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)' }}>Email Us</div>
                     <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--white)' }}>
-                      info@medreg.in &bull; bdm@medreg.in
+                      info@medreg.in
                     </div>
                   </div>
                 </div>
@@ -407,7 +381,7 @@ export default function HomePage() {
 
             {/* Right: Lead Generation Form */}
             <div>
-              <LeadForm title="Accelerate Your Journey!" />
+              <LeadForm title="Get In Touch Today!" />
             </div>
           </div>
         </div>
@@ -435,10 +409,10 @@ export default function HomePage() {
           >
             <div>
               <h2 style={{ fontSize: 'clamp(22px, 3vw, 26px)', fontWeight: 800, color: 'var(--white)', marginBottom: '8px' }}>
-                Compliance Made Simple — Start With A Free Consultation
+                Compliance Made Simple – Start with a Free Consultation
               </h2>
               <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.85)', maxWidth: '640px' }}>
-                Speak directly with senior consultants who decode complex regulatory requirements and define a clear, actionable pathway for your medical devices.
+                +91 88664 61989, +91 63523 88194 · info@medreg.in
               </p>
             </div>
             <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
@@ -458,7 +432,7 @@ export default function HomePage() {
       {/* 11. Homepage FAQs */}
       <FaqAccordion
         faqs={HOMEPAGE_FAQS}
-        title="Get The Answers You Need To Move Forward"
+        title="Get the Answers You Need to Move Forward."
       />
     </>
   );

@@ -1,7 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Mail, MapPin, Linkedin, Twitter, Facebook, Instagram, ShieldCheck, ArrowRight } from 'lucide-react';
+import { Phone, Mail, MapPin } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/medregData';
 
 export default function Footer() {
@@ -22,23 +22,8 @@ export default function Footer() {
               />
             </Link>
             <p className="footer-about-text">
-              MedReg is your trusted global partner in navigating medical device and IVD regulations. We provide end-to-end consultancy for certifications, licenses, and technical documentation—simplifying compliance, accelerating approvals, and empowering your healthcare innovations worldwide.
-            </p>
-            <div className="footer-social-links">
-              <a href={COMPANY_INFO.socials.linkedin} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="MedReg on LinkedIn">
-                <Linkedin size={18} />
-              </a>
-              <a href={COMPANY_INFO.socials.twitter} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="MedReg on X (Twitter)">
-                <Twitter size={18} />
-              </a>
-              <a href={COMPANY_INFO.socials.facebook} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="MedReg on Facebook">
-                <Facebook size={18} />
-              </a>
-              <a href={COMPANY_INFO.socials.instagram} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label="MedReg on Instagram">
-                <Instagram size={18} />
-              </a>
-            </div>
-          </div>
+              MedReg is your trusted partner in navigating medical device regulations. We provide end-to-end consultancy for global certifications and licenses. With our expertise, we simplify compliance, accelerate approvals, and empower your innovations to reach markets worldwide.
+            </p>          </div>
 
           {/* Column 2: Regulatory Services */}
           <div>
@@ -116,9 +101,6 @@ export default function Footer() {
                 <div>
                   <a href={`mailto:${COMPANY_INFO.emails[0].value}`} style={{ color: 'inherit', display: 'block' }}>
                     {COMPANY_INFO.emails[0].display}
-                  </a>
-                  <a href={`mailto:${COMPANY_INFO.emails[1].value}`} style={{ display: 'block', fontSize: '13px', color: 'rgba(255,255,255,0.7)' }}>
-                    {COMPANY_INFO.emails[1].display} (BDM)
                   </a>
                 </div>
               </div>

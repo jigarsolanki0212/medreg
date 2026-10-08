@@ -2,16 +2,13 @@ import React from 'react';
 import Image from 'next/image';
 import { CERTIFICATIONS } from '@/data/medregData';
 
-export default function CertificationsRow({ title = "Certification Success, Without The Stress" }: { title?: string }) {
+export default function CertificationsRow({ title = "Certification Success, Without the Stress" }: { title?: string }) {
   return (
     <section className="cert-section">
       <div className="container">
         <div className="center-content">
-          <span className="section-label">Global Regulatory Standards</span>
+          <span className="section-label">Certifications</span>
           <h2 className="section-title text-center">{title}</h2>
-          <p className="section-subtitle text-center">
-            We provide specialized consulting across leading international authorities, notified bodies, and statutory quality benchmarks.
-          </p>
         </div>
 
         <div className="cert-grid">

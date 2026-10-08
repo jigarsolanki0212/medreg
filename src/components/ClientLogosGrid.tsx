@@ -3,7 +3,6 @@
 import React from 'react';
 import Image from 'next/image';
 import { CLIENT_LOGOS } from '@/data/medregData';
-import { ShieldCheck, Award } from 'lucide-react';
 
 export default function ClientLogosGrid() {
   // Duplicate logos for seamless infinite looping
@@ -15,15 +14,11 @@ export default function ClientLogosGrid() {
       <div className="container">
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '16px', marginBottom: '32px' }}>
           <div>
-            <span className="section-label section-label-gold">Enterprise Trust</span>
-            <h2 className="section-title">Our Valued Clients</h2>
+            <span className="section-label section-label-gold">Accelerate your journey!</span>
+            <h2 className="section-title">Our Clients</h2>
             <p className="section-subtitle">
-              Trusted by 950+ medical device and IVD manufacturers across domestic and international healthcare markets.
+              Almost 950+ Clients
             </p>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', fontWeight: 700, color: 'var(--primary)', fontSize: '15px' }}>
-            <Award size={18} color="var(--primary)" />
-            <span>950+ Manufacturers &amp; Importers Worldwide</span>
           </div>
         </div>
 
