@@ -69,9 +69,6 @@ export default function Footer() {
               <li className="footer-link-item">
                 <Link href="/contact-us/">Book Consultation</Link>
               </li>
-              <li className="footer-link-item">
-                <Link href="/llms-txt/">AI & Search Documentation</Link>
-              </li>
             </ul>
           </div>
 
@@ -115,9 +112,7 @@ export default function Footer() {
           </div>
           <div className="footer-legal-links">
             <Link href="/privacy-policy/">Privacy Policy</Link>
-            <Link href="/contact-us/">Terms of Engagement</Link>
-            <a href="/llms.txt" style={{ color: '#79B8FF' }}>llms.txt</a>
-          </div>
+            <Link href="/contact-us/">Terms of Engagement</Link>          </div>
         </div>
       </div>
     </footer>
