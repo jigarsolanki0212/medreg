@@ -1584,23 +1584,6 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
-/* Zero-Flicker Hardware-Accelerated Route Navigation */
-.page-transition-wrapper {
-  /* No fill-mode: the transform is dropped after the animation so it never creates a
-     containing block for sticky/fixed descendants. */
-  animation: smoothPageEntrance 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-@keyframes smoothPageEntrance {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 10px, 0);
-  }
-  100% {
-    opacity: 1;
-    transform: none;
-  }
-}
 
 /* 3D Interactive Depth & Perspective Tokens */
 /* Executive Stat Card Motion */
