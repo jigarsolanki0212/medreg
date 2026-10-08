@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+
+# Testing and environment
+.env*
+.vercel
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Raw extraction scrapings & test captures
+extracted_raw/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
