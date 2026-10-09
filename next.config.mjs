@@ -9,7 +9,7 @@ const csp = [
   "font-src 'self' data:",
   "img-src 'self' data: blob: https:",
   "frame-src 'self' https://www.google.com https://maps.google.com",
-  "connect-src 'self' https://maps.googleapis.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com",
+  "connect-src 'self' https://maps.googleapis.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://va.vercel-scripts.com",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
