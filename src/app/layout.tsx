@@ -7,6 +7,7 @@ import JsonLd from '@/components/JsonLd';
 import MotionController from '@/components/MotionController';
 import FloatingContact from '@/components/FloatingContact';
 import { DEFAULT_OG_IMAGE, ORGANIZATION_JSONLD, SITE_NAME, SITE_URL } from '@/lib/seo';
+import { Analytics } from '@vercel/analytics/next';
 
 // Self-hosted at build time: no render-blocking request to Google Fonts, no layout shift.
 const jakarta = Plus_Jakarta_Sans({
@@ -139,6 +140,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Footer />
         <FloatingContact />
         <MotionController />
+        <Analytics />
       </body>
     </html>
   );
