@@ -11,12 +11,12 @@ interface FormErrors {
   general?: string;
 }
 
-export default function LeadForm({ title = "Accelerate Your Journey!" }: { title?: string }) {
+export default function LeadForm({ title = "Accelerate Your Journey!", defaultService = 'Europe CE MDR / IVDR' }: { title?: string; defaultService?: string }) {
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     mobile: '',
-    serviceInterest: 'CDSCO India Compliance',
+    serviceInterest: defaultService,
     message: '',
     // Honeypot field to trap malicious scrapers and spam bots
     website_hp: ''
@@ -173,7 +173,7 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
                 fullName: '',
                 email: '',
                 mobile: '',
-                serviceInterest: 'CDSCO India Compliance',
+                serviceInterest: defaultService,
                 message: '',
                 website_hp: ''
               });
@@ -312,10 +312,10 @@ export default function LeadForm({ title = "Accelerate Your Journey!" }: { title
               value={formData.serviceInterest}
               onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
             >
+              <option value="Europe CE MDR / IVDR">Europe — CE Marking under EU MDR 2017/745 & Technical Files</option>
+              <option value="US FDA 510(k)">USA — US FDA 510(k), Registration & QMSR</option>
+              <option value="MDSAP & ISO 13485">Other Global Markets — MDSAP & ISO 13485:2016 QMS</option>
               <option value="CDSCO India Compliance">India — CDSCO Manufacturing & Import Licensing</option>
-              <option value="Europe CE MDR / IVDR">Europe — CE Mark MDR 2017/745 & Technical Files</option>
-              <option value="US FDA 510(k)">USA — US FDA 510(k) Premarket & QMSR</option>
-              <option value="MDSAP & ISO 13485">Global — MDSAP & ISO 13485:2016 QMS</option>
               <option value="Clinical Trials / BEP">Clinical Evaluation / BEP & BER Reports</option>
               <option value="Multi-Market Entry">Multi-Market Global Strategy</option>
             </select>

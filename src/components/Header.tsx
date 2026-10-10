@@ -6,31 +6,39 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Phone, Mail, ChevronDown, Menu, X, ArrowRight } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/medregData';
+import { MARKETS } from '@/data/markets';
 
-const SERVICE_LINKS = [
-  { href: '/india/', flag: '/assets/india.png', title: 'India (CDSCO)', sub: 'Manufacturing & Import Licenses', mobile: 'India (CDSCO)' },
-  { href: '/europe/', flag: '/assets/europe.png', title: 'Europe (CE MDR/IVDR)', sub: 'Technical Files & EC REP', mobile: 'Europe (CE MDR/IVDR)' },
-  { href: '/usa/', flag: '/assets/usa.png', title: 'USA (US FDA)', sub: '510(k), QMSR & US Agent', mobile: 'USA (US FDA 510k)' },
-  { href: '/other-services/', flag: '/assets/other.png', title: 'Global Markets', sub: 'MDSAP, ISO 13485, STED', mobile: 'Global (MDSAP / ISO 13485)' },
+// Order per redesign brief §15: Europe, USA, Other Global, India.
+const SERVICE_LINKS = MARKETS.map((m) => ({ href: m.href, flag: m.flag, title: m.navTitle, sub: m.navSub }));
+
+const COMPANY_LINKS = [
+  { href: '/about-us/', title: 'About Us', sub: 'Who we are and how we work' },
+  { href: '/team/', title: 'Our Team', sub: 'Regulatory and quality specialists' },
+  { href: '/gallery/', title: 'Gallery', sub: 'Team, office and events' },
+  { href: '/careers/', title: 'Careers', sub: 'Current openings and applications' },
 ];
+
+type DropKey = 'services' | 'company' | null;
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [openMenu, setOpenMenu] = useState<DropKey>(null);
   const [scrolled, setScrolled] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+  const companyRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
 
   const isActive = (path: string) => {
     if (path === '/') return pathname === '/';
     return pathname?.startsWith(path) ?? false;
   };
-  const servicesActive = SERVICE_LINKS.some((s) => isActive(s.href.replace(/\/$/, '')));
+  const servicesActive = isActive('/services') || SERVICE_LINKS.some((s) => isActive(s.href.replace(/\/$/, '')));
+  const companyActive = COMPANY_LINKS.some((s) => isActive(s.href.replace(/\/$/, '')));
 
   // Close menus whenever the route changes.
   useEffect(() => {
     setMobileMenuOpen(false);
-    setServicesOpen(false);
+    setOpenMenu(null);
   }, [pathname]);
 
   // Compact, elevated header once the page scrolls.
@@ -54,7 +62,7 @@ export default function Header() {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         setMobileMenuOpen(false);
-        setServicesOpen(false);
+        setOpenMenu(null);
       }
     };
     document.addEventListener('keydown', onKey);
@@ -65,15 +73,25 @@ export default function Header() {
     };
   }, [mobileMenuOpen]);
 
-  // Tap/click outside closes the Services dropdown (touch laptops and iPads have no hover-out).
+  // Tap/click outside closes an open dropdown (touch laptops and iPads have no hover-out).
   useEffect(() => {
-    if (!servicesOpen) return;
+    if (!openMenu) return;
+    const ref = openMenu === 'services' ? servicesRef : companyRef;
     const onDown = (e: PointerEvent) => {
-      if (!dropdownRef.current?.contains(e.target as Node)) setServicesOpen(false);
+      if (!ref.current?.contains(e.target as Node)) setOpenMenu(null);
     };
     document.addEventListener('pointerdown', onDown);
     return () => document.removeEventListener('pointerdown', onDown);
-  }, [servicesOpen]);
+  }, [openMenu]);
+
+  const dropdownProps = (key: Exclude<DropKey, null>) => ({
+    className: `nav-item-dropdown ${openMenu === key ? 'open' : ''}`,
+    onPointerEnter: (e: React.PointerEvent) => e.pointerType === 'mouse' && setOpenMenu(key),
+    onPointerLeave: (e: React.PointerEvent) => e.pointerType === 'mouse' && setOpenMenu(null),
+    onBlur: (e: React.FocusEvent<HTMLDivElement>) => {
+      if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setOpenMenu(null);
+    },
+  });
 
   return (
     <>
@@ -89,6 +107,7 @@ export default function Header() {
               <Phone size={14} className="text-accent" aria-hidden="true" />
               <span>{COMPANY_INFO.phones[1].display}</span>
             </a>
+            <span className="top-bar-item top-bar-tz">{COMPANY_INFO.timezone.short}</span>
             <a href={`mailto:${COMPANY_INFO.emails[0].value}`} className="top-bar-item">
               <Mail size={14} className="text-accent" aria-hidden="true" />
               <span>{COMPANY_INFO.emails[0].display}</span>
@@ -122,33 +141,51 @@ export default function Header() {
             <Link href="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
               Home
             </Link>
-            <Link href="/about-us/" className={`nav-link ${isActive('/about-us') ? 'active' : ''}`}>
-              About Us
-            </Link>
+            <div ref={companyRef} {...dropdownProps('company')}>
+              <button
+                type="button"
+                className={`nav-link ${companyActive ? 'active' : ''}`}
+                style={{ background: 'none', border: 'none', cursor: 'pointer' }}
+                aria-expanded={openMenu === 'company'}
+                aria-haspopup="true"
+                aria-controls="company-menu"
+                onClick={() => setOpenMenu((o) => (o === 'company' ? null : 'company'))}
+              >
+                About <ChevronDown size={14} className="nav-chevron" aria-hidden="true" />
+              </button>
+              <div className="dropdown-menu" id="company-menu">
+                {COMPANY_LINKS.map((s) => (
+                  <Link key={s.href} href={s.href} className="dropdown-item" onClick={() => setOpenMenu(null)}>
+                    <div>
+                      <div style={{ fontWeight: 600 }}>{s.title}</div>
+                      <div style={{ fontSize: '12px', color: 'var(--slate-500)' }}>{s.sub}</div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
 
-            <div
-              ref={dropdownRef}
-              className={`nav-item-dropdown ${servicesOpen ? 'open' : ''}`}
-              onPointerEnter={(e) => e.pointerType === 'mouse' && setServicesOpen(true)}
-              onPointerLeave={(e) => e.pointerType === 'mouse' && setServicesOpen(false)}
-              onBlur={(e) => {
-                if (!e.currentTarget.contains(e.relatedTarget as Node | null)) setServicesOpen(false);
-              }}
-            >
+            <div ref={servicesRef} {...dropdownProps('services')}>
               <button
                 type="button"
                 className={`nav-link ${servicesActive ? 'active' : ''}`}
                 style={{ background: 'none', border: 'none', cursor: 'pointer' }}
-                aria-expanded={servicesOpen}
+                aria-expanded={openMenu === 'services'}
                 aria-haspopup="true"
                 aria-controls="services-menu"
-                onClick={() => setServicesOpen((o) => !o)}
+                onClick={() => setOpenMenu((o) => (o === 'services' ? null : 'services'))}
               >
                 Services <ChevronDown size={14} className="nav-chevron" aria-hidden="true" />
               </button>
-              <div className="dropdown-menu" id="services-menu">
+              <div className="dropdown-menu dropdown-menu--wide" id="services-menu">
+                <Link href="/services/" className="dropdown-item dropdown-item--all" onClick={() => setOpenMenu(null)}>
+                  <div>
+                    <div style={{ fontWeight: 700 }}>All Services</div>
+                    <div style={{ fontSize: '12px', color: 'var(--slate-500)' }}>Regulatory consultancy for global markets</div>
+                  </div>
+                </Link>
                 {SERVICE_LINKS.map((s) => (
-                  <Link key={s.href} href={s.href} className="dropdown-item" onClick={() => setServicesOpen(false)}>
+                  <Link key={s.href} href={s.href} className="dropdown-item" onClick={() => setOpenMenu(null)}>
                     <Image src={s.flag} alt="" width={22} height={22} className="dropdown-flag" />
                     <div>
                       <div style={{ fontWeight: 600 }}>{s.title}</div>
@@ -159,8 +196,11 @@ export default function Header() {
               </div>
             </div>
 
-            <Link href="/team/" className={`nav-link ${isActive('/team') ? 'active' : ''}`}>
-              Team
+            <Link href="/training/" className={`nav-link ${isActive('/training') ? 'active' : ''}`}>
+              Training
+            </Link>
+            <Link href="/exhibitions/" className={`nav-link ${isActive('/exhibitions') ? 'active' : ''}`}>
+              Exhibitions
             </Link>
             <Link href="/blogs/" className={`nav-link ${isActive('/blogs') ? 'active' : ''}`}>
               Insights
@@ -218,30 +258,45 @@ export default function Header() {
 
             <nav className="drawer-nav" aria-label="Mobile navigation">
               <Link href="/" className="drawer-link" style={{ ['--i' as string]: 0 }}>Home</Link>
-              <Link href="/about-us/" className="drawer-link" style={{ ['--i' as string]: 1 }}>About Us</Link>
-
-              <div className="drawer-group" style={{ ['--i' as string]: 2 }}>
-                <div className="drawer-group-title">Regulatory Markets</div>
+              <div className="drawer-group" style={{ ['--i' as string]: 1 }}>
+                <div className="drawer-group-title">Services</div>
                 <div className="drawer-group-links">
+                  <Link href="/services/" className="drawer-sublink">
+                    <span style={{ fontWeight: 700 }}>All Services</span>
+                  </Link>
                   {SERVICE_LINKS.map((s) => (
                     <Link key={s.href} href={s.href} className="drawer-sublink">
                       <Image src={s.flag} alt="" width={20} height={20} />
-                      <span>{s.mobile}</span>
+                      <span>{s.title}</span>
                     </Link>
                   ))}
                 </div>
               </div>
 
-              <Link href="/team/" className="drawer-link" style={{ ['--i' as string]: 3 }}>Meet Our Team</Link>
-              <Link href="/blogs/" className="drawer-link" style={{ ['--i' as string]: 4 }}>Regulatory Insights</Link>
-              <Link href="/contact-us/" className="drawer-link" style={{ ['--i' as string]: 5 }}>Contact Us</Link>
+              <Link href="/training/" className="drawer-link" style={{ ['--i' as string]: 2 }}>Training</Link>
+              <Link href="/exhibitions/" className="drawer-link" style={{ ['--i' as string]: 3 }}>Exhibitions &amp; Events</Link>
+
+              <div className="drawer-group" style={{ ['--i' as string]: 4 }}>
+                <div className="drawer-group-title">Company</div>
+                <div className="drawer-group-links">
+                  {COMPANY_LINKS.map((s) => (
+                    <Link key={s.href} href={s.href} className="drawer-sublink">
+                      <span>{s.title}</span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+
+              <Link href="/blogs/" className="drawer-link" style={{ ['--i' as string]: 5 }}>Regulatory Insights</Link>
+              <Link href="/contact-us/" className="drawer-link" style={{ ['--i' as string]: 6 }}>Contact Us</Link>
             </nav>
 
             <div className="drawer-foot">
               <div style={{ fontSize: '13px', color: 'var(--slate-500)', marginBottom: '10px' }}>Direct Phone Lines</div>
-              <a href={`tel:${COMPANY_INFO.phones[0].value}`} style={{ display: 'block', fontWeight: 700, color: 'var(--primary)', marginBottom: '6px' }}>
+              <a href={`tel:${COMPANY_INFO.phones[0].value}`} style={{ display: 'block', fontWeight: 700, color: 'var(--primary)', marginBottom: '2px' }}>
                 {COMPANY_INFO.phones[0].display}
               </a>
+              <div style={{ fontSize: '12.5px', color: 'var(--slate-500)', marginBottom: '8px' }}>{COMPANY_INFO.timezone.label}</div>
               <a href={`mailto:${COMPANY_INFO.emails[0].value}`} style={{ display: 'block', fontSize: '14px', color: 'var(--slate-600)' }}>
                 {COMPANY_INFO.emails[0].display}
               </a>

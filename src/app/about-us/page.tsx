@@ -19,7 +19,7 @@ import WhyChooseSection from '@/components/WhyChooseSection';
 import {
   COMPANY_INFO,
   OFFICE_GALLERY,
-  WHY_CHOOSE_MEDREG
+  STATS
 } from '@/data/medregData';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
@@ -27,10 +27,10 @@ import { pageMetadata, webPageJsonLd } from '@/lib/seo';
 
 const PAGE_PATH = '/about-us/';
 const PAGE_DESCRIPTION =
-  'Founded in 2011 in Ahmedabad, MedReg helps device and IVD makers win CDSCO, CE (MDR/IVDR), US FDA, MDSAP and ISO 13485 approvals. 2,000+ projects.';
+  'MedReg is a medical device regulatory consultancy in Ahmedabad supporting CE marking (EU MDR/IVDR), US FDA, MDSAP, ISO 13485 and CDSCO compliance. 2k+ projects.';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'About Us – Device Regulatory Experts Since 2011',
+  title: 'About Us – Medical Device Regulatory Consultancy',
   description: PAGE_DESCRIPTION,
   path: PAGE_PATH,
 });
@@ -75,10 +75,10 @@ export default function AboutUsPage() {
                 About MedReg Consultancy
               </h2>
               <p style={{ fontSize: '16px', color: 'var(--slate-600)', lineHeight: 1.7, marginBottom: '18px' }}>
-                MedReg Consultancy was founded with one aim in mind – to empower medical device manufacturers by providing regulatory solutions. Since 2011, Medreg has served numerous clients across India, Europe, the USA, and the UK. We have helped medical device industries in obtaining various certifications and licenses, such as CE Certification, UK MDR, ISO 13485:2016 Certification, ICMED, MDSAP, USFDA Listing, Country Registration, UL Certification, USFDA 510K, CDSCO licenses MD-05, MD-06, MD-09, MD-10, MD-15, Free Sale Certificates, PMA, and various country registrations.
+                MedReg is a medical device regulatory consultancy, founded with one aim in mind – to empower medical device manufacturers by providing regulatory solutions. MedReg has served numerous clients across Europe, the USA, India and the UK. We have supported medical device manufacturers in obtaining approvals, certificates and licences from the relevant authorities, Notified Bodies and certification bodies, such as CE marking, UK MDR, ISO 13485:2016 certification, ICMED, MDSAP, US FDA establishment registration and listing, US FDA 510(k) clearance, PMA, UL certification, CDSCO licences MD-05, MD-06, MD-09, MD-10 and MD-15, Free Sale Certificates and various country registrations.
               </p>
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.7, marginBottom: '28px' }}>
-                No matter the size of your business, our team of experts with deep industry knowledge will provide you with the knowledge, guidance, and support for getting the proper regulatory certifications so you can sell your products in your desired geographic location as fast as possible. We define a regulatory pathway that suits your business and deliver cost-effective strategies for your specific products.
+                No matter the size of your business, our team of experts with deep industry knowledge will provide you with the knowledge, guidance, and support to meet the regulatory requirements of your target markets, so you can sell your products in your desired geographic location as fast as possible. We define a regulatory pathway that suits your business and deliver cost-effective strategies for your specific products.
               </p>
 
               <div style={{ display: 'flex', gap: '16px', alignItems: 'center' }}>
@@ -117,10 +117,10 @@ export default function AboutUsPage() {
                   }}
                 >
                   <div style={{ fontSize: '30px', fontWeight: 800, color: '#79B8FF', lineHeight: 1 }}>
-                    10+
+                    {STATS[0].value}
                   </div>
                   <div style={{ fontSize: '12px', fontWeight: 600, textTransform: 'uppercase' }}>
-                    Year Of Experience
+                    {STATS[0].label}
                   </div>
                 </div>
               </div>
@@ -159,7 +159,7 @@ export default function AboutUsPage() {
                 Our Mission
               </h3>
               <p style={{ fontSize: '15px', color: 'var(--slate-600)', lineHeight: 1.65 }}>
-                To empower medical device manufacturers, healthcare innovators, and life science companies to bring their products to global markets with the right regulatory certificates. By delivering expert guidance and end-to-end support throughout the complex process of medical certification, we ensure that safe, effective, and innovative medical technologies reach the patients.
+                To empower medical device manufacturers, healthcare innovators, and life science companies to bring their products to global markets with the right regulatory approvals. By delivering expert guidance and end-to-end consultancy throughout the complex regulatory process, we help safe, effective, and innovative medical technologies reach patients.
               </p>
             </div>
 
@@ -195,7 +195,7 @@ export default function AboutUsPage() {
           </div>
 
           <div className="grid-3">
-            {OFFICE_GALLERY.map((item, idx) => (
+            {OFFICE_GALLERY.slice(0, 3).map((item, idx) => (
               <div key={idx} className="card gallery-card" style={{ padding: '0', overflow: 'hidden' }}>
                 <div style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
                   <Image
@@ -216,6 +216,12 @@ export default function AboutUsPage() {
                 </div>
               </div>
             ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '32px' }}>
+            <Link href="/gallery/" className="btn btn-primary">
+              <span>View Full Gallery</span>
+              <ArrowRight size={16} />
+            </Link>
           </div>
         </div>
       </section>

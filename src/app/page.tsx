@@ -20,19 +20,14 @@ import LeadForm from '@/components/LeadForm';
 import FaqAccordion from '@/components/FaqAccordion';
 import TestimonialSlider from '@/components/TestimonialSlider';
 import WhyChooseSection from '@/components/WhyChooseSection';
-import {
-  COMPANY_INFO,
-  HOMEPAGE_FAQS,
-  INDIA_SERVICES,
-  EUROPE_SERVICES,
-  USA_SERVICES,
-  GLOBAL_SERVICES
-} from '@/data/medregData';
+import { COMPANY_INFO, HOMEPAGE_FAQS, STATS } from '@/data/medregData';
+import { MARKETS } from '@/data/markets';
+import SocialSection from '@/components/SocialSection';
 import JsonLd from '@/components/JsonLd';
 import { faqJsonLd, webPageJsonLd } from '@/lib/seo';
 
 const HOME_DESCRIPTION =
-  'MedReg Consultancy (Ahmedabad, since 2011) secures CDSCO, CE (EU MDR/IVDR), US FDA 510(k), MDSAP & ISO 13485 approvals for medical device & IVD makers.';
+  'MedReg is a medical device regulatory consultancy in Ahmedabad supporting CE marking (EU MDR/IVDR), US FDA 510(k), MDSAP, ISO 13485 and CDSCO for device & IVD makers.';
 
 export default function HomePage() {
   const principles = [
@@ -90,7 +85,7 @@ export default function HomePage() {
                 <span>Book Free Consultation</span>
                 <ArrowRight size={16} />
               </Link>
-              <Link href="/india/" className="btn btn-outline-white">
+              <Link href="/services/" className="btn btn-outline-white">
                 <span>Explore Services</span>
               </Link>
               <a href={`tel:${COMPANY_INFO.phones[0].value}`} className="btn btn-white btn-sm hero-call-btn">
@@ -100,7 +95,7 @@ export default function HomePage() {
             </div>
 
             <div className="hero-trust-bar">
-              {['India', 'Europe', 'USA', 'Other Markets'].map((m) => (
+              {['Europe', 'USA', 'Other Markets', 'India'].map((m) => (
                 <div key={m} className="hero-trust-item">
                   <CheckCircle size={17} color="#79B8FF" />
                   <span>{m}</span>
@@ -119,9 +114,9 @@ export default function HomePage() {
                 </div>
                 <div className="hero-glass-title">Market Approval Roadmap</div>
                 {[
-                  { label: 'CDSCO MD-15 Import Licence', pct: 100 },
-                  { label: 'EU MDR Technical File', pct: 86 },
-                  { label: 'US FDA 510(k) eSTAR', pct: 72 },
+                  { label: 'EU MDR Technical File', pct: 100 },
+                  { label: 'US FDA 510(k) eSTAR', pct: 86 },
+                  { label: 'CDSCO MD-15 Import Licence', pct: 72 },
                 ].map((row, i) => (
                   <div key={row.label} className="hero-progress-row">
                     <div className="hero-progress-label">
@@ -183,10 +178,10 @@ export default function HomePage() {
                   }}
                 >
                   <div style={{ fontSize: '34px', fontWeight: 800, color: '#F6C042', lineHeight: 1 }}>
-                    10+
+                    {STATS[0].value}
                   </div>
                   <div style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.06em', color: 'var(--white)' }}>
-                    Year Of Experience
+                    {STATS[0].label}
                   </div>
                 </div>
               </div>
@@ -199,7 +194,7 @@ export default function HomePage() {
                 Empowering Medical Device Manufacturers to Achieve Compliance and Market Access
               </h2>
               <p style={{ fontSize: '16px', color: 'var(--slate-600)', marginBottom: '24px', lineHeight: 1.65 }}>
-                MedReg Consultancy helps medical device and IVD manufacturers achieve smooth approvals and compliance in global markets. Since 2011, we’ve supported companies across India, Europe, the USA, and the UK with expert guidance and practical strategies, covering products from surgical disposables and orthopaedic implants to sutures, diagnostic consumables, and laparoscopic devices.
+                MedReg is a medical device regulatory consultancy that helps medical device and IVD manufacturers achieve smooth approvals and compliance in global markets. We support companies across Europe, the USA, India and the UK with expert guidance and practical strategies, covering products from surgical disposables and orthopaedic implants to sutures, diagnostic consumables, and laparoscopic devices.
               </p>
 
               {/* Checkmark Bullets */}
@@ -244,84 +239,31 @@ export default function HomePage() {
           </div>
 
           <div>
-            {/* India Card */}
-            <Link href="/india/" className="market-card">
-              <div className="market-card-left">
-                <Image src="/assets/india.png" alt="India Flag" width={52} height={52} className="market-card-flag" />
-                <span className="market-card-title">India</span>
-              </div>
-              <div className="market-card-desc">
-                Simplifying regulatory compliance for India’s healthcare market with expert guidance and documentation support.
-                <ul className="market-card-services">
-                  {INDIA_SERVICES.map((sv) => (
-                    <li key={sv.id}>{sv.title}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="market-card-action">
-                <span>View More</span>
-                <ArrowRight size={18} />
-              </div>
-            </Link>
-
-            {/* Europe Card */}
-            <Link href="/europe/" className="market-card">
-              <div className="market-card-left">
-                <Image src="/assets/europe.png" alt="European Union Flag" width={52} height={52} className="market-card-flag" />
-                <span className="market-card-title">Europe</span>
-              </div>
-              <div className="market-card-desc">
-                Your partner for seamless licensing, documentation, and certification in European healthcare sector.
-                <ul className="market-card-services">
-                  {EUROPE_SERVICES.map((sv) => (
-                    <li key={sv.id}>{sv.title}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="market-card-action">
-                <span>View More</span>
-                <ArrowRight size={18} />
-              </div>
-            </Link>
-
-            {/* USA Card */}
-            <Link href="/usa/" className="market-card">
-              <div className="market-card-left">
-                <Image src="/assets/usa.png" alt="USA Flag" width={52} height={52} className="market-card-flag" />
-                <span className="market-card-title">USA</span>
-              </div>
-              <div className="market-card-desc">
-                Expert support for US healthcare compliance, ensuring smooth regulatory approvals.
-                <ul className="market-card-services">
-                  {USA_SERVICES.map((sv) => (
-                    <li key={sv.id}>{sv.title}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="market-card-action">
-                <span>View More</span>
-                <ArrowRight size={18} />
-              </div>
-            </Link>
-
-            {/* Global / Other Card */}
-            <Link href="/other-services/" className="market-card">
-              <div className="market-card-left">
-                <Image src="/assets/other.png" alt="Global Markets" width={52} height={52} className="market-card-flag" />
-                <span className="market-card-title">Other</span>
-              </div>
-              <div className="market-card-desc">
-                Global healthcare regulatory solutions tailored to your licensing and certification needs.
-                <ul className="market-card-services">
-                  {GLOBAL_SERVICES.map((sv) => (
-                    <li key={sv.id}>{sv.title}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="market-card-action">
-                <span>View More</span>
-                <ArrowRight size={18} />
-              </div>
+            {MARKETS.map((m) => (
+              <Link key={m.key} href={m.href} className="market-card">
+                <div className="market-card-left">
+                  <Image src={m.flag} alt="" width={52} height={52} className="market-card-flag" />
+                  <span className="market-card-title">{m.name}</span>
+                </div>
+                <div className="market-card-desc">
+                  {m.description}
+                  <ul className="market-card-services">
+                    {m.services.map((sv) => (
+                      <li key={sv.id}>{sv.title}</li>
+                    ))}
+                  </ul>
+                </div>
+                <div className="market-card-action">
+                  <span>Explore Services</span>
+                  <ArrowRight size={18} />
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div style={{ textAlign: 'center', marginTop: '28px' }}>
+            <Link href="/services/" className="btn btn-gold">
+              <span>View All Services</span>
+              <ArrowRight size={16} />
             </Link>
           </div>
         </div>
@@ -360,8 +302,9 @@ export default function HomePage() {
                   <div>
                     <div style={{ fontSize: '13px', color: 'rgba(255,255,255,0.7)' }}>Call Us</div>
                     <div style={{ fontSize: '16px', fontWeight: 700, color: 'var(--white)' }}>
-                      +91 88664 61989 &bull; +91 63523 88194
+                      {COMPANY_INFO.phones.map((p) => p.display).join(' • ')}
                     </div>
+                    <div style={{ fontSize: '12.5px', color: 'rgba(255,255,255,0.7)' }}>{COMPANY_INFO.timezone.label}</div>
                   </div>
                 </div>
 
@@ -412,7 +355,7 @@ export default function HomePage() {
                 Compliance Made Simple – Start with a Free Consultation
               </h2>
               <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.85)', maxWidth: '640px' }}>
-                +91 88664 61989, +91 63523 88194 · info@medreg.in
+                {COMPANY_INFO.phones.map((p) => p.display).join(', ')} ({COMPANY_INFO.timezone.short}) · {COMPANY_INFO.emails[0].display}
               </p>
             </div>
             <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
@@ -428,6 +371,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <SocialSection />
 
       {/* 11. Homepage FAQs */}
       <FaqAccordion

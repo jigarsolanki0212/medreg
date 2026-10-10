@@ -58,7 +58,6 @@ export default function LlmsTxtPage() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <li><strong>Entity:</strong> {COMPANY_INFO.name}</li>
                 <li><strong>Tagline:</strong> {COMPANY_INFO.tagline}</li>
-                <li><strong>Founded:</strong> {COMPANY_INFO.establishedYear} ({COMPANY_INFO.yearsOfExperience} years of experience)</li>
                 <li><strong>Headquarters:</strong> {COMPANY_INFO.address.full}</li>
                 <li><strong>Phone:</strong> {COMPANY_INFO.phones[0].display}, {COMPANY_INFO.phones[1].display}</li>
                 <li><strong>Email:</strong> {COMPANY_INFO.emails[0].display}</li>
@@ -70,7 +69,7 @@ export default function LlmsTxtPage() {
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 <li>&bull; <strong>India:</strong> Manufacturing License, Import License, Clinical Trials, Free Sale Certificate, Authorized Agent, Wholesale License and more.</li>
                 <li>&bull; <strong>Europe:</strong> CE Mark, Technical Master File, Gap Analysis, Clinical Evaluation, PMS Report, Risk Analysis (EN ISO 14971), PRRC, Authorized Agent through channel partners.</li>
-                <li>&bull; <strong>USA:</strong> Establishment and Listing, GUDID, QMSR, 510(k), Q-Submission, US Agent, 483 Response, E-Copy and more.</li>
+                <li>&bull; <strong>USA:</strong> FDA classification, establishment registration and device listing, 510(k), Small Business Determination, Q-Submission, GUDID, U.S. Agent, labelling, QMSR, training, regulatory reporting, design controls, biocompatibility, DMR, DHR, import and export, Indian Authorized Agent, Indian supplier evaluation.</li>
                 <li>&bull; <strong>Other markets:</strong> Technical File / Dossier per IMDRF and GHTF, QMS Documentation, Internal Audit, Supplier Development, Process Validation.</li>
               </ul>
             </div>

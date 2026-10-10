@@ -44,3 +44,6 @@ Thumbs.db
 .idea/
 .vscode/
 *.swp
+
+# Client content workbooks (shared outside git)
+*.xlsx

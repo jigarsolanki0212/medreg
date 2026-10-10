@@ -126,7 +126,7 @@ export default function BlogsPage() {
                 </div>
 
                 <div style={{ paddingTop: '14px', borderTop: '1px solid var(--border-subtle)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <Link href="/contact-us/" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 600, color: 'var(--primary)' }}>
+                  <Link href="/contact-us/" className="blog-topic-link" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '14px', fontWeight: 600, color: 'var(--primary)' }}>
                     <span>Discuss This Topic With Us</span>
                     <ArrowRight size={14} />
                   </Link>

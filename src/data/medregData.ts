@@ -1,3 +1,5 @@
+import { USA_SERVICES_DETAIL } from '@/data/usaServices';
+
 export interface ServiceItem {
   id: string;
   title: string;
@@ -32,8 +34,9 @@ export const COMPANY_INFO = {
   shortName: "MedReg",
   tagline: "Let's Decode The Regulations",
   subTagline: "Medical Device Regulatory Consulting Platform",
-  establishedYear: 2011,
-  yearsOfExperience: "10+",
+  // India Standard Time is shown next to phone numbers for international visitors (brief §14).
+  // Official calling hours have not been supplied yet; add them here (e.g. "Mon–Sat, 10:00–18:30 IST") when confirmed.
+  timezone: { short: 'IST, UTC+05:30', label: 'India Standard Time (IST, UTC+05:30)', callingHours: '' },
   address: {
     line1: "11th Floor Block C – 1105, 1106 Titanium Business Park",
     line2: "Behind Divya Bhaskar Press, Near Makarba Railway Crossing",
@@ -448,99 +451,14 @@ export const EUROPE_SERVICES: ServiceItem[] = [
   }
 ];
 
-export const USA_SERVICES: ServiceItem[] = [
-  {
-    "id": "establishment-and-listing",
-    "title": "Establishment and Listing",
-    "shortDesc": "Establishing and listing your medical device company is essential for compliance and market access in the US.",
-    "fullDesc": "Establishing and listing your medical device company is essential for compliance and market access in the US. At MedReg Consultancy, we streamline the entire process, from FDA establishment registration and device listing to documentation and submission management, helping you achieve full regulatory compliance efficiently and confidently.",
-    "category": "usa"
-  },
-  {
-    "id": "gudid-submission",
-    "title": "GUDID Submission",
-    "shortDesc": "Submitting your device information to the FDA’s GUDID database is essential for US market compliance.",
-    "fullDesc": "Submitting your device information to the FDA’s GUDID database is essential for US market compliance. At MedReg Consultancy, we manage the entire GUDID submission process, from data preparation to validation and reporting, helping you ensure accurate registration and seamless regulatory adherence with confidence.",
-    "category": "usa"
-  },
-  {
-    "id": "qms-implementation-qmsr",
-    "title": "QMS Implementation – QMSR",
-    "shortDesc": "Implementing a robust Quality Management System (QMS) is critical for USFDA compliance.",
-    "fullDesc": "Implementing a robust Quality Management System (QMS) is critical for USFDA compliance. At MedReg Consultancy, we guide medical device companies through QMS implementation and QMSR processes, from documentation and training to audits, helping you achieve regulatory readiness and maintain ongoing compliance with confidence.",
-    "category": "usa"
-  },
-  {
-    "id": "premarket-submission-510-k",
-    "title": "Premarket Submission – 510(k)",
-    "shortDesc": "Submitting a 510(k) premarket notification is essential for medical device companies seeking US market entry.",
-    "fullDesc": "Submitting a 510(k) premarket notification is essential for medical device companies seeking US market entry. At MedReg Consultancy, we streamline the entire 510(k) submission process, from preparing required documentation and risk assessments to interacting with the FDA, helping you achieve timely regulatory clearance with confidence.",
-    "category": "usa"
-  },
-  {
-    "id": "q-submission",
-    "title": "Q-Submission",
-    "shortDesc": "A Q-Submission is a vital tool for engaging with the FDA and clarifying regulatory requirements before submitting your medical device.",
-    "fullDesc": "A Q-Submission is a vital tool for engaging with the FDA and clarifying regulatory requirements before submitting your medical device. At MedReg Consultancy, we manage the entire Q-Submission process, from preparing briefing documents to coordinating interactive discussions, helping you obtain clear guidance and ensure a smooth path to compliance with confidence.",
-    "category": "usa"
-  },
-  {
-    "id": "small-business-documentation",
-    "title": "Small Business Documentation",
-    "shortDesc": "Proper documentation is crucial for small medical device businesses to ensure FDA compliance and smooth market entry.",
-    "fullDesc": "Proper documentation is crucial for small medical device businesses to ensure FDA compliance and smooth market entry. At MedReg Consultancy, we assist in preparing and organizing all required regulatory documents, guiding you through submissions and maintaining compliance efficiently and confidently.",
-    "category": "usa"
-  },
-  {
-    "id": "interactive-discussion-with-fda-after-submission",
-    "title": "Interactive Discussion with FDA after Submission",
-    "shortDesc": "Engaging in an interactive discussion with the FDA after submission is essential for clarifying regulatory requirements and addressing questions.",
-    "fullDesc": "Engaging in an interactive discussion with the FDA after submission is essential for clarifying regulatory requirements and addressing questions. At MedReg Consultancy, we guide medical device companies through the entire process, from preparing discussion materials to coordinating meetings, helping you obtain clear feedback and ensuring a smooth path to compliance with confidence.",
-    "category": "usa"
-  },
-  {
-    "id": "responding-to-additional-information",
-    "title": "Responding to Additional Information",
-    "shortDesc": "Responding to FDA requests for Additional Information is critical to keep your medical device submission on track.",
-    "fullDesc": "Responding to FDA requests for Additional Information is critical to keep your medical device submission on track. At MedReg Consultancy, we manage the entire process, from analyzing the request and preparing accurate responses to submitting them promptly, ensuring your regulatory review progresses smoothly and confidently.",
-    "category": "usa"
-  },
-  {
-    "id": "us-agent-service",
-    "title": "US Agent Service",
-    "shortDesc": "Having a designated US Agent is essential for medical device companies to meet FDA requirements and maintain regulatory compliance.",
-    "fullDesc": "Having a designated US Agent is essential for medical device companies to meet FDA requirements and maintain regulatory compliance. At MedReg Consultancy, we provide reliable US Agent services, managing communication with the FDA, handling submissions, and ensuring your company stays fully compliant with confidence.",
-    "category": "usa"
-  },
-  {
-    "id": "483-response-and-submission",
-    "title": "483 Response and Submission",
-    "shortDesc": "Responding to FDA Form 483 observations is critical for maintaining compliance and avoiding regulatory delays.",
-    "fullDesc": "Responding to FDA Form 483 observations is critical for maintaining compliance and avoiding regulatory delays. At MedReg Consultancy, we guide medical device companies through the entire process, from analyzing inspection findings to preparing and submitting detailed responses, ensuring timely resolution and regulatory confidence.",
-    "category": "usa"
-  },
-  {
-    "id": "complaint-file-submission",
-    "title": "Complaint File Submission",
-    "shortDesc": "Proper complaint file submission is essential for maintaining USFDA compliance and ensuring patient safety.",
-    "fullDesc": "Proper complaint file submission is essential for maintaining USFDA compliance and ensuring patient safety. At MedReg Consultancy, we help medical device companies manage the entire process, from documenting complaints to submitting reports, ensuring regulatory adherence and efficient handling of product issues with confidence.",
-    "category": "usa"
-  },
-  {
-    "id": "e-copy-guidance",
-    "title": "E-Copy Guidance",
-    "shortDesc": "Submitting an accurate electronic copy (E-Copy) is essential for FDA compliance and smooth regulatory review.",
-    "fullDesc": "Submitting an accurate electronic copy (E-Copy) is essential for FDA compliance and smooth regulatory review. At MedReg Consultancy, we guide medical device companies through preparing, formatting, and submitting E-Copies, ensuring your documentation meets FDA requirements efficiently and with confidence.",
-    "category": "usa"
-  },
-  {
-    "id": "gmp-compliance-for-usfda-inspection",
-    "title": "GMP Compliance for USFDA Inspection",
-    "shortDesc": "Ensuring GMP compliance is critical for a successful USFDA inspection.",
-    "fullDesc": "Ensuring GMP compliance is critical for a successful USFDA inspection. At MedReg Consultancy, we help medical device companies prepare for inspections by reviewing processes, implementing best practices, and guiding documentation, ensuring your facility meets FDA standards efficiently and confidently.",
-    "category": "usa"
-  }
-];
+// USA services are defined in usaServices.ts (client content, Oct 2026) and mapped here for shared cards and menus.
+export const USA_SERVICES: ServiceItem[] = USA_SERVICES_DETAIL.map((s) => ({
+  id: s.slug,
+  title: s.title,
+  shortDesc: s.summary,
+  fullDesc: s.summary,
+  category: 'usa',
+}));
 
 export const GLOBAL_SERVICES: ServiceItem[] = [
   {
@@ -581,20 +499,20 @@ export const GLOBAL_SERVICES: ServiceItem[] = [
 ];
 
 export const ALL_SERVICES = [
-  ...INDIA_SERVICES,
   ...EUROPE_SERVICES,
   ...USA_SERVICES,
-  ...GLOBAL_SERVICES
+  ...GLOBAL_SERVICES,
+  ...INDIA_SERVICES
 ];
 
 export const HOMEPAGE_FAQS: FaqItem[] = [
   {
     "question": "What services does MedReg Consultancy provide?",
-    "answer": "We provide end-to-end regulatory solutions for the medical device industry, including assistance with certifications, licenses, compliance strategies, documentation, and regulatory submissions across domestic and international markets."
+    "answer": "MedReg is a medical device regulatory consultancy. We provide end-to-end regulatory support for the medical device industry, including regulatory strategy, documentation, submissions, and support in obtaining approvals, certificates and licences across Europe, the USA, other global markets and India."
   },
   {
-    "question": "Which certifications and licenses can you help us obtain?",
-    "answer": "Our team supports a wide range of certifications and licenses, including ISO 13485, CE marking, FDA approvals, local regulatory registrations, and other compliance requirements for medical devices in various countries."
+    "question": "Which certifications, approvals and licenses can you help us obtain?",
+    "answer": "We help you prepare for and obtain a wide range of certificates, approvals and licences, including ISO 13485 certification, CE marking, US FDA 510(k) clearance and registration, CDSCO licences and other country registrations. These are issued by the relevant authorities, Notified Bodies or certification bodies; MedReg provides the consultancy and documentation support."
   },
   {
     "question": "Can you assist startups in the medical device sector?",
@@ -652,26 +570,31 @@ export const EUROPE_FAQS: FaqItem[] = [
   }
 ];
 
+// Answers are taken from the client USA content (usaServices.ts).
 export const USA_FAQS: FaqItem[] = [
   {
-    "question": "What regulatory services does MedReg Consultancy offer for medical devices in the US?",
-    "answer": "We provide end-to-end solutions for US market entry, including USFDA listings, 510(k) submissions, PMA approvals, QMS implementation, GUDID submissions, CE certification, technical master file preparation, clinical evaluations, and post-market surveillance. Our goal is to ensure your devices meet all US regulatory requirements efficiently and confidently."
+    "question": "Which US FDA services does MedReg provide?",
+    "answer": "FDA risk-based classification, establishment registration and device listing, 510(k) premarket notification, Small Business Determination, Pre-Submission / Q-Submission, GUDID registration, U.S. Agent services, medical device labelling, QMSR implementation, training, regulatory reporting, design control documentation, biocompatibility evaluation, Device Master Record and Device History Record, import and export support, Indian Authorized Agent services and Indian manufacturer / supplier evaluation."
   },
   {
-    "question": "How can MedReg help with USFDA premarket submissions like 510(k) or PMA?",
-    "answer": "Our team streamlines the entire premarket submission process, from preparing documentation and risk assessments to interacting with the FDA, ensuring timely regulatory clearance and smooth market access for your medical devices."
+    "question": "Does FDA establishment registration and device listing mean my device is cleared or approved?",
+    "answer": "No. Completing registration and listing does not mean that a device has received FDA clearance or approval. Depending on its classification, a device may also need 510(k) clearance or Premarket Approval (PMA) before it can be marketed."
   },
   {
-    "question": "What support does MedReg provide for FDA inspections and compliance?",
-    "answer": "We help companies prepare for GMP compliance audits, respond to Form 483 observations, manage complaint file submissions, and guide documentation practices, ensuring your facility meets FDA standards and maintains ongoing compliance."
+    "question": "Do manufacturers outside the US need a U.S. Agent?",
+    "answer": "Yes. Establishments outside the United States that are required to register with FDA must designate a U.S. Agent who resides in, or maintains a place of business in, the United States. MedReg provides U.S. Agent services."
   },
   {
-    "question": "How does MedReg assist with US Agent and GUDID requirements?",
-    "answer": "As a designated US Agent, we manage communication with the FDA, handle submissions, and support ongoing compliance. We also guide medical device companies through GUDID submissions, ensuring accurate registration and adherence to FDA requirements."
+    "question": "Is eSTAR mandatory for 510(k) submissions?",
+    "answer": "Yes. FDA requires 510(k) submissions to be made using the electronic Submission Template and Resource (eSTAR), unless an exemption applies. MedReg prepares the eSTAR and supports its electronic submission."
   },
   {
-    "question": "Can MedReg support small businesses entering the US MedTech market?",
-    "answer": "Yes! We provide small business documentation support, Q-Submissions, interactive FDA discussions, and responses to Additional Information requests, helping emerging medical device companies navigate US regulatory processes efficiently and confidently."
+    "question": "Can small businesses pay lower FDA user fees?",
+    "answer": "Yes. Through FDA Small Business Determination, businesses with gross receipts or sales of $100 million or less (including affiliates) can get reduced application fees, those at $30 million or less can get a waiver of the fee for their first premarket application, and those at $1 million or less may get an annual registration fee waiver where paying would be a financial hardship as determined by FDA."
+  },
+  {
+    "question": "What is the FDA QMSR?",
+    "answer": "The Quality Management System Regulation (QMSR) is 21 CFR Part 820. It incorporates ISO 13485:2016 by reference alongside additional FDA-specific requirements, for example on UDI, complaint and servicing records, and labelling and packaging controls. MedReg supports gap analysis, documentation updates, training and inspection readiness."
   }
 ];
 

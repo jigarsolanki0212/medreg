@@ -2,39 +2,24 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import {
-  FileText,
-  ShieldCheck,
-  CheckCircle,
-  Phone,
-  Mail,
-  ArrowRight,
-  Sparkles,
-  Building2
-} from 'lucide-react';
-import StatsCounter from '@/components/StatsCounter';
-import CertificationsRow from '@/components/CertificationsRow';
+import { ArrowRight, Phone, Mail, CheckCircle2 } from 'lucide-react';
 import LeadForm from '@/components/LeadForm';
 import FaqAccordion from '@/components/FaqAccordion';
-import WhyChooseSection from '@/components/WhyChooseSection';
-import {
-  USA_SERVICES,
-  USA_FAQS,
-  COMPANY_INFO
-} from '@/data/medregData';
+import { USA_FAQS, COMPANY_INFO } from '@/data/medregData';
+import { USA_SERVICES_DETAIL, USA_REGULATIONS_OVERVIEW, usaServicePath } from '@/data/usaServices';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import { pageMetadata, serviceCatalogJsonLd, faqJsonLd, webPageJsonLd } from '@/lib/seo';
 
 const PAGE_PATH = '/usa/';
 const PAGE_DESCRIPTION =
-  'US FDA consulting for medical devices: 510(k) via eSTAR, Q-Subs, registration & listing, GUDID, QMSR (21 CFR 820), US Agent and 483 responses.';
+  'US FDA regulatory consultancy for medical devices: classification, registration & listing, 510(k), Q-Sub, GUDID, U.S. Agent, labelling, QMSR, MDR reporting and more.';
 
 export const metadata: Metadata = pageMetadata({
-  title: 'US FDA 510(k) Consultant & FDA Registration Services',
+  title: 'Medical Device Regulatory Consultancy Services for the USA',
   description: PAGE_DESCRIPTION,
   path: PAGE_PATH,
-  keywords: ['FDA 510(k) consultant', 'FDA establishment registration', 'US Agent for FDA', 'QMSR 21 CFR 820', 'GUDID submission', 'FDA 483 response'],
+  keywords: ['FDA 510(k) consultant', 'FDA establishment registration', 'US Agent for FDA', 'QMSR 21 CFR 820', 'GUDID registration', 'FDA Q-Submission'],
 });
 
 export default function UsaServicesPage() {
@@ -42,141 +27,148 @@ export default function UsaServicesPage() {
     <>
       <JsonLd
         data={[
-          webPageJsonLd({ path: PAGE_PATH, name: 'US FDA Medical Device Regulatory Services', description: PAGE_DESCRIPTION }),
+          webPageJsonLd({ path: PAGE_PATH, name: 'Medical Device Regulatory Consultancy Services for the USA', description: PAGE_DESCRIPTION }),
           serviceCatalogJsonLd({
-            name: 'US FDA Medical Device Regulatory Services',
+            name: 'US FDA Medical Device Regulatory Consultancy Services',
             description: PAGE_DESCRIPTION,
             path: PAGE_PATH,
             areaServed: 'United States',
-            services: USA_SERVICES,
+            services: USA_SERVICES_DETAIL.map((s) => ({ id: s.slug, title: s.title, shortDesc: s.summary, fullDesc: s.summary, category: 'usa' as const })),
+            serviceUrl: (id) => usaServicePath(id),
           }),
           faqJsonLd(USA_FAQS, PAGE_PATH),
         ]}
       />
-      {/* 1. Page Header Banner */}
-      <section className="page-banner">
+
+      {/* 1. Banner */}
+      <section className="page-banner svc-banner">
+        <Image src="/assets/usa-page-banner.jpg" alt="" fill priority sizes="100vw" className="page-banner-bg" />
         <div className="container">
           <div className="page-banner-content">
-            <Breadcrumbs items={[{ name: 'USA (US FDA)', path: PAGE_PATH }]} />
-            <div className="hero-badge">
-              <Sparkles size={14} color="#79B8FF" />
-              <span>Grow your business with us!</span>
-            </div>
-            <h1 className="page-banner-title">
-              <Image src="/assets/usa.png" alt="" width={48} height={48} className="page-banner-flag" />
-              <span>USA</span>
-            </h1>
-
-            <div style={{ display: 'flex', gap: '20px', marginTop: '20px', flexWrap: 'wrap', fontSize: '14px', color: 'rgba(255,255,255,0.85)' }}>
-              <a href={`mailto:${COMPANY_INFO.emails[0].value}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <Mail size={15} color="#79B8FF" />
-                <span>{COMPANY_INFO.emails[0].display}</span>
-              </a>
-              <a href={`tel:${COMPANY_INFO.phones[0].value}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
-                <Phone size={15} color="#79B8FF" />
-                <span>{COMPANY_INFO.phones[0].display}</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Intro Section */}
-      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
-        <div className="container">
-          <div className="split-grid">
-            <div>
-              <h2 style={{ fontSize: '32px', color: 'var(--slate-900)', lineHeight: 1.3 }}>
-                Bridging Compliance and Commercial Success for <span style={{ color: 'var(--primary)' }}>USA MedTech</span>
-              </h2>
-            </div>
-            <div>
-              <h3 style={{ fontSize: '22px', color: 'var(--slate-800)', marginBottom: '14px' }}>
-                Your Partner in USA MedTech Regulatory Success
-              </h3>
-              <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '20px' }}>
-                MedReg Consultancy helps medical device manufacturers navigate the US regulatory landscape with ease. From ISO 13485:2016 and CE certification to USFDA listings, 510(k), PMA, and UL approvals, we deliver tailored end-to-end solutions. With expertise in submissions, QMS, compliance, and post-market support, we simplify every stage, ensuring your products remain compliant and competitive in the US MedTech market.
-              </p>
-              <Link href="/contact-us/" className="btn btn-primary btn-sm">
-                <span>Contact Us</span>
-                <ArrowRight size={15} />
+            <Breadcrumbs items={[{ name: 'Services', path: '/services/' }, { name: 'USA (US FDA)', path: PAGE_PATH }]} />
+            <span className="svc-banner-kicker">
+              <Image src="/assets/usa.png" alt="" width={22} height={22} />
+              USA Regulatory Services
+            </span>
+            <h1 className="page-banner-title svc-banner-title">Medical Device Regulatory Consultancy Services for the USA</h1>
+            <p className="page-banner-subtitle">
+              Classification, registration and listing, 510(k), Q-Submissions, UDI and GUDID, labelling, QMSR and post-market reporting: MedReg guides you through every stage of US FDA compliance.
+            </p>
+            <div className="svc-banner-ctas">
+              <Link href="#usa-services" className="btn btn-gold">
+                <span>Explore USA Services</span>
+                <ArrowRight size={16} aria-hidden="true" />
+              </Link>
+              <Link href="#consultation" className="btn btn-outline-white">
+                <span>Request a Consultation</span>
               </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* 3. All 13 USA Services Catalog */}
-      <section className="services-catalog-section">
+      {/* 2. U.S. Medical Device Regulations overview */}
+      <section className="section-pad" style={{ backgroundColor: 'var(--white)' }}>
         <div className="container">
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '20px' }}>
-            <div>
-              <h2 className="section-title">Services We Offer in The USA</h2>
-              <p className="section-subtitle">
-                As a trusted partner in medical device regulations, MedReg Consultancy offers comprehensive services across the US market.
-              </p>
-            </div>
+          <div className="center-content section-head" style={{ marginBottom: '40px' }}>
+            <span className="section-label">Regulatory Overview</span>
+            <h2 className="section-title text-center">U.S. Medical Device Regulations</h2>
+            <p className="section-subtitle text-center" style={{ maxWidth: '860px' }}>
+              {USA_REGULATIONS_OVERVIEW.intro}
+            </p>
           </div>
 
-          <div className="services-catalog-grid">
-            {USA_SERVICES.map((service) => (
-              <div key={service.id} className="service-box" id={service.id}>
-                <div className="service-box-header">
-                  <div className="service-box-icon">
-                    <FileText size={24} />
-                  </div>
-                </div>
+          <ol className="usa-overview-grid">
+            {USA_REGULATIONS_OVERVIEW.points.map((pt, i) => (
+              <li key={pt.title} className="usa-overview-card">
+                <span className="usa-overview-num" aria-hidden="true">
+                  {i + 1}
+                </span>
+                <h3 className="usa-overview-title">{pt.title}</h3>
+                <p className="usa-overview-text">{pt.text}</p>
+                {pt.items && (
+                  <ul className="usa-overview-list">
+                    {pt.items.map((it) => {
+                      const [label, ...rest] = it.split(': ');
+                      return (
+                        <li key={it}>
+                          <CheckCircle2 size={16} aria-hidden="true" />
+                          <span>
+                            <strong>{label}:</strong> {rest.join(': ')}
+                          </span>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ol>
 
-                <h3 className="service-box-title">{service.title}</h3>
-                <p className="service-box-desc">{service.fullDesc}</p>
-                <Link href="/contact-us/" className="service-box-link">
-                  <span>Get a Quote</span>
-                  <ArrowRight size={14} />
-                </Link>
-              </div>
+          <p className="usa-overview-closing">{USA_REGULATIONS_OVERVIEW.closing}</p>
+        </div>
+      </section>
+
+      {/* 3. Services */}
+      <section className="services-catalog-section" id="usa-services">
+        <div className="container">
+          <div className="center-content section-head" style={{ marginBottom: '40px' }}>
+            <span className="section-label">Our Services</span>
+            <h2 className="section-title text-center">Services We Offer in the USA</h2>
+            <p className="section-subtitle text-center">
+              Select a service to see the regulatory requirement, how MedReg supports you, the process and the deliverables.
+            </p>
+          </div>
+
+          <div className="usa-svc-grid">
+            {USA_SERVICES_DETAIL.map((s) => (
+              <Link key={s.slug} href={usaServicePath(s.slug)} className="usa-svc-card" id={s.slug}>
+                <span className="usa-svc-icon">
+                  <Image src={s.icon} alt="" width={40} height={40} />
+                </span>
+                <h3 className="usa-svc-title">{s.title}</h3>
+                <p className="usa-svc-summary">{s.summary}</p>
+                <span className="usa-svc-link">
+                  Learn more <ArrowRight size={14} aria-hidden="true" />
+                </span>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 4. Certifications Row */}
-      <WhyChooseSection />
-
-      <CertificationsRow />
-
-      {/* 5. Statistics */}
-      <StatsCounter />
-
-      {/* 6. Lead Generation Form */}
-      <section className="cta-form-section">
+      {/* 4. Consultation */}
+      <section className="cta-form-section" id="consultation">
         <div className="container">
           <div className="cta-grid">
             <div>
               <span className="section-label" style={{ backgroundColor: 'rgba(255,255,255,0.15)', color: '#79B8FF', borderColor: 'rgba(255,255,255,0.25)' }}>
-                Free Consultation
+                Consultation
               </span>
-              <h2 style={{ fontSize: '36px', color: 'var(--white)', marginBottom: '18px', fontWeight: 800 }}>
-                Compliance Made Simple – Start with a Free Consultation
+              <h2 style={{ fontSize: 'clamp(28px, 4vw, 36px)', color: 'var(--white)', marginBottom: '18px', fontWeight: 800 }}>
+                Plan Your US FDA Pathway with MedReg
               </h2>
-              <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.85)', lineHeight: 1.65 }}>
-                {COMPANY_INFO.phones.map((p) => p.display).join(', ')}
-                <br />
-                {COMPANY_INFO.emails[0].display}
-              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', fontSize: '16px', color: 'rgba(255,255,255,0.88)' }}>
+                {COMPANY_INFO.phones.map((p) => (
+                  <a key={p.value} href={`tel:${p.value}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                    <Phone size={16} aria-hidden="true" /> {p.display}
+                  </a>
+                ))}
+                <span style={{ fontSize: '13.5px', color: 'rgba(255,255,255,0.7)' }}>Time zone: {COMPANY_INFO.timezone.label}</span>
+                <a href={`mailto:${COMPANY_INFO.emails[0].value}`} style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+                  <Mail size={16} aria-hidden="true" /> {COMPANY_INFO.emails[0].display}
+                </a>
+              </div>
             </div>
-
             <div>
-              <LeadForm title="Accelerate your journey!" />
+              <LeadForm title="Request a consultation" defaultService="US FDA 510(k)" />
             </div>
           </div>
         </div>
       </section>
 
-      {/* 7. USA FAQs */}
-      <FaqAccordion
-        faqs={USA_FAQS}
-        title="Get the Answers You Need to Move Forward"
-      />
+      {/* 5. FAQs */}
+      <FaqAccordion faqs={USA_FAQS} title="US FDA Services: Common Questions" />
     </>
   );
 }

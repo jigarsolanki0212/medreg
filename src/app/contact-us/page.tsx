@@ -44,6 +44,9 @@ export default function ContactUsPage() {
             <h1 className="page-banner-title">
               Contact Us
             </h1>
+            <p className="page-banner-subtitle">
+              Request a consultation with our medical device regulatory consultants for Europe, the USA, other global markets and India.
+            </p>
           </div>
         </div>
       </section>
@@ -55,10 +58,10 @@ export default function ContactUsPage() {
             {/* Left: Direct Contact Information */}
             <div>
               <h2 className="section-title">
-                Get In Touch
+                Request a Regulatory Consultation
               </h2>
               <p style={{ fontSize: '16px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '36px' }}>
-                Contact our experts and start your certification journey
+                Tell us about your device and target markets, and our regulatory experts will outline the pathway, documentation and next steps. For training bookings, exhibition meetings or job applications, use the dedicated forms on the <Link href="/training/#book" style={{ color: 'var(--primary)', fontWeight: 600 }}>Training</Link>, <Link href="/exhibitions/#meet" style={{ color: 'var(--primary)', fontWeight: 600 }}>Exhibitions</Link> and <Link href="/careers/#apply" style={{ color: 'var(--primary)', fontWeight: 600 }}>Careers</Link> pages.
               </p>
 
               {/* Contact Cards */}
@@ -96,6 +99,12 @@ export default function ContactUsPage() {
                       <a href={`tel:${COMPANY_INFO.phones[1].value}`} style={{ fontSize: '15px', fontWeight: 700, color: 'var(--primary)' }}>
                         {COMPANY_INFO.phones[1].display}
                       </a>
+                      <span style={{ fontSize: '13.5px', color: 'var(--slate-500)' }}>
+                        Time zone: {COMPANY_INFO.timezone.label}
+                      </span>
+                      {COMPANY_INFO.timezone.callingHours && (
+                        <span style={{ fontSize: '13.5px', color: 'var(--slate-500)' }}>Calling hours: {COMPANY_INFO.timezone.callingHours}</span>
+                      )}
                     </div>
                   </div>
                 </div>
@@ -121,7 +130,7 @@ export default function ContactUsPage() {
 
             {/* Right: Lead Generation Card */}
             <div>
-              <LeadForm title="Get In Touch Today!" />
+              <LeadForm title="Request a Consultation" />
             </div>
           </div>
         </div>

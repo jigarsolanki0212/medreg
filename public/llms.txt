@@ -1,25 +1,48 @@
 # MedReg Consultancy LLP
 
-> MedReg Consultancy helps medical device and IVD manufacturers achieve smooth approvals and compliance in global markets. Since 2011, it has supported companies across India, Europe, the USA, and the UK, covering products from surgical disposables and orthopaedic implants to sutures, diagnostic consumables, and laparoscopic devices.
+> MedReg Consultancy is a medical device regulatory consultancy that helps medical device and IVD manufacturers achieve smooth approvals and compliance in global markets. It supports companies across Europe, the USA, India and the UK, covering products from surgical disposables and orthopaedic implants to sutures, diagnostic consumables, and laparoscopic devices.
 
 Key facts:
 - Legal name: Medreg Consultancy LLP (brand: MedReg). Tagline: "Let's Decode The Regulations".
-- Founded: 2011. Address: 11th Floor Block C – 1105, 1106 Titanium Business Park, Behind Divya Bhaskar Press, Near Makarba Railway Crossing, Makarba, Ahmedabad, Gujarat, 380051, India.
-- Phone: +91 88664 61989, +91 63523 88194. Email: info@medreg.in
+- Address: 11th Floor Block C – 1105, 1106 Titanium Business Park, Behind Divya Bhaskar Press, Near Makarba Railway Crossing, Makarba, Ahmedabad, Gujarat, 380051, India.
+- Phone: +91 88664 61989, +91 63523 88194 (India Standard Time, IST, UTC+05:30). Email: info@medreg.in
 - Track record: 2k+ completed projects, 20+ countries served, 950+ clients served, 250+ service offerings.
 - MedReg provides regulatory consulting for CDSCO India, FDA 510(k), and CE Marking, and specialises in Class A, B, C, and D medical devices.
-- Certifications and licences supported: CE Certification, UK MDR, ISO 13485:2016, ICMED, MDSAP, USFDA Listing, USFDA 510K, PMA, UL Certification, CDSCO licenses MD-05, MD-06, MD-09, MD-10, MD-15, Free Sale Certificates, and country registrations.
+- MedReg is a consultancy, not a certification body. It supports clients in obtaining approvals, certificates and licences issued by authorities, Notified Bodies and certification bodies, such as CE marking, UK MDR, ISO 13485:2016 certification, ICMED, MDSAP, US FDA registration and listing, US FDA 510(k), PMA, UL certification, CDSCO licences MD-05, MD-06, MD-09, MD-10, MD-15, Free Sale Certificates, and country registrations.
 
 ## Services by market
 
-- [India](https://medreg.in/india/): Manufacturing License, Import License, Clinical Trials, Free Sale Certificate, Product Endorsement, Retention of License, Market Standing Certificate, Non-conviction Certificate, Labeling Review, Product Development, Authorized Agent, Wholesale License, Sterilization Process Validation, QMS Documentation, AMC for documentation, Device Master File Preparation, Voluntary Registration, Neutral Code, Internal Audit.
+- [All services](https://medreg.in/services/): overview of all markets (Europe, USA, other global markets, India).
 - [Europe](https://medreg.in/europe/): CE Mark, Technical Master File Preparation, Gap Analysis, Clinical Evaluation, General Safety and Performance Requirements, Post Market Surveillance Report, Risk Analysis as per EN ISO 14971, Person Responsible for Regulatory Compliance, Medical Device Classification, Sterilization Validation, Cleaning & Disinfection Validation, AMC for documentation, Authorized Agent Service through active channel partner.
-- [USA](https://medreg.in/usa/): Establishment and Listing, GUDID Submission, QMS Implementation – QMSR, Premarket Submission – 510(k), Q-Submission, Small Business Documentation, Interactive Discussion with FDA after Submission, Responding to Additional Information, US Agent Service, 483 Response and Submission, Complaint File Submission, E-Copy Guidance, GMP Compliance for USFDA Inspection.
+- [USA](https://medreg.in/usa/): US FDA services, each with its own page:
+  - [FDA risk-based classification](https://medreg.in/usa/fda-device-classification/)
+  - [Establishment registration & device listing](https://medreg.in/usa/establishment-registration-device-listing/)
+  - [Premarket Notification / 510(k)](https://medreg.in/usa/510k-premarket-notification/)
+  - [FDA Small Business Determination](https://medreg.in/usa/small-business-determination/)
+  - [Pre-Submission / Q-Submission](https://medreg.in/usa/q-submission-pre-submission/)
+  - [GUDID registration](https://medreg.in/usa/gudid-registration/)
+  - [U.S. Agent services](https://medreg.in/usa/us-agent-services/)
+  - [Medical device labelling (21 CFR 801)](https://medreg.in/usa/medical-device-labelling/)
+  - [QMSR implementation (21 CFR 820)](https://medreg.in/usa/qmsr-implementation/)
+  - [US FDA training](https://medreg.in/usa/fda-regulatory-training/)
+  - [Regulatory reporting (21 CFR 803)](https://medreg.in/usa/regulatory-reporting-mdr/)
+  - [Design control documentation](https://medreg.in/usa/design-control-documentation/)
+  - [Biocompatibility evaluation (ISO 10993)](https://medreg.in/usa/biocompatibility-evaluation/)
+  - [Device Master Record (DMR)](https://medreg.in/usa/device-master-record/)
+  - [Device History Record (DHR)](https://medreg.in/usa/device-history-record/)
+  - [Import and export](https://medreg.in/usa/import-export/)
+  - [Indian Authorized Agent services](https://medreg.in/usa/indian-authorized-agent/)
+  - [Indian manufacturer / supplier evaluation](https://medreg.in/usa/indian-manufacturer-supplier-evaluation/)
 - [Other markets](https://medreg.in/other-services/): Technical File / Dossier Preparation as per IMDRF and GHTF guideline, QMS Documentation, Internal Audit, Supplier Development, Inspection, Evaluation, Process Validation — for the Middle East, Southeast Asian countries, Brazil, Australia (TGA) and Canada.
+- [India](https://medreg.in/india/): Manufacturing License, Import License, Clinical Trials, Free Sale Certificate, Product Endorsement, Retention of License, Market Standing Certificate, Non-conviction Certificate, Labeling Review, Product Development, Authorized Agent, Wholesale License, Sterilization Process Validation, QMS Documentation, AMC for documentation, Device Master File Preparation, Voluntary Registration, Neutral Code, Internal Audit.
+- [Training](https://medreg.in/training/): corporate training catalogue and booking form.
 
 ## Company
 
-- [About MedReg](https://medreg.in/about-us/): history since 2011, vision, mission and values.
+- [About MedReg](https://medreg.in/about-us/): who we are, vision, mission and values.
+- [Exhibitions & events](https://medreg.in/exhibitions/): where to meet the team; meeting request form.
+- [Careers](https://medreg.in/careers/): openings and job application form.
+- [Gallery](https://medreg.in/gallery/): team and office photos.
 - [Contact](https://medreg.in/contact-us/): enquiry form, phone, email and map.
 
 ## Optional

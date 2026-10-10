@@ -18,7 +18,7 @@ const jakarta = Plus_Jakarta_Sans({
 
 const DEFAULT_TITLE = 'Medical Device Regulatory Consultant in India | MedReg';
 const DEFAULT_DESCRIPTION =
-  'MedReg Consultancy (Ahmedabad, since 2011) secures CDSCO, CE (EU MDR/IVDR), US FDA 510(k), MDSAP & ISO 13485 approvals for medical device & IVD makers.';
+  'MedReg is a medical device regulatory consultancy in Ahmedabad supporting CE marking (EU MDR/IVDR), US FDA 510(k), MDSAP, ISO 13485 and CDSCO for device & IVD makers.';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

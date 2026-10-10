@@ -1,8 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Mail, MapPin } from 'lucide-react';
+import { Phone, Mail, MapPin, Linkedin, Instagram, Youtube } from 'lucide-react';
 import { COMPANY_INFO } from '@/data/medregData';
+import { MARKETS } from '@/data/markets';
+import { SOCIAL } from '@/data/siteContent';
 
 export default function Footer() {
   return (
@@ -22,30 +24,37 @@ export default function Footer() {
               />
             </Link>
             <p className="footer-about-text">
-              MedReg is your trusted partner in navigating medical device regulations. We provide end-to-end consultancy for global certifications and licenses. With our expertise, we simplify compliance, accelerate approvals, and empower your innovations to reach markets worldwide.
-            </p>          </div>
+              MedReg is a medical device regulatory consultancy. We guide manufacturers through regulatory requirements in Europe, the USA, India and other global markets, from strategy and documentation to submissions and ongoing compliance.
+            </p>
+            <div className="footer-social-links" style={{ marginTop: '18px' }}>
+              {[
+                { href: SOCIAL.linkedin, label: 'LinkedIn', Icon: Linkedin },
+                { href: SOCIAL.instagram, label: 'Instagram', Icon: Instagram },
+                { href: SOCIAL.youtube, label: 'YouTube', Icon: Youtube },
+              ]
+                .filter((s) => s.href)
+                .map(({ href, label, Icon }) => (
+                  <a key={label} href={href} target="_blank" rel="noopener noreferrer" className="footer-social-btn" aria-label={`MedReg on ${label}`}>
+                    <Icon size={18} aria-hidden="true" />
+                  </a>
+                ))}
+            </div>
+          </div>
 
           {/* Column 2: Regulatory Services */}
           <div>
             <h3 className="footer-col-title">Regulatory Services</h3>
             <ul className="footer-links-list">
               <li className="footer-link-item">
-                <Link href="/india/">India (CDSCO MDR 2017)</Link>
+                <Link href="/services/">All Services</Link>
               </li>
+              {MARKETS.map((m) => (
+                <li key={m.href} className="footer-link-item">
+                  <Link href={m.href}>{m.navTitle}</Link>
+                </li>
+              ))}
               <li className="footer-link-item">
-                <Link href="/europe/">Europe (CE MDR & IVDR)</Link>
-              </li>
-              <li className="footer-link-item">
-                <Link href="/usa/">USA (FDA 510k & QMSR)</Link>
-              </li>
-              <li className="footer-link-item">
-                <Link href="/other-services/">Global Markets & MDSAP</Link>
-              </li>
-              <li className="footer-link-item">
-                <Link href="/other-services/#qms-iso13485">ISO 13485:2016 QMS</Link>
-              </li>
-              <li className="footer-link-item">
-                <Link href="/india/#clinical-trials">Clinical Evaluations & BEP</Link>
+                <Link href="/training/">Training</Link>
               </li>
             </ul>
           </div>
@@ -58,16 +67,22 @@ export default function Footer() {
                 <Link href="/about-us/">About MedReg</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/team/">Meet Our Experts</Link>
+                <Link href="/team/">Our Team</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/blogs/">Regulatory Knowledge Hub</Link>
+                <Link href="/gallery/">Gallery</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/landing-page/">WHX Dubai 2026</Link>
+                <Link href="/exhibitions/">Exhibitions &amp; Events</Link>
               </li>
               <li className="footer-link-item">
-                <Link href="/contact-us/">Book Consultation</Link>
+                <Link href="/careers/">Careers</Link>
+              </li>
+              <li className="footer-link-item">
+                <Link href="/blogs/">Regulatory Insights</Link>
+              </li>
+              <li className="footer-link-item">
+                <Link href="/contact-us/">Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -91,6 +106,8 @@ export default function Footer() {
                   <a href={`tel:${COMPANY_INFO.phones[1].value}`} style={{ color: 'inherit', display: 'block' }}>
                     {COMPANY_INFO.phones[1].display}
                   </a>
+                  <span className="footer-tz">Time zone: {COMPANY_INFO.timezone.label}</span>
+                  {COMPANY_INFO.timezone.callingHours && <span className="footer-tz">{COMPANY_INFO.timezone.callingHours}</span>}
                 </div>
               </div>
               <div className="footer-contact-item">

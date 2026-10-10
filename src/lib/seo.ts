@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { COMPANY_INFO, type FaqItem, type ServiceItem } from '@/data/medregData';
+import { SOCIAL } from '@/data/siteContent';
 
 export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL || 'https://medreg.in').replace(/\/$/, '');
 export const SITE_NAME = 'MedReg Consultancy LLP';
@@ -86,12 +87,15 @@ export function serviceCatalogJsonLd({
   path,
   areaServed,
   services,
+  serviceUrl,
 }: {
   name: string;
   description: string;
   path: string;
   areaServed: string | string[];
   services: ServiceItem[];
+  /** Path of a service's own page; defaults to an anchor on the catalogue page. */
+  serviceUrl?: (id: string) => string;
 }) {
   const url = absoluteUrl(path);
   const area = (Array.isArray(areaServed) ? areaServed : [areaServed]).map((a) => ({ '@type': 'Place', name: a }));
@@ -115,7 +119,7 @@ export function serviceCatalogJsonLd({
           '@type': 'Service',
           name: s.title,
           description: s.shortDesc,
-          url: `${url}#${s.id}`,
+          url: serviceUrl ? absoluteUrl(serviceUrl(s.id)) : `${url}#${s.id}`,
           provider: { '@id': ORG_ID },
         },
       })),
@@ -152,10 +156,10 @@ export const ORGANIZATION_JSONLD = {
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/logo.png`, width: 384, height: 120 },
       image: `${SITE_URL}/assets/home_about.png`,
       description:
-        'MedReg Consultancy helps medical device and IVD manufacturers achieve smooth approvals and compliance in global markets. Since 2011, it has supported companies across India, Europe, the USA, and the UK.',
-      foundingDate: String(COMPANY_INFO.establishedYear),
+        'MedReg Consultancy is a medical device regulatory consultancy that helps medical device and IVD manufacturers achieve smooth approvals and compliance in global markets, supporting companies across Europe, the USA, India and other markets.',
       telephone: COMPANY_INFO.phones[0].value,
       email: COMPANY_INFO.emails[0].value,
+      sameAs: [SOCIAL.linkedin, SOCIAL.instagram, SOCIAL.youtube].filter(Boolean),
       address: {
         '@type': 'PostalAddress',
         streetAddress: `${COMPANY_INFO.address.line1}, ${COMPANY_INFO.address.line2}`,

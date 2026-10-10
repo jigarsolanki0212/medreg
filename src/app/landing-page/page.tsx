@@ -92,10 +92,10 @@ export default function WhxDubaiLandingPage() {
                 About Us
               </h2>
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '28px' }}>
-                MedReg Consultancy was founded with one aim in mind – to empower medical device manufacturers by providing regulatory solutions. Since 2011, Medreg has served numerous clients across India, Europe, the USA, and the UK. We have helped medical device industries in obtaining various certifications and licenses, such as CE Certification, UK MDR, ISO 13485:2016 Certification, ICMED, MDSAP, USFDA Listing, Country Registration, UL Certification, USFDA 510K, CDSCO licenses MD-05, MD-06, MD-09, MD-10, MD-15, Free Sale Certificates, PMA, and various country registrations.
+                MedReg is a medical device regulatory consultancy, founded with one aim in mind – to empower medical device manufacturers by providing regulatory solutions. MedReg has served numerous clients across Europe, the USA, India and the UK. We have supported medical device manufacturers in obtaining approvals, certificates and licences from the relevant authorities, Notified Bodies and certification bodies, such as CE marking, UK MDR, ISO 13485:2016 certification, ICMED, MDSAP, US FDA establishment registration and listing, US FDA 510(k) clearance, PMA, UL certification, CDSCO licences MD-05, MD-06, MD-09, MD-10 and MD-15, Free Sale Certificates and various country registrations.
               </p>
               <p style={{ fontSize: '15.5px', color: 'var(--slate-600)', lineHeight: 1.65, marginBottom: '28px' }}>
-                No matter the size of your business, our team of experts with deep industry knowledge will provide you with the knowledge, guidance, and support for getting the proper regulatory certifications so you can sell your products in your desired geographic location as fast as possible. We define a regulatory pathway that suits your business and deliver cost-effective strategies for your specific products.
+                No matter the size of your business, our team of experts with deep industry knowledge will provide you with the knowledge, guidance, and support to meet the regulatory requirements of your target markets, so you can sell your products in your desired geographic location as fast as possible. We define a regulatory pathway that suits your business and deliver cost-effective strategies for your specific products.
               </p>
 
               <LeadForm title="Let&apos;s Decode The Regulation" />

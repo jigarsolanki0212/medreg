@@ -8,7 +8,7 @@ const csp = [
   "style-src 'self' 'unsafe-inline'",
   "font-src 'self' data:",
   "img-src 'self' data: blob: https:",
-  "frame-src 'self' https://www.google.com https://maps.google.com",
+  "frame-src 'self' https://www.google.com https://maps.google.com https://www.youtube-nocookie.com",
   "connect-src 'self' https://maps.googleapis.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com",
   "object-src 'none'",
   "base-uri 'self'",
@@ -60,7 +60,7 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      { source: '/services', destination: '/india/', permanent: true },
+      // /services/ is now the main Services landing page (redesign brief §3).
       { source: '/services/india', destination: '/india/', permanent: true },
       { source: '/services/europe', destination: '/europe/', permanent: true },
       { source: '/services/usa', destination: '/usa/', permanent: true },
