@@ -26,7 +26,7 @@ export const MARKETS: Market[] = [
     navTitle: 'Europe Regulatory Services',
     navSub: 'CE marking under EU MDR / IVDR',
     flag: '/assets/europe.png',
-    photo: '/assets/Europe-page-banner.jpg',
+    photo: '/assets/placeholders/card-europe.jpg', // placeholder; landing banner keeps Europe-page-banner.jpg
     heading: 'Medical Device Regulatory Consultancy Services for Europe',
     description: 'Technical documentation, clinical evaluation, risk management, post-market surveillance and PRRC support for CE marking under the EU MDR.',
     identifiers: ['EU MDR 2017/745', 'EU IVDR 2017/746', 'CE marking'],
@@ -39,7 +39,7 @@ export const MARKETS: Market[] = [
     navTitle: 'USA Regulatory Services',
     navSub: '510(k), registration, QMSR & U.S. Agent',
     flag: '/assets/usa.png',
-    photo: '/assets/usa-page-banner.jpg',
+    photo: '/assets/placeholders/card-usa.jpg', // placeholder; landing banner keeps usa-page-banner.jpg
     heading: 'Medical Device Regulatory Consultancy Services for the USA',
     description: 'FDA classification, establishment registration and listing, 510(k), Q-Submissions, GUDID, labelling, QMSR and post-market reporting.',
     identifiers: ['US FDA 510(k)', '21 CFR Part 820 (QMSR)', 'UDI / GUDID'],
@@ -52,6 +52,7 @@ export const MARKETS: Market[] = [
     navTitle: 'Other Global Regulatory Services',
     navSub: 'MDSAP, ISO 13485, IMDRF dossiers',
     flag: '/assets/other.png',
+    photo: '/assets/placeholders/card-global.jpg', // placeholder
     heading: 'Regulatory Consultancy Services for Other Global Markets',
     description: 'Technical files and dossiers to IMDRF / GHTF guidelines, QMS documentation, internal audits, supplier evaluation and process validation.',
     identifiers: ['ISO 13485:2016', 'MDSAP', 'IMDRF / GHTF'],
@@ -64,6 +65,7 @@ export const MARKETS: Market[] = [
     navTitle: 'India Regulatory Services',
     navSub: 'CDSCO manufacturing & import licences',
     flag: '/assets/india.png',
+    photo: '/assets/placeholders/card-india.jpg', // placeholder
     heading: 'Medical Device Regulatory Consultancy Services for India',
     description: 'Manufacturing and import licences, registrations, certificates and QMS documentation under the Medical Devices Rules, 2017 (CDSCO).',
     identifiers: ['CDSCO', 'Medical Devices Rules, 2017'],

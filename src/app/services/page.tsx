@@ -37,7 +37,7 @@ export default function ServicesPage() {
       />
 
       <section className="page-banner svc-banner">
-        <Image src="/assets/why-medreg.jpg" alt="" fill priority sizes="100vw" className="page-banner-bg" />
+        <Image src="/assets/placeholders/services-banner.jpg" alt="" fill priority sizes="100vw" className="page-banner-bg" />
         <div className="container">
           <div className="page-banner-content">
             <Breadcrumbs items={[{ name: 'Services', path: PAGE_PATH }]} />

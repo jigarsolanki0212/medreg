@@ -33,7 +33,8 @@ export default function ContactUsPage() {
     <>
       <JsonLd data={webPageJsonLd({ path: PAGE_PATH, name: 'Contact MedReg Consultancy LLP', description: PAGE_DESCRIPTION, type: 'ContactPage' })} />
       {/* 1. Page Header Banner */}
-      <section className="page-banner">
+      <section className="page-banner svc-banner">
+        <Image src="/assets/placeholders/contact-banner.jpg" alt="" fill priority sizes="100vw" className="page-banner-bg" />
         <div className="container">
           <div className="page-banner-content">
             <Breadcrumbs items={[{ name: 'Contact Us', path: PAGE_PATH }]} />

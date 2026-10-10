@@ -66,6 +66,7 @@ export const MARKET_INFO: Record<MarketKey, MarketInfo> = {
     crumb: 'Other Global Markets',
     kicker: 'Other Global Regulatory Services',
     flag: '/assets/other.png',
+    banner: '/assets/placeholders/market-global.jpg', // placeholder
     specialist: 'Talk to our regulatory team',
     leadService: 'MDSAP & ISO 13485',
   },
@@ -75,6 +76,7 @@ export const MARKET_INFO: Record<MarketKey, MarketInfo> = {
     crumb: 'India (CDSCO)',
     kicker: 'India Regulatory Services',
     flag: '/assets/india.png',
+    banner: '/assets/placeholders/market-india.jpg', // placeholder
     specialist: 'Talk to a CDSCO specialist',
     leadService: 'CDSCO India Compliance',
   },

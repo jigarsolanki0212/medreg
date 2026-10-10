@@ -43,7 +43,8 @@ export default function CareersPage() {
         ]}
       />
 
-      <section className="page-banner">
+      <section className="page-banner svc-banner">
+        <Image src="/assets/placeholders/careers-teamwork.jpg" alt="" fill priority sizes="100vw" className="page-banner-bg" />
         <div className="container">
           <div className="page-banner-content">
             <Breadcrumbs items={[{ name: 'Careers', path: PAGE_PATH }]} />
@@ -75,8 +76,14 @@ export default function CareersPage() {
                 Our office is in {COMPANY_INFO.address.area}, {COMPANY_INFO.address.city}. We welcome applications from people with backgrounds in regulatory affairs, quality assurance, biomedical engineering, life sciences and related fields.
               </p>
             </div>
-            <div className="careers-photo">
-              <Image src="/assets/home_about.png" alt="The MedReg team" width={564} height={574} sizes="(max-width: 992px) 90vw, 460px" style={{ width: '100%', height: 'auto' }} />
+            <div className="careers-photos">
+              <div className="careers-photo-main">
+                <Image src="/assets/placeholders/careers-workplace.jpg" alt="Working at MedReg" width={960} height={640} sizes="(max-width: 992px) 90vw, 360px" style={{ width: '100%', height: 'auto', borderRadius: 'var(--radius-lg)' }} />
+              </div>
+              <div className="careers-photo-side">
+                {/* placeholder photo until MedReg supplies workplace photos */}
+                <Image src="/assets/placeholders/careers-portrait.jpg" alt="Working at MedReg" fill sizes="(max-width: 992px) 45vw, 240px" style={{ objectFit: 'cover' }} />
+              </div>
             </div>
           </div>
         </div>

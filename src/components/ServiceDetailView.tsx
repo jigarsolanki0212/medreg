@@ -53,8 +53,7 @@ export default function ServiceDetailView({ market, service }: { market: MarketK
         ]}
       />
 
-      <section className="page-banner svc-banner">
-        {info.banner && <Image src={info.banner} alt="" fill priority sizes="100vw" className="page-banner-bg" />}
+      <section className="page-banner svc-banner svc-banner--plain">
         <div className="container">
           <div className="page-banner-content">
             <Breadcrumbs

@@ -18,7 +18,6 @@ import CertificationsRow from '@/components/CertificationsRow';
 import WhyChooseSection from '@/components/WhyChooseSection';
 import {
   COMPANY_INFO,
-  OFFICE_GALLERY,
   STATS
 } from '@/data/medregData';
 import Breadcrumbs from '@/components/Breadcrumbs';
@@ -95,10 +94,10 @@ export default function AboutUsPage() {
             <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
               <div style={{ position: 'relative', maxWidth: '440px', width: '100%' }}>
                 <Image
-                  src="/assets/home_about.png"
-                  alt="MedReg Regulatory Consulting Team"
-                  width={500}
-                  height={500}
+                  src="/assets/about-us.png"
+                  alt="The MedReg team"
+                  width={528}
+                  height={524}
                   sizes="(max-width: 992px) 90vw, 440px"
                   style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                 />
@@ -194,29 +193,9 @@ export default function AboutUsPage() {
             <h2 className="section-title text-center">Gallery</h2>
           </div>
 
-          <div className="grid-3">
-            {OFFICE_GALLERY.slice(0, 3).map((item, idx) => (
-              <div key={idx} className="card gallery-card" style={{ padding: '0', overflow: 'hidden' }}>
-                <div style={{ height: '240px', overflow: 'hidden', position: 'relative' }}>
-                  <Image
-                    src={item.image}
-                    alt={item.title}
-                    fill
-                    sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 380px"
-                    style={{ objectFit: 'cover' }}
-                  />
-                </div>
-                <div style={{ padding: '20px' }}>
-                  <h3 style={{ fontSize: '17px', color: 'var(--slate-900)', marginBottom: '6px' }}>
-                    {item.title}
-                  </h3>
-                  <p style={{ fontSize: '13.5px', color: 'var(--slate-500)' }}>
-                    {item.caption}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className="section-subtitle text-center" style={{ margin: '0 auto' }}>
+            Photos of our team, office in Titanium Business Park, Ahmedabad, training sessions and exhibitions.
+          </p>
           <div style={{ textAlign: 'center', marginTop: '32px' }}>
             <Link href="/gallery/" className="btn btn-primary">
               <span>View Full Gallery</span>

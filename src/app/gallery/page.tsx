@@ -29,12 +29,12 @@ export default function GalleryPage() {
             '@type': 'ImageGallery',
             name: 'MedReg gallery',
             url: absoluteUrl(PAGE_PATH),
-            image: GALLERY_IMAGES.map((i) => ({ '@type': 'ImageObject', contentUrl: absoluteUrl(i.src), caption: i.caption || i.alt })),
+            image: GALLERY_IMAGES.filter((i) => !i.placeholder).map((i) => ({ '@type': 'ImageObject', contentUrl: absoluteUrl(i.src), caption: i.caption || i.alt })),
           },
         ]}
       />
 
-      <section className="page-banner">
+      <section className="page-banner svc-banner svc-banner--plain">
         <div className="container">
           <div className="page-banner-content">
             <Breadcrumbs items={[{ name: 'About Us', path: '/about-us/' }, { name: 'Gallery', path: PAGE_PATH }]} />

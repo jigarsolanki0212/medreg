@@ -282,9 +282,10 @@ export default function HomePage() {
           </div>
           <div className="hl-grid">
             <Link href="/training/" className="hl-card">
-              <div className="hl-media hl-media--plain">
-                <span className="hl-big">{TRAINING_PROGRAMS.length}</span>
-                <span className="hl-big-label">training programs</span>
+              <div className="hl-media">
+                {/* placeholder photo until MedReg supplies training photos */}
+                <Image src="/assets/placeholders/home-training.jpg" alt="Training session" fill sizes="(max-width: 768px) 92vw, 380px" style={{ objectFit: 'cover' }} />
+                <span className="hl-badge">{TRAINING_PROGRAMS.length} training programs</span>
               </div>
               <div className="hl-body">
                 <h3>Training &amp; Professional Development</h3>
@@ -294,9 +295,8 @@ export default function HomePage() {
             </Link>
             <Link href="/exhibitions/" className="hl-card">
               <div className="hl-media">
-                {latestExpo?.image ? (
-                  <Image src={latestExpo.image} alt={latestExpo.name} fill sizes="(max-width: 768px) 92vw, 380px" style={{ objectFit: 'cover', objectPosition: 'top' }} />
-                ) : null}
+                {/* placeholder photo until MedReg supplies exhibition photos */}
+                <Image src="/assets/placeholders/home-exhibitions.jpg" alt="MedReg at industry events" fill sizes="(max-width: 768px) 92vw, 380px" style={{ objectFit: 'cover' }} />
               </div>
               <div className="hl-body">
                 <h3>Exhibitions &amp; Events</h3>
@@ -312,7 +312,7 @@ export default function HomePage() {
             </Link>
             <Link href="/gallery/" className="hl-card">
               <div className="hl-media">
-                <Image src="/assets/office-02.png" alt="MedReg office, Ahmedabad" fill sizes="(max-width: 768px) 92vw, 380px" style={{ objectFit: 'cover' }} />
+                <Image src="/assets/placeholders/home-life.jpg" alt="Life at MedReg" fill sizes="(max-width: 768px) 92vw, 380px" style={{ objectFit: 'cover' }} />
               </div>
               <div className="hl-body">
                 <h3>Life at MedReg</h3>

@@ -3203,3 +3203,15 @@ html.drawer-open .floating-whatsapp { display: none; }
 .hl-body h3 { font-size: 18px; font-weight: 800; color: var(--slate-900); }
 .hl-body p { font-size: 14.5px; line-height: 1.6; color: var(--slate-600); flex: 1; }
 @media (max-width: 900px) { .hl-grid { grid-template-columns: 1fr; } }
+
+/* Placeholder-photo additions */
+.trn-card-media { position: relative; height: 150px; margin: -22px -22px 4px; border-radius: var(--radius-lg) var(--radius-lg) 0 0; overflow: hidden; background: var(--slate-100); }
+.trn-card { overflow: hidden; }
+.trn-photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.trn-photo { position: relative; aspect-ratio: 3 / 2; border-radius: var(--radius-lg); overflow: hidden; }
+.hl-badge { position: absolute; left: 14px; bottom: 14px; z-index: 1; padding: 6px 12px; border-radius: 999px; background: rgba(11, 30, 56, 0.85); color: var(--white); font-size: 13px; font-weight: 800; }
+.careers-photos { display: grid; grid-template-columns: 1.3fr 1fr; gap: 16px; align-items: center; }
+.careers-photo-side { position: relative; aspect-ratio: 3 / 4; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-lg); }
+@media (max-width: 768px) { .trn-photos { grid-template-columns: 1fr; } }
+.svc-banner--plain { background: radial-gradient(circle at 85% 15%, rgba(121, 184, 255, 0.22), transparent 50%), linear-gradient(135deg, var(--navy-900), var(--primary-dark)); }
+.svc-banner--plain::after { display: none; }

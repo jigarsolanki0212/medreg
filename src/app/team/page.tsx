@@ -60,7 +60,8 @@ export default function TeamPage() {
     <>
       <JsonLd data={webPageJsonLd({ path: PAGE_PATH, name: 'MedReg Regulatory Team', description: PAGE_DESCRIPTION, type: 'WebPage' })} />
       {/* 1. Page Header Banner */}
-      <section className="page-banner">
+      <section className="page-banner svc-banner">
+        <Image src="/assets/placeholders/team-meeting.jpg" alt="" fill priority sizes="100vw" className="page-banner-bg" />
         <div className="container">
           <div className="page-banner-content">
             <Breadcrumbs items={[{ name: 'Our Team', path: PAGE_PATH }]} />
@@ -113,10 +114,10 @@ export default function TeamPage() {
             <div style={{ position: 'relative', display: 'flex', justifyContent: 'center' }}>
               <div style={{ position: 'relative', maxWidth: '480px', width: '100%', borderRadius: 'var(--radius-xl)', overflow: 'hidden', boxShadow: 'var(--shadow-xl)' }}>
                 <Image
-                  src="/assets/home_about.png"
-                  alt="MedReg Full Consulting Team"
-                  width={520}
-                  height={520}
+                  src="/assets/placeholders/team-group.jpg" // placeholder until MedReg supplies updated team photos
+                  alt="MedReg consulting team"
+                  width={960}
+                  height={640}
                   sizes="(max-width: 992px) 90vw, 480px"
                   style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
                 />

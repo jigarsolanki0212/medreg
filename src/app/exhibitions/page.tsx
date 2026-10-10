@@ -58,7 +58,8 @@ export default function ExhibitionsPage() {
         ]}
       />
 
-      <section className="page-banner">
+      <section className="page-banner svc-banner">
+        <Image src="/assets/placeholders/exhibition-venue.jpg" alt="" fill priority sizes="100vw" className="page-banner-bg" />
         <div className="container">
           <div className="page-banner-content">
             <Breadcrumbs items={[{ name: 'Exhibitions & Events', path: PAGE_PATH }]} />

@@ -7,7 +7,7 @@ import JsonLd from '@/components/JsonLd';
 import PrefilledForm from '@/components/PrefilledForm';
 import PrefillLink from '@/components/PrefillLink';
 import { COMPANY_INFO } from '@/data/medregData';
-import { TRAINING_PROGRAMS, PAST_TRAININGS, TRAINING_AUDIENCE } from '@/data/siteContent';
+import { TRAINING_PROGRAMS, PAST_TRAININGS, TRAINING_AUDIENCE, TRAINING_PHOTOS } from '@/data/siteContent';
 import { TRAINING_FORM } from '@/data/formSpecs';
 import { pageMetadata, webPageJsonLd, absoluteUrl, ORG_ID } from '@/lib/seo';
 
@@ -35,6 +35,11 @@ export default function TrainingPage() {
 
   const card = (p: (typeof TRAINING_PROGRAMS)[number]) => (
     <article key={p.id} id={p.id} className="trn-card">
+      {p.image && (
+        <div className="trn-card-media">
+          <Image src={p.image} alt="" fill sizes="(max-width: 640px) 92vw, 300px" style={{ objectFit: 'cover' }} />
+        </div>
+      )}
       <span className={`trn-badge trn-badge--${p.status}`}>{p.status === 'upcoming' ? 'Upcoming' : 'Available on request'}</span>
       <h3 className="trn-title">{p.title}</h3>
       {p.description && <p className="trn-desc">{p.description}</p>}
@@ -87,6 +92,7 @@ export default function TrainingPage() {
       />
 
       <section className="page-banner svc-banner">
+        <Image src="/assets/placeholders/training-session.jpg" alt="" fill priority sizes="100vw" className="page-banner-bg" />
         <div className="container">
           <div className="page-banner-content">
             <Breadcrumbs items={[{ name: 'Training', path: PAGE_PATH }]} />
@@ -128,6 +134,21 @@ export default function TrainingPage() {
           <div className="trn-grid">{onRequest.map(card)}</div>
         </div>
       </section>
+
+      {TRAINING_PHOTOS.length > 0 && (
+        <section className="section-pad" style={{ background: 'var(--slate-50)', borderTop: '1px solid var(--border)' }}>
+          <div className="container">
+            <h2 className="section-title">Training moments</h2>
+            <div className="trn-photos">
+              {TRAINING_PHOTOS.map((ph) => (
+                <div key={ph.src} className="trn-photo">
+                  <Image src={ph.src} alt={ph.alt} fill sizes="(max-width: 768px) 92vw, 400px" style={{ objectFit: 'cover' }} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {past.length > 0 && (
         <section className="section-pad" style={{ background: 'var(--slate-50)', borderTop: '1px solid var(--border)' }}>
