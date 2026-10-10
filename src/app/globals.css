@@ -3186,3 +3186,20 @@ html.drawer-open .floating-whatsapp { display: none; }
   }
   .svc-toc { gap: 0; }
 }
+.mkt-compare { margin-top: 48px; }
+.mkt-compare .section-title { margin-bottom: 18px; }
+
+/* Home: training / exhibitions / life at MedReg */
+.hl-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+.hl-card { display: flex; flex-direction: column; border-radius: var(--radius-lg); overflow: hidden; border: 1px solid var(--border); background: var(--white); color: inherit; box-shadow: var(--shadow-sm); transition: transform 0.25s var(--ease-out, ease), box-shadow 0.25s ease; }
+.hl-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-hover); }
+.hl-media { position: relative; height: 200px; background: var(--slate-100); overflow: hidden; }
+.hl-media img { transition: transform 0.5s var(--ease-out, ease); }
+.hl-card:hover .hl-media img { transform: scale(1.04); }
+.hl-media--plain { display: flex; flex-direction: column; align-items: center; justify-content: center; background: radial-gradient(circle at 80% 20%, rgba(121, 184, 255, 0.35), transparent 55%), linear-gradient(135deg, var(--navy-900), var(--primary)); color: var(--white); }
+.hl-big { font-size: 64px; font-weight: 800; line-height: 1; color: var(--gold, #F6C042); }
+.hl-big-label { font-size: 14px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; margin-top: 6px; }
+.hl-body { padding: 20px 22px 22px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.hl-body h3 { font-size: 18px; font-weight: 800; color: var(--slate-900); }
+.hl-body p { font-size: 14.5px; line-height: 1.6; color: var(--slate-600); flex: 1; }
+@media (max-width: 900px) { .hl-grid { grid-template-columns: 1fr; } }

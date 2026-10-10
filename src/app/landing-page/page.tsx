@@ -32,7 +32,7 @@ export const metadata: Metadata = pageMetadata({
 
 export default function WhxDubaiLandingPage() {
   const expoOfferings = [
-    { title: "CE Certification", desc: "CE certification support covering MDR, IVDR, technical documentation, PSUR preparation, compliance.", badge: "Europe" },
+    { title: "CE Marking", desc: "CE marking support covering MDR, IVDR, technical documentation, PSUR preparation, compliance.", badge: "Europe" },
     { title: "USFDA 510k", desc: "CF preparation & submission, US Agent service, Establishment registration & complete compliance support.", badge: "USA" },
     { title: "MDSAP", desc: "Complete MDSAP support—from docs to audits and NC closure.", badge: "Global" },
     { title: "ISO 13485", desc: "ISO 13485 implementation for a compliant medical device QMS.", badge: "Global" },

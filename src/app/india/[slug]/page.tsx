@@ -1,6 +1,6 @@
 import { serviceRoute } from '@/lib/servicePage';
 
-const route = serviceRoute('usa');
+const route = serviceRoute('india');
 
 export const dynamicParams = false;
 export const generateStaticParams = route.generateStaticParams;

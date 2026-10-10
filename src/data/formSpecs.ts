@@ -1,5 +1,5 @@
 import type { FieldDef } from '@/components/EnquiryForm';
-import { TRAINING_PROGRAMS, EXHIBITIONS, JOB_OPENINGS } from '@/data/siteContent';
+import { TRAINING_PROGRAMS, EXHIBITIONS, JOB_OPENINGS, exhibitionStatus } from '@/data/siteContent';
 
 /** Shared by the pages (rendering) and the API routes (server-side validation). */
 
@@ -25,7 +25,7 @@ export const EXHIBITION_FORM: FieldDef[] = [
     label: 'Exhibition of interest',
     type: 'select',
     required: true,
-    options: [...EXHIBITIONS.filter((e) => e.status === 'upcoming').map((e) => e.name), 'Next exhibition MedReg attends', 'Meeting at the MedReg office or online'],
+    options: [...EXHIBITIONS.filter((e) => exhibitionStatus(e) === 'upcoming').map((e) => e.name), 'Next exhibition MedReg attends', 'Meeting at the MedReg office or online'],
   },
   { name: 'preferredTime', label: 'Preferred meeting date or time', type: 'text', placeholder: 'Include your time zone', maxLength: 100 },
   {

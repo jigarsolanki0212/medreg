@@ -15,6 +15,9 @@ const PAGE_PATH = '/training/';
 const PAGE_DESCRIPTION =
   'Corporate medical device regulatory training by MedReg: ISO 13485, MDSAP, ISO 14971, clinical and biological evaluation, EU MDR, US FDA 510(k), UDI, sterilization validation.';
 
+// Re-render daily so dated sessions leave "Upcoming" once they have taken place.
+export const revalidate = 86400;
+
 export const metadata: Metadata = pageMetadata({
   title: 'Training & Professional Development',
   description: PAGE_DESCRIPTION,
@@ -24,7 +27,8 @@ export const metadata: Metadata = pageMetadata({
 const fmtDate = (iso: string) => new Date(`${iso}T00:00:00`).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
 
 export default function TrainingPage() {
-  const upcoming = TRAINING_PROGRAMS.filter((p) => p.status === 'upcoming');
+  const today = new Date().toISOString().slice(0, 10);
+  const upcoming = TRAINING_PROGRAMS.filter((p) => p.status === 'upcoming' && (!p.date || p.date >= today));
   const onRequest = TRAINING_PROGRAMS.filter((p) => p.status === 'on-request');
   const past = [...PAST_TRAININGS].sort((a, b) => b.date.localeCompare(a.date));
   const lookup = Object.fromEntries(TRAINING_PROGRAMS.map((p) => [p.id, p.title]));

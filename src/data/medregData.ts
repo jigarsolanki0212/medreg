@@ -30,7 +30,7 @@ export interface StatItem {
 }
 
 export const COMPANY_INFO = {
-  name: "Medreg Consultancy LLP",
+  name: "MedReg Consultancy LLP",
   shortName: "MedReg",
   tagline: "Let's Decode The Regulations",
   subTagline: "Medical Device Regulatory Consulting Platform",
@@ -361,8 +361,8 @@ export const EUROPE_SERVICES: ServiceItem[] = [
   {
     "id": "ce-mark",
     "title": "CE mark",
-    "shortDesc": "Obtaining CE Mark certification is essential for medical device companies seeking compliance and market access in Europe.",
-    "fullDesc": "Obtaining CE Mark certification is essential for medical device companies seeking compliance and market access in Europe. At MedReg Consultancy, we streamline the entire process, from regulatory assessment and technical file preparation to audits and approvals, helping you achieve CE certification efficiently and confidently.",
+    "shortDesc": "Obtaining the CE mark is essential for medical device companies seeking compliance and market access in Europe.",
+    "fullDesc": "Obtaining the CE mark is essential for medical device companies seeking compliance and market access in Europe. At MedReg Consultancy, we streamline the entire process, from regulatory assessment and technical file preparation to audits and approvals, helping you achieve CE marking efficiently and confidently.",
     "category": "europe"
   },
   {
@@ -553,8 +553,8 @@ export const EUROPE_FAQS: FaqItem[] = [
     "answer": "We provide end-to-end regulatory solutions, including CE marking, technical master file preparation, gap analysis, clinical evaluation, risk analysis (EN ISO 14971), sterilisation and cleaning validation, post-market surveillance reports, and Authorised Agent services, helping your medical devices meet stringent EU requirements efficiently."
   },
   {
-    "question": "How can MedReg help with CE Certification for my medical device?",
-    "answer": "Our team streamlines the entire CE certification process, from regulatory assessment and technical file preparation to audits and approvals, ensuring your devices comply with European standards and gain market access confidently."
+    "question": "How can MedReg help with CE marking for my medical device?",
+    "answer": "Our team streamlines the entire CE marking process, from regulatory assessment and technical file preparation to audits and approvals, ensuring your devices comply with European standards and gain market access confidently."
   },
   {
     "question": "Do you support ongoing compliance after certification?",
@@ -605,7 +605,7 @@ export const GLOBAL_FAQS: FaqItem[] = [
   },
   {
     "question": "What services does MedReg provide to ensure compliance with global regulatory standards?",
-    "answer": "Our services include Technical File/Dossier preparation in accordance with IMDRF and GHTF guidelines, QMS documentation, internal audits, supplier development and evaluation, process validation, country registrations, CE/ISO/USFDA certifications, and post-market surveillance. We guide your products through all stages of regulatory approval."
+    "answer": "Our services include Technical File/Dossier preparation in accordance with IMDRF and GHTF guidelines, QMS documentation, internal audits, supplier development and evaluation, process validation, country registrations, support for CE marking, ISO 13485 certification and US FDA submissions, and post-market surveillance. We guide your products through all stages of regulatory approval."
   },
   {
     "question": "How does MedReg help with Technical File or Dossier preparation for international markets?",

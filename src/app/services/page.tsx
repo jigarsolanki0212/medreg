@@ -6,6 +6,7 @@ import { ArrowRight, GraduationCap, Info } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import LeadForm from '@/components/LeadForm';
+import ContentBlocks from '@/components/ContentBlocks';
 import { COMPANY_INFO } from '@/data/medregData';
 import { MARKETS } from '@/data/markets';
 import { pageMetadata, webPageJsonLd, absoluteUrl } from '@/lib/seo';
@@ -78,6 +79,42 @@ export default function ServicesPage() {
                 </div>
               </Link>
             ))}
+          </div>
+
+          <div className="mkt-compare">
+            <h2 className="section-title">Markets at a glance</h2>
+            <ContentBlocks
+              blocks={[
+                {
+                  type: 'table',
+                  headers: ['Market', 'Authority / framework', 'What we support', 'Services'],
+                  rows: [
+                    ['Europe', 'EU MDR 2017/745 and EU IVDR 2017/746', 'CE marking: technical documentation, clinical evaluation, GSPR, risk management (EN ISO 14971), post-market surveillance, PRRC', `${MARKETS[0].services.length}`],
+                    ['USA', 'US FDA (21 CFR)', '510(k), establishment registration and listing, Q-Submissions, GUDID, labelling, QMSR (21 CFR 820), MDR reporting, U.S. Agent', `${MARKETS[1].services.length}`],
+                    ['Other global markets', 'ISO 13485:2016, MDSAP, IMDRF / GHTF guidelines', 'Technical files and dossiers, QMS documentation, internal audits, supplier evaluation, process validation for the Middle East, Southeast Asia, Brazil, Australia (TGA) and Canada', `${MARKETS[2].services.length}`],
+                    ['India', 'CDSCO, Medical Devices Rules, 2017', 'Manufacturing and import licences (MD-5, MD-6, MD-9, MD-10, MD-15), registrations, certificates, Authorized Agent, QMS documentation', `${MARKETS[3].services.length}`],
+                  ],
+                },
+              ]}
+            />
+          </div>
+
+          <div className="mkt-compare">
+            <h2 className="section-title">Our approach</h2>
+            <ContentBlocks
+              blocks={[
+                {
+                  type: 'steps',
+                  items: [
+                    { title: 'Listening to customer needs', text: 'We start with your device, your target markets and your timelines.' },
+                    { title: 'Understanding the scope clearly', text: 'We identify every requirement that applies to your product and organisation.' },
+                    { title: 'Defining the right regulatory pathway', text: 'We set out the route to market, the documents needed and a realistic plan.' },
+                    { title: 'Maintaining transparency in documentation', text: 'We prepare and review documentation with you, keeping you informed at every stage.' },
+                    { title: 'Ensuring timely reporting and advice', text: 'We support submissions and queries, and keep you compliant after approval with a preventive approach.' },
+                  ],
+                },
+              ]}
+            />
           </div>
 
           <div className="mkt-training">

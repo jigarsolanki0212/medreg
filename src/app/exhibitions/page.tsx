@@ -9,13 +9,16 @@ import PrefilledForm from '@/components/PrefilledForm';
 import PrefillLink from '@/components/PrefillLink';
 import GalleryGrid from '@/components/GalleryGrid';
 import { COMPANY_INFO } from '@/data/medregData';
-import { EXHIBITIONS, type Exhibition } from '@/data/siteContent';
+import { EXHIBITIONS, exhibitionStatus, type Exhibition } from '@/data/siteContent';
 import { EXHIBITION_FORM } from '@/data/formSpecs';
 import { pageMetadata, webPageJsonLd, ORG_ID } from '@/lib/seo';
 
 const PAGE_PATH = '/exhibitions/';
 const PAGE_DESCRIPTION =
   'Meet MedReg’s medical device regulatory experts at exhibitions and industry events. See where we have exhibited and schedule a meeting with our team.';
+
+// Re-render daily so finished exhibitions move to "Past exhibitions" without a redeploy.
+export const revalidate = 86400;
 
 export const metadata: Metadata = pageMetadata({
   title: 'Exhibitions & Events',
@@ -27,8 +30,8 @@ const fmt = (iso: string) => new Date(`${iso}T00:00:00`).toLocaleDateString('en-
 const when = (e: Exhibition) => (e.startDate ? `${fmt(e.startDate)}${e.endDate && e.endDate !== e.startDate ? ` – ${fmt(e.endDate)}` : ''}` : String(e.year));
 
 export default function ExhibitionsPage() {
-  const upcoming = EXHIBITIONS.filter((e) => e.status === 'upcoming').sort((a, b) => (a.startDate || String(a.year)).localeCompare(b.startDate || String(b.year)));
-  const past = EXHIBITIONS.filter((e) => e.status === 'past').sort((a, b) => (b.startDate || String(b.year)).localeCompare(a.startDate || String(a.year)));
+  const upcoming = EXHIBITIONS.filter((e) => exhibitionStatus(e) === 'upcoming').sort((a, b) => (a.startDate || String(a.year)).localeCompare(b.startDate || String(b.year)));
+  const past = EXHIBITIONS.filter((e) => exhibitionStatus(e) === 'past').sort((a, b) => (b.startDate || String(b.year)).localeCompare(a.startDate || String(a.year)));
 
   // Counts are derived from the events entered, never hard-coded (brief §13).
   const byYear = past.reduce<Record<number, number>>((acc, e) => ({ ...acc, [e.year]: (acc[e.year] || 0) + 1 }), {});

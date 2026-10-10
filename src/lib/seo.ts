@@ -150,7 +150,7 @@ export const ORGANIZATION_JSONLD = {
       '@type': ['Organization', 'ProfessionalService'],
       '@id': ORG_ID,
       name: COMPANY_INFO.name,
-      alternateName: ['MedReg', 'MedReg Consultancy', 'Medreg Consultancy LLP'],
+      alternateName: ['MedReg', 'MedReg Consultancy', 'Medreg Consultancy LLP', 'MEDREG CONSULTANCY LLP'],
       slogan: COMPANY_INFO.tagline,
       url: `${SITE_URL}/`,
       logo: { '@type': 'ImageObject', url: `${SITE_URL}/assets/logo.png`, width: 384, height: 120 },

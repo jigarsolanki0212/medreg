@@ -80,7 +80,15 @@ export interface Exhibition {
   photos?: { src: string; alt: string }[];
   /** Optional page with more detail. */
   href?: string;
+  /** Used only when no dates are set. With dates, the status is worked out automatically (see exhibitionStatus). */
   status: 'upcoming' | 'past';
+}
+
+/** An exhibition with dates moves to "past" automatically the day after it ends (brief §13). */
+export function exhibitionStatus(e: Exhibition, today = new Date()): 'upcoming' | 'past' {
+  const end = e.endDate || e.startDate;
+  if (!end) return e.status;
+  return new Date(`${end}T23:59:59+05:30`) < today ? 'past' : 'upcoming';
 }
 
 export const EXHIBITIONS: Exhibition[] = [

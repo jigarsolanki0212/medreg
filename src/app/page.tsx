@@ -23,6 +23,7 @@ import WhyChooseSection from '@/components/WhyChooseSection';
 import { COMPANY_INFO, HOMEPAGE_FAQS, STATS } from '@/data/medregData';
 import { MARKETS } from '@/data/markets';
 import SocialSection from '@/components/SocialSection';
+import { TRAINING_PROGRAMS, EXHIBITIONS, exhibitionStatus } from '@/data/siteContent';
 import JsonLd from '@/components/JsonLd';
 import { faqJsonLd, webPageJsonLd } from '@/lib/seo';
 
@@ -39,6 +40,9 @@ export default function HomePage() {
     'Ensuring timely reporting and advice',
     'Following a preventive approach'
   ];
+
+  const upcomingExpo = EXHIBITIONS.find((e) => exhibitionStatus(e) === 'upcoming');
+  const latestExpo = upcomingExpo || EXHIBITIONS.find((e) => exhibitionStatus(e) === 'past');
 
   return (
     <>
@@ -269,10 +273,61 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Training, exhibitions and life at MedReg (brief §12) */}
+      <section className="section-pad" style={{ background: 'var(--white)' }}>
+        <div className="container">
+          <div className="center-content section-head" style={{ marginBottom: '36px' }}>
+            <span className="section-label">Beyond Consultancy</span>
+            <h2 className="section-title text-center">Training, Events &amp; Life at MedReg</h2>
+          </div>
+          <div className="hl-grid">
+            <Link href="/training/" className="hl-card">
+              <div className="hl-media hl-media--plain">
+                <span className="hl-big">{TRAINING_PROGRAMS.length}</span>
+                <span className="hl-big-label">training programs</span>
+              </div>
+              <div className="hl-body">
+                <h3>Training &amp; Professional Development</h3>
+                <p>ISO 13485, MDSAP, ISO 14971, EU MDR, US FDA 510(k), biological evaluation, sterilization validation and more, delivered for your team.</p>
+                <span className="usa-svc-link">Book a training session <ArrowRight size={14} /></span>
+              </div>
+            </Link>
+            <Link href="/exhibitions/" className="hl-card">
+              <div className="hl-media">
+                {latestExpo?.image ? (
+                  <Image src={latestExpo.image} alt={latestExpo.name} fill sizes="(max-width: 768px) 92vw, 380px" style={{ objectFit: 'cover', objectPosition: 'top' }} />
+                ) : null}
+              </div>
+              <div className="hl-body">
+                <h3>Exhibitions &amp; Events</h3>
+                <p>
+                  {upcomingExpo
+                    ? `Meet our regulatory experts at ${upcomingExpo.name}, ${upcomingExpo.city}.`
+                    : latestExpo
+                      ? `We exhibited at ${latestExpo.name}. Request a meeting with our team at our next event, our office or online.`
+                      : 'Request a meeting with our regulatory experts at our next event, our office or online.'}
+                </p>
+                <span className="usa-svc-link">{upcomingExpo ? 'Meet us at the exhibition' : 'Schedule a meeting'} <ArrowRight size={14} /></span>
+              </div>
+            </Link>
+            <Link href="/gallery/" className="hl-card">
+              <div className="hl-media">
+                <Image src="/assets/office-02.png" alt="MedReg office, Ahmedabad" fill sizes="(max-width: 768px) 92vw, 380px" style={{ objectFit: 'cover' }} />
+              </div>
+              <div className="hl-body">
+                <h3>Life at MedReg</h3>
+                <p>Meet the people and the workplace behind MedReg, and explore career opportunities with our team.</p>
+                <span className="usa-svc-link">View gallery &amp; careers <ArrowRight size={14} /></span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* 4. Statistics */}
       <StatsCounter />
 
-      {/* 5. Why Choose Medreg */}
+      {/* 5. Why Choose MedReg */}
       <WhyChooseSection />
 
       {/* 6. Regulatory Certification Badges */}
