@@ -295,8 +295,7 @@ export default function HomePage() {
             </Link>
             <Link href="/exhibitions/" className="hl-card">
               <div className="hl-media">
-                {/* placeholder photo until MedReg supplies exhibition photos */}
-                <Image src="/assets/placeholders/home-exhibitions.jpg" alt="MedReg at industry events" fill sizes="(max-width: 768px) 92vw, 380px" style={{ objectFit: 'cover' }} />
+                <Image src="/assets/exhibitions/gme-5.jpg" alt="The MedReg BioTox team at Gujarat Medical Expo 2026" fill sizes="(max-width: 768px) 92vw, 380px" style={{ objectFit: 'cover', objectPosition: 'center 30%' }} />
               </div>
               <div className="hl-body">
                 <h3>Exhibitions &amp; Events</h3>

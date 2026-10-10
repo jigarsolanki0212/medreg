@@ -49,7 +49,7 @@ export default function GalleryPage() {
         <div className="container">
           <GalleryGrid images={GALLERY_IMAGES} />
           <div className="gal-more">
-            <p>See where we meet clients and run training sessions.</p>
+            <p>Photo albums from Medical Fair India, Gujarat Medical Expo, MEDICALL and other events are on our Exhibitions page.</p>
             <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', justifyContent: 'center' }}>
               <Link href="/exhibitions/" className="btn btn-secondary btn-sm">
                 <span>Exhibitions &amp; Events</span>

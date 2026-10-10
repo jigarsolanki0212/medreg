@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import type { Metadata } from 'next';
-import { CalendarDays, MapPin, ArrowRight, Store } from 'lucide-react';
+import { CalendarDays, MapPin, ArrowRight, Store, Users, ExternalLink, Images } from 'lucide-react';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import JsonLd from '@/components/JsonLd';
 import PrefilledForm from '@/components/PrefilledForm';
@@ -27,11 +27,14 @@ export const metadata: Metadata = pageMetadata({
 });
 
 const fmt = (iso: string) => new Date(`${iso}T00:00:00`).toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
-const when = (e: Exhibition) => (e.startDate ? `${fmt(e.startDate)}${e.endDate && e.endDate !== e.startDate ? ` – ${fmt(e.endDate)}` : ''}` : String(e.year));
+const when = (e: Exhibition) =>
+  e.startDate ? `${fmt(e.startDate)}${e.endDate && e.endDate !== e.startDate ? ` – ${fmt(e.endDate)}` : ''}` : e.dateLabel || String(e.year);
+const sortKey = (e: Exhibition) => e.startDate || e.sortDate || String(e.year);
+const where = (e: Exhibition) => [e.venue, e.city, e.country].filter(Boolean).join(', ');
 
 export default function ExhibitionsPage() {
-  const upcoming = EXHIBITIONS.filter((e) => exhibitionStatus(e) === 'upcoming').sort((a, b) => (a.startDate || String(a.year)).localeCompare(b.startDate || String(b.year)));
-  const past = EXHIBITIONS.filter((e) => exhibitionStatus(e) === 'past').sort((a, b) => (b.startDate || String(b.year)).localeCompare(a.startDate || String(a.year)));
+  const upcoming = EXHIBITIONS.filter((e) => exhibitionStatus(e) === 'upcoming').sort((a, b) => sortKey(a).localeCompare(sortKey(b)));
+  const past = EXHIBITIONS.filter((e) => exhibitionStatus(e) === 'past').sort((a, b) => sortKey(b).localeCompare(sortKey(a)));
 
   // Counts are derived from the events entered, never hard-coded (brief §13).
   const byYear = past.reduce<Record<number, number>>((acc, e) => ({ ...acc, [e.year]: (acc[e.year] || 0) + 1 }), {});
@@ -59,7 +62,7 @@ export default function ExhibitionsPage() {
       />
 
       <section className="page-banner svc-banner">
-        <Image src="/assets/placeholders/exhibition-venue.jpg" alt="" fill priority sizes="100vw" className="page-banner-bg" />
+        <Image src="/assets/exhibitions/mdmi-2.jpg" alt="" fill priority sizes="100vw" className="page-banner-bg" />
         <div className="container">
           <div className="page-banner-content">
             <Breadcrumbs items={[{ name: 'Exhibitions & Events', path: PAGE_PATH }]} />
@@ -110,7 +113,7 @@ export default function ExhibitionsPage() {
                         <CalendarDays size={15} aria-hidden="true" /> {when(e)}
                       </li>
                       <li>
-                        <MapPin size={15} aria-hidden="true" /> {[e.venue, e.city, e.country].filter(Boolean).join(', ')}
+                        <MapPin size={15} aria-hidden="true" /> {where(e)}
                       </li>
                       <li>
                         <Store size={15} aria-hidden="true" /> {e.booth ? `Booth ${e.booth}` : 'Booth number to be confirmed'}
@@ -151,43 +154,66 @@ export default function ExhibitionsPage() {
                 ))}
               </ul>
             </div>
-            <div className="exh-grid">
+            <div className="exh-past-list">
               {past.map((e) => (
-                <article key={e.id} className="exh-card">
-                  {e.image && (
-                    <div className="exh-card-media">
-                      <Image src={e.image} alt={e.name} fill sizes="(max-width: 768px) 92vw, 380px" style={{ objectFit: 'cover', objectPosition: 'top' }} />
-                    </div>
-                  )}
-                  <div className="exh-card-body">
-                    <h3 className="trn-title">{e.name}</h3>
-                    <ul className="trn-meta">
-                      <li>
-                        <CalendarDays size={15} aria-hidden="true" /> {when(e)}
-                      </li>
-                      <li>
-                        <MapPin size={15} aria-hidden="true" /> {[e.venue, e.city, e.country].filter(Boolean).join(', ')}
-                      </li>
-                    </ul>
-                    {e.description && <p className="trn-desc">{e.description}</p>}
-                    {e.highlights && (
-                      <ul className="cb-card-list">
-                        {e.highlights.map((h) => (
-                          <li key={h}>{h}</li>
-                        ))}
+                <article key={e.id} className="exh-past" id={e.id}>
+                  <div className="exh-past-main">
+                    {e.image && (
+                      <div className="exh-past-cover">
+                        <Image src={e.image} alt={e.name} fill sizes="(max-width: 900px) 92vw, 380px" style={{ objectFit: 'cover' }} />
+                      </div>
+                    )}
+                    <div className="exh-past-info">
+                      <h3 className="exh-past-title">{e.name}</h3>
+                      <ul className="trn-meta">
+                        <li>
+                          <CalendarDays size={15} aria-hidden="true" /> {when(e)}
+                        </li>
+                        <li>
+                          <MapPin size={15} aria-hidden="true" /> {where(e)}
+                        </li>
+                        {e.booth && (
+                          <li>
+                            <Store size={15} aria-hidden="true" /> Booth {e.booth}
+                          </li>
+                        )}
+                        {e.exhibitor && (
+                          <li>
+                            <Users size={15} aria-hidden="true" /> {e.exhibitor}
+                          </li>
+                        )}
                       </ul>
-                    )}
-                    {e.href && (
-                      <Link href={e.href} className="trn-cta">
-                        View event page <ArrowRight size={14} aria-hidden="true" />
-                      </Link>
-                    )}
+                      {e.description && <p className="trn-desc">{e.description}</p>}
+                      {e.highlights && (
+                        <ul className="cb-card-list">
+                          {e.highlights.map((h) => (
+                            <li key={h}>{h}</li>
+                          ))}
+                        </ul>
+                      )}
+                      <div className="exh-links">
+                        {e.href && (
+                          <Link href={e.href} className="trn-cta">
+                            View event page <ArrowRight size={14} aria-hidden="true" />
+                          </Link>
+                        )}
+                        {e.links?.map((l) => (
+                          <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer" className="trn-cta">
+                            {l.label} <ExternalLink size={13} aria-hidden="true" />
+                          </a>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                   {e.photos && e.photos.length > 0 && (
                     <div className="exh-album">
+                      <div className="exh-album-head">
+                        <Images size={16} aria-hidden="true" /> Photo album · {e.photos.length} photos
+                      </div>
                       <GalleryGrid
-                        images={e.photos.map((p) => ({ ...p, caption: e.name, category: 'Exhibitions' as const, width: 800, height: 600 }))}
+                        images={e.photos.map((p) => ({ ...p, caption: e.name, category: 'Exhibitions' as const }))}
                         showFilters={false}
+                        compact
                       />
                     </div>
                   )}

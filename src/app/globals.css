@@ -3215,3 +3215,25 @@ html.drawer-open .floating-whatsapp { display: none; }
 @media (max-width: 768px) { .trn-photos { grid-template-columns: 1fr; } }
 .svc-banner--plain { background: radial-gradient(circle at 85% 15%, rgba(121, 184, 255, 0.22), transparent 50%), linear-gradient(135deg, var(--navy-900), var(--primary-dark)); }
 .svc-banner--plain::after { display: none; }
+
+/* Exhibitions: past events with photo albums */
+.exh-past-list { display: grid; gap: 24px; }
+.exh-past { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-sm); scroll-margin-top: 100px; }
+.exh-past-main { display: grid; grid-template-columns: 340px minmax(0, 1fr); }
+.exh-past-cover { position: relative; min-height: 340px; background: var(--slate-100); }
+.exh-past-info { padding: 26px 28px; display: flex; flex-direction: column; gap: 12px; }
+.exh-past-title { font-size: 22px; font-weight: 800; color: var(--slate-900); }
+.exh-links { display: flex; flex-wrap: wrap; gap: 6px 18px; margin-top: auto; padding-top: 4px; }
+.exh-album { border-top: 1px solid var(--border-subtle); padding: 18px 28px 24px; background: var(--slate-50); }
+.exh-album-head { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 800; color: var(--slate-700); margin-bottom: 12px; }
+.gal-grid--compact { columns: auto; display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; }
+.gal-grid--compact .gal-item { margin: 0; }
+.gal-grid--compact .gal-thumb { aspect-ratio: 1 / 1; border-radius: var(--radius-md); }
+.gal-grid--compact .gal-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.gal-grid--compact .gal-overlay { display: none; }
+@media (max-width: 900px) {
+  .exh-past-main { grid-template-columns: 1fr; }
+  .exh-past-cover { min-height: 0; aspect-ratio: 4 / 3; }
+  .exh-past-info, .exh-album { padding-left: 18px; padding-right: 18px; }
+  .gal-grid--compact { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+}

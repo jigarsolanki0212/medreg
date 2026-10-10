@@ -67,24 +67,39 @@ export const TRAINING_AUDIENCE =
 
 /* ──────────────────────────── Exhibitions ─────────────────────────── */
 
+export interface ExhibitionPhoto {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+}
+
 export interface Exhibition {
   id: string;
   name: string;
   /** ISO dates once confirmed. `year` is used when exact dates are not available. */
   startDate?: string;
   endDate?: string;
+  /** Shown instead of exact dates when only the month is known, e.g. "October 2026". */
+  dateLabel?: string;
+  /** Internal ordering date when exact dates are not published (not shown). */
+  sortDate?: string;
   year: number;
   venue?: string;
   city: string;
   country: string;
   booth?: string;
+  /** Who represented the group, e.g. "MedReg Consultancy LLP and BIOTOX by MedReg". */
+  exhibitor?: string;
   description?: string;
   highlights?: string[];
-  /** Cover image (promotional graphic or booth photo). */
+  /** Cover image shown on the card (not repeated in the album). */
   image?: string;
-  photos?: { src: string; alt: string }[];
+  photos?: ExhibitionPhoto[];
   /** Optional page with more detail. */
   href?: string;
+  /** Original posts, e.g. on LinkedIn. */
+  links?: { label: string; href: string }[];
   /** Used only when no dates are set. With dates, the status is worked out automatically (see exhibitionStatus). */
   status: 'upcoming' | 'past';
 }
@@ -96,7 +111,96 @@ export function exhibitionStatus(e: Exhibition, today = new Date()): 'upcoming' 
   return new Date(`${end}T23:59:59+05:30`) < today ? 'past' : 'upcoming';
 }
 
+// Sources: MedReg Consultancy LLP and BIOTOX by Medreg LinkedIn posts (Sept–Oct 2026). Photos are MedReg's own.
 export const EXHIBITIONS: Exhibition[] = [
+  {
+    id: 'medicall-2026',
+    name: 'MEDICALL 2026',
+    dateLabel: 'October 2026',
+    sortDate: '2026-10-02', // first Day 1 post was published on 2 Oct 2026
+    year: 2026,
+    city: '',
+    country: 'India',
+    exhibitor: 'BIOTOX by MedReg',
+    description:
+      'BIOTOX by MedReg took part in MEDICALL, connecting with healthcare and medical technology professionals and innovators over three days of conversations, new connections and industry insights.',
+    image: '/assets/exhibitions/medicall-day1-3.jpg',
+    photos: [
+      { src: '/assets/exhibitions/medicall-day1-1.jpg', alt: 'BIOTOX by MedReg booth at MEDICALL 2026', width: 1024, height: 1280 },
+      { src: '/assets/exhibitions/medicall-day1-2.jpg', alt: 'BIOTOX by MedReg booth at MEDICALL 2026', width: 1024, height: 1280 },
+      { src: '/assets/exhibitions/medicall-day1-4.jpg', alt: 'BIOTOX by MedReg booth at MEDICALL 2026', width: 1024, height: 1280 },
+      { src: '/assets/exhibitions/medicall-day2-1.jpg', alt: 'BIOTOX by MedReg booth at MEDICALL 2026', width: 960, height: 1280 },
+      { src: '/assets/exhibitions/medicall-day2-2.jpg', alt: 'BIOTOX by MedReg booth at MEDICALL 2026', width: 960, height: 1280 },
+      { src: '/assets/exhibitions/medicall-day2-3.jpg', alt: 'BIOTOX by MedReg booth at MEDICALL 2026', width: 960, height: 1280 },
+      { src: '/assets/exhibitions/medicall-day2-4.jpg', alt: 'BIOTOX by MedReg booth at MEDICALL 2026', width: 960, height: 1280 },
+    ],
+    links: [
+      { label: 'Day 1 post', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7511846049532289024/' },
+      { label: 'Day 2 post', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7512425212127318016/' },
+    ],
+    status: 'past',
+  },
+  {
+    id: 'gujarat-medical-expo-2026',
+    name: 'Gujarat Medical Expo 2026',
+    startDate: '2026-09-25',
+    endDate: '2026-09-27',
+    year: 2026,
+    city: 'Gujarat',
+    country: 'India',
+    exhibitor: 'MedReg BioTox LLP (BIOTOX by MedReg)',
+    description:
+      'BIOTOX by MedReg exhibited at the Gujarat Medical Expo and met medical device manufacturers, innovators, exporters and industry professionals. Discussions highlighted the growing importance of biological safety evaluation in developing safe, compliant and globally competitive medical devices.',
+    highlights: ['Biological evaluation, biocompatibility and toxicological risk assessment', 'Regulatory strategy for medical device manufacturers and exporters', 'Supporting the "Make in India" medical device ecosystem'],
+    image: '/assets/exhibitions/gme-1.jpg',
+    photos: [
+      { src: '/assets/exhibitions/gme-2.jpg', alt: 'MedReg BioTox booth at Gujarat Medical Expo 2026', width: 800, height: 600 },
+      { src: '/assets/exhibitions/gme-3.jpg', alt: 'MedReg BioTox booth at Gujarat Medical Expo 2026', width: 800, height: 600 },
+      { src: '/assets/exhibitions/gme-4.jpg', alt: 'MedReg BioTox booth at Gujarat Medical Expo 2026', width: 800, height: 600 },
+    ],
+    links: [{ label: 'LinkedIn post', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7509959612582961152/' }],
+    status: 'past',
+  },
+  {
+    id: 'medical-fair-india-2026',
+    name: 'Medical Fair India 2026',
+    startDate: '2026-09-17',
+    endDate: '2026-09-19',
+    year: 2026,
+    venue: 'Hall 4, Bombay Exhibition Centre (BEC), Goregaon (E)',
+    city: 'Mumbai',
+    country: 'India',
+    booth: 'E-48',
+    exhibitor: 'MedReg Consultancy LLP and BIOTOX by MedReg',
+    description:
+      'The MedReg Consultancy LLP and BIOTOX by MedReg team met medical device manufacturers, hospitals and healthcare innovators from across India and beyond, discussing CDSCO licensing, CE marking under EU MDR / IVDR, US FDA submissions, UKCA and MDSAP.',
+    highlights: [
+      'Dr. Bipinchandra Trada (Director & SME – Toxicology & Biocompatibility, BIOTOX by MedReg) presented on biocompatibility, biological safety evaluation, toxicological risk assessment, BEP and BER',
+      'One-to-one guidance on BEP and BER requirements at the booth',
+      'BIOTOX by MedReg also took part in the Medical Devices Manufacturing India Exhibition, Mumbai',
+    ],
+    image: '/assets/exhibitions/mfi-day1-1.jpg',
+    photos: [
+      { src: '/assets/exhibitions/mfi-day1-2.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 800, height: 600 },
+      { src: '/assets/exhibitions/mfi-day1-3.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 960, height: 1280 },
+      { src: '/assets/exhibitions/mfi-day1-4.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 960, height: 1280 },
+      { src: '/assets/exhibitions/mfi-day1-5.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 800, height: 600 },
+      { src: '/assets/exhibitions/mfi-day2-1.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 960, height: 1280 },
+      { src: '/assets/exhibitions/mfi-day2-2.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 800, height: 600 },
+      { src: '/assets/exhibitions/mfi-day2-3.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 960, height: 1280 },
+      { src: '/assets/exhibitions/mfi-day2-4.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 960, height: 1280 },
+      { src: '/assets/exhibitions/mfi-day2-5.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 800, height: 600 },
+      { src: '/assets/exhibitions/mdmi-3.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 800, height: 600 },
+      { src: '/assets/exhibitions/mdmi-4.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 960, height: 1280 },
+      { src: '/assets/exhibitions/mdmi-5.jpg', alt: 'MedReg at Medical Fair India 2026, Booth E-48', width: 960, height: 1280 },
+    ],
+    links: [
+      { label: 'Day 1 post', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7506322668183535616/' },
+      { label: 'Day 2 post', href: 'https://www.linkedin.com/feed/update/urn:li:activity:7506728922844385280/' },
+      { label: "Dr. Bipinchandra Trada's talk (video)", href: 'https://www.linkedin.com/feed/update/urn:li:activity:7507026219956342784/' },
+    ],
+    status: 'past',
+  },
   {
     id: 'whx-dubai-2026',
     name: 'WHX Dubai 2026 (World Health Expo)',
@@ -105,12 +209,7 @@ export const EXHIBITIONS: Exhibition[] = [
     country: 'United Arab Emirates',
     image: '/assets/placeholders/exhibition-meeting.jpg', // placeholder; WHX flyer is on /landing-page/
     href: '/landing-page/',
-    // Exact dates, venue and booth photos to be confirmed by MedReg. Album photos below are placeholders.
-    photos: [
-      { src: '/assets/placeholders/album-stage.jpg', alt: 'Exhibition stage' },
-      { src: '/assets/placeholders/album-discussion.jpg', alt: 'Discussion with visitors' },
-      { src: '/assets/placeholders/album-meeting.jpg', alt: 'Meeting at the booth' },
-    ],
+    // Exact dates, venue and photos to be confirmed by MedReg.
     status: 'past',
   },
 ];
@@ -162,8 +261,6 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   { src: '/assets/placeholders/gallery-training.jpg', alt: 'Training session', caption: 'Training sessions', category: 'Training & Workshops', width: 960, height: 640, placeholder: true },
   { src: '/assets/placeholders/training-seminar.jpg', alt: 'Seminar', caption: 'Seminars', category: 'Training & Workshops', width: 960, height: 640, placeholder: true },
   { src: '/assets/placeholders/training-workshop.jpg', alt: 'Workshop', caption: 'Workshops', category: 'Training & Workshops', width: 960, height: 640, placeholder: true },
-  { src: '/assets/placeholders/gallery-exhibition.jpg', alt: 'Meeting at an exhibition', caption: 'Exhibitions', category: 'Exhibitions', width: 960, height: 640, placeholder: true },
-  { src: '/assets/placeholders/exhibition-conference.jpg', alt: 'Conference hall', caption: 'Industry events', category: 'Exhibitions', width: 960, height: 568, placeholder: true },
   { src: '/assets/placeholders/milestone-handshake.jpg', alt: 'Partnership handshake', caption: 'Milestones', category: 'Milestones', width: 960, height: 640, placeholder: true },
 ];
 

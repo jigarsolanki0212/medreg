@@ -6,7 +6,7 @@ import { ChevronLeft, ChevronRight, X, Expand } from 'lucide-react';
 import type { GalleryImage } from '@/data/siteContent';
 
 /** Masonry photo grid with category filters and an accessible lightbox (keyboard, swipe, focus trap). */
-export default function GalleryGrid({ images, showFilters = true }: { images: GalleryImage[]; showFilters?: boolean }) {
+export default function GalleryGrid({ images, showFilters = true, compact = false }: { images: GalleryImage[]; showFilters?: boolean; compact?: boolean }) {
   const categories = useMemo(() => Array.from(new Set(images.map((i) => i.category))), [images]);
   const [filter, setFilter] = useState<string>('All');
   const [open, setOpen] = useState<number | null>(null);
@@ -66,7 +66,7 @@ export default function GalleryGrid({ images, showFilters = true }: { images: Ga
         </div>
       )}
 
-      <ul className="gal-grid">
+      <ul className={compact ? 'gal-grid gal-grid--compact' : 'gal-grid'}>
         {shown.map((img, i) => (
           <li key={img.src} className="gal-item">
             <button
@@ -78,7 +78,7 @@ export default function GalleryGrid({ images, showFilters = true }: { images: Ga
               }}
               aria-label={`Open photo: ${img.alt}`}
             >
-              <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes="(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 380px" loading="lazy" />
+              <Image src={img.src} alt={img.alt} width={img.width} height={img.height} sizes={compact ? '(max-width: 640px) 46vw, 200px' : '(max-width: 640px) 92vw, (max-width: 1024px) 46vw, 380px'} loading="lazy" />
               <span className="gal-overlay" aria-hidden="true">
                 <Expand size={18} />
                 {img.caption && <span>{img.caption}</span>}
